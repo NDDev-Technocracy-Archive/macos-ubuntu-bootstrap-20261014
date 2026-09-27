@@ -48,8 +48,18 @@ def test_ai_plan_names_three_vendor_clis() -> None:
 def test_unrestricted_launchers_use_vendor_flags() -> None:
     common = (ROOT / "scripts/lib/common.sh").read_text()
     assert 'codex --dangerously-bypass-approvals-and-sandbox' in common
+    assert '--dangerously-bypass-hook-trust' in common
     assert 'claude --dangerously-skip-permissions' in common
     assert 'grok --permission-mode bypassPermissions --always-approve' in common
+
+
+def test_cx_preseeds_exact_path_project_trust() -> None:
+    """Codex >=0.113 gates launches on an exact-path trust prompt even under
+    --yolo (openai/codex#14345); the launcher must write the config.toml entry
+    itself because trust does not inherit, glob, or accept -c overrides."""
+    common = (ROOT / "scripts/lib/common.sh").read_text()
+    assert 'git -C "$cx_dir" rev-parse --show-toplevel' in common
+    assert 'printf \'\\n[projects."%s"]\\ntrust_level = "trusted"\\n\'' in common
 
 
 def test_codex_install_uses_receipt_bound_ubuntu_npm_without_publishing_it() -> None:
