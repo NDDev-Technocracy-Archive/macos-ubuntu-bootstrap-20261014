@@ -379,10 +379,63 @@ rldyour::install_ai_launchers() {
   # install_managed_file is plan-aware, but this mkdir was not, so a plan
   # created ~/.local/bin on a machine it was only supposed to describe.
   [ "${RLDYOUR_DRY_RUN:-1}" -eq 1 ] || mkdir -p "$bin"
-  rldyour::install_managed_file "$bin/cx" "# Managed by macos-ubuntu-bootstrap: ai-launcher-cx-v1" 0755 <<'EOF'
+  rldyour::install_managed_file "$bin/cx" "# Managed by macos-ubuntu-bootstrap: ai-launcher-cx-v2" 0755 "# Managed by macos-ubuntu-bootstrap: ai-launcher-cx-v1" <<'EOF'
 #!/bin/sh
-# Managed by macos-ubuntu-bootstrap: ai-launcher-cx-v1
-exec codex --dangerously-bypass-approvals-and-sandbox "$@"
+# Managed by macos-ubuntu-bootstrap: ai-launcher-cx-v2
+# Codex >=0.113 shows an exact-path "Trust this folder?" prompt on session
+# launch even under --yolo (openai/codex#14345). Trust is stored only as
+# [projects."<abs path>"] entries in $CODEX_HOME/config.toml: it does not
+# inherit from parents, does not glob, and cannot be passed via -c, so cx
+# records the same entry the prompt would have written before exec'ing
+# codex. --dangerously-bypass-hook-trust covers the remaining prompt class
+# (new or modified project hooks); both are the intended unrestricted
+# posture of this launcher.
+set -u
+
+cx_cfg=${CODEX_HOME:-$HOME/.codex}/config.toml
+cx_dir=
+cx_take=
+cx_skip=0
+
+for cx_arg in "$@"; do
+  case $cx_take in
+    cd) cx_dir=$cx_arg; cx_take=; continue ;;
+    val) cx_take=; continue ;;
+  esac
+  case $cx_arg in
+    -C|--cd) cx_take=cd ;;
+    --cd=*) cx_dir=${cx_arg#--cd=} ;;
+    -C?*) cx_dir=${cx_arg#-C} ;;
+    -m|--model|-p|--profile|-c|--config|--enable|--disable|-a|--ask-for-approval|-s|--sandbox|-i|--image|--remote|--remote-auth-token-env|--local-provider|--add-dir) cx_take=val ;;
+    --*=*) ;;
+    -*) ;;
+    *) case $cx_arg in
+         login|logout|completion|update|doctor|help|features|debug|mcp|plugin|app-server|remote-control|exec-server|sandbox|agents|cloud|apply|archive|unarchive|delete|migrate-rollouts|queue) cx_skip=1 ;;
+       esac
+       break ;;
+  esac
+done
+
+if [ "$cx_skip" -eq 0 ]; then
+  if [ -n "$cx_dir" ]; then
+    cx_dir=$(cd "$cx_dir" 2>/dev/null && pwd -P) || cx_dir=
+  else
+    cx_dir=$(pwd -P) || cx_dir=
+  fi
+  if [ -n "$cx_dir" ]; then
+    cx_root=$(git -C "$cx_dir" rev-parse --show-toplevel 2>/dev/null) || cx_root=
+    cx_seed=${cx_root:-$cx_dir}
+    case $cx_seed in /*) ;; *) cx_seed= ;; esac
+    case $cx_seed in *[\"\\]*) cx_seed= ;; esac
+    if [ -n "$cx_seed" ] && ! grep -qxF "[projects.\"$cx_seed\"]" "$cx_cfg" 2>/dev/null; then
+      mkdir -p "${cx_cfg%/*}" 2>/dev/null
+      printf '\n[projects."%s"]\ntrust_level = "trusted"\n' "$cx_seed" >>"$cx_cfg" 2>/dev/null || :
+    fi
+  fi
+fi
+
+unset cx_cfg cx_dir cx_take cx_skip cx_arg cx_root cx_seed
+exec codex --dangerously-bypass-approvals-and-sandbox --dangerously-bypass-hook-trust "$@"
 EOF
   rldyour::install_managed_file "$bin/cl" "# Managed by macos-ubuntu-bootstrap: ai-launcher-cl-v1" 0755 <<'EOF'
 #!/bin/sh
