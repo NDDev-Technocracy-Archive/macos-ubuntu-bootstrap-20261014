@@ -2,8 +2,8 @@
   "schema_version": 1,
   "compiled_policy": {
     "repository_id": "repo_01M0EZ7TXGSFT0CSY7D9E00CAF",
-    "bundle_version": "0.8.0",
-    "digest": "sha256:c49a9b46a68aa1f026081d5e78aff128aabe9fc2c7631216f17aab098452f8d2"
+    "bundle_version": "0.9.24",
+    "digest": "sha256:ef92e093cfcc84adcf56873206ba3c6622ede1540b2365702de0f5a25b0a66f3"
   },
   "sources": [
     {
@@ -21,6 +21,14 @@
       "distribution": "public",
       "path": "policies/roles/public-module.yaml",
       "digest": "sha256:084f7b09dbfd85a386e47cf83ea0015154b6b01fa3cf85a68f04ef407b89ed4b"
+    },
+    {
+      "id": "continuous-development",
+      "tier": "stack",
+      "priority": 500,
+      "distribution": "public",
+      "path": "policies/stacks/continuous-development.yaml",
+      "digest": "sha256:678b6876cd6cf58d7b97e7e0751e7ec9c0d3f75c2c78c5bfbe0d02930774195d"
     }
   ],
   "effective": {
@@ -33,6 +41,9 @@
     },
     "context": {
       "private_parent_persistence": "forbidden"
+    },
+    "delivery": {
+      "profile": "continuous-development"
     },
     "git": {
       "branch_cleanup": "merged-only",
@@ -178,6 +189,13 @@
       "tier": "base",
       "priority": 100,
       "file": "policies/base/repository-default.yaml",
+      "operation": "set"
+    },
+    "/effective/delivery/profile": {
+      "source": "continuous-development",
+      "tier": "stack",
+      "priority": 500,
+      "file": "policies/stacks/continuous-development.yaml",
       "operation": "set"
     },
     "/effective/git/branch_cleanup": {
