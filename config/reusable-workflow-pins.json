@@ -2,9 +2,9 @@
   "schema_version": 1,
   "repositories": [
     {
-      "repository": "NDDev-OpenNetwork/ci-workflows",
-      "version": "0.1.26",
-      "commit": "a7b90bdf1ac12465cbd07072e3360442cfc8eec6"
+      "repository": "NDDev-Technocracy-OpenNetwork/ci-workflows",
+      "version": "commit:93eeb2a65e98a29e9dbff7909f67c6419abff046",
+      "commit": "93eeb2a65e98a29e9dbff7909f67c6419abff046"
     }
   ]
 }

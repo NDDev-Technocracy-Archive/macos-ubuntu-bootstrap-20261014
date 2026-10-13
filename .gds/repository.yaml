@@ -8,13 +8,17 @@ repository:
 
 provider:
   type: "github"
-  installation: "installation:github-nddev-technocracy-sandbox"
+  installation: "installation:github-nddev-technocracy-opennetwork"
   repository_id: 1335382421
-  owner: "NDDev-Technocracy-Sandbox"
+  owner: "NDDev-Technocracy-OpenNetwork"
   name: "macos-ubuntu-bootstrap"
 
+  aliases:
+    - owner: "NDDev-Technocracy-Sandbox"
+      name: "macos-ubuntu-bootstrap"
+
 classification:
-  portfolios: ["portfolio:nddev-technocracy-sandbox"]
+  portfolios: ["portfolio:nddev-technocracy-opennetwork"]
   visibility_contract: "public"
   data_classification: "public"
 

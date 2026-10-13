@@ -127,7 +127,7 @@ def _reusable_callers() -> list[tuple[Path, bool, bool, bool, str]]:
     for path in sorted(WORKFLOWS.glob("*.yml")):
         lines = path.read_text(encoding="utf-8").splitlines()
         for index, line in enumerate(lines):
-            if "uses: NDDev-OpenNetwork/ci-workflows/" not in line:
+            if "uses: NDDev-Technocracy-OpenNetwork/ci-workflows/" not in line:
                 continue
             indent = len(line) - len(line.lstrip())
             has_with = names_runner = exempt = False
@@ -197,7 +197,7 @@ def test_every_reusable_caller_that_can_name_a_runner_does() -> None:
 @pytest.mark.parametrize("path", sorted(WORKFLOWS.glob("*.yml")), ids=lambda p: p.name)
 def test_reusable_workflows_are_pinned_to_an_exact_commit(path: Path) -> None:
     for line in path.read_text(encoding="utf-8").splitlines():
-        match = re.search(r"uses:\s*(NDDev-OpenNetwork/ci-workflows/[^@]+)@(\S+)", line)
+        match = re.search(r"uses:\s*(NDDev-Technocracy-OpenNetwork/ci-workflows/[^@]+)@(\S+)", line)
         if match:
             assert re.fullmatch(r"[0-9a-f]{40}", match.group(2)), (
                 f"{path.name} uses a mutable ref: {match.group(2)}"

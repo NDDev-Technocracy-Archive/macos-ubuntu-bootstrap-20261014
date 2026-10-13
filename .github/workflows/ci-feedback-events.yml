@@ -19,7 +19,7 @@ jobs:
     permissions:
       actions: read # Read exact completed run and job metadata.
       issues: write # Publish bounded failure evidence in this repository.
-    uses: NDDev-Technocracy-Sandbox/ci-workflows/.github/workflows/ci-feedback.yml@a7b90bdf1ac12465cbd07072e3360442cfc8eec6 # 0.1.26
+    uses: NDDev-Technocracy-OpenNetwork/ci-workflows/.github/workflows/ci-feedback.yml@93eeb2a65e98a29e9dbff7909f67c6419abff046 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
     # The pinned reusable exposes no `runner` input and hardcodes
     # `runs-on: ubuntu-latest`, so runner selection cannot drift to the
     # estate's self-hosted label regardless of the pin.
