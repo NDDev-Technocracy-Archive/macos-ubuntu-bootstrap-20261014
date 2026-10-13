@@ -18,7 +18,7 @@ jobs:
       contents: read
       pull-requests: write # labeler + stale jobs comment/label PRs
       issues: write # stale job manages issues
-    uses: NDDev-Technocracy-OpenNetwork/ci-workflows/.github/workflows/pr-hygiene.yml@93eeb2a65e98a29e9dbff7909f67c6419abff046 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
+    uses: NDDev-Technocracy-OpenNetwork/ci-workflows/.github/workflows/pr-hygiene.yml@5523113629318fbb770b80df00c254e739d7ee18 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
     # This reusable exposes no `runner` input at the pinned commit; the
     # hosted-runner rule therefore does not apply here. Re-check on a pin bump.
     with:

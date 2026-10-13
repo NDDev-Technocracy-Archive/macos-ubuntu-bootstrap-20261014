@@ -20,7 +20,7 @@ jobs:
     name: OSV vulnerability scan
     permissions:
       contents: read
-    uses: NDDev-Technocracy-OpenNetwork/ci-workflows/.github/workflows/osv-scan.yml@93eeb2a65e98a29e9dbff7909f67c6419abff046 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
+    uses: NDDev-Technocracy-OpenNetwork/ci-workflows/.github/workflows/osv-scan.yml@5523113629318fbb770b80df00c254e739d7ee18 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
     with:
       # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
       # explicitly. The estate runner platform forbids public/fork code on a
