@@ -215,7 +215,7 @@ def test_telegram_favorite_migrates_before_legacy_launchers_are_retired() -> Non
     assert configure < retire_generated
 
 
-def test_telegram_desktop_assets_are_pinned_to_the_v709_source_commit() -> None:
+def test_telegram_desktop_assets_are_pinned_to_the_v731_source_commit() -> None:
     contract = json.loads(
         (ROOT / "config/rldyour-contract.json").read_text(encoding="utf-8")
     )
@@ -223,7 +223,7 @@ def test_telegram_desktop_assets_are_pinned_to_the_v709_source_commit() -> None:
     installer = INSTALL.read_text(encoding="utf-8")
 
     assert desktop["upstream_source_commit"] == (
-        "a1e89e1f64f08cb058caf1c61ff43f319f98a6ec"
+        "6fed91ffab9861771a75f29df65031b3c80b6941"
     )
     assert len(desktop["icon_assets"]) == 4
     for asset in desktop["icon_assets"]:

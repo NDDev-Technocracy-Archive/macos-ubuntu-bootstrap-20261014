@@ -2,7 +2,7 @@
   "schema_version": 2,
   "adapter": {
     "id": "macos-ubuntu-bootstrap",
-    "version": "0.3.2"
+    "version": "0.3.3"
   },
   "support_evidence": {
     "path": "config/support-evidence-matrix.json",
@@ -455,21 +455,21 @@
       "x64": "fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6",
       "arm64": "6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2"
     },
-    "ubuntu_uv": "0.12.23",
+    "ubuntu_uv": "0.13.0",
     "ubuntu_uv_sha256": {
-      "x64": "9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6",
-      "arm64": "6524bd338177ed50d035d39354e12545e993bbeba2ecbddf0480c5b3a81d313f"
+      "x64": "1468ebd5a5541121837c5a2817b9972ba6090fa6caa3d142620850a47fb75154",
+      "arm64": "3ccfb6af6e242433eb552f7d9676abd5412c6595c497e990d9c8cb7b5bd4d2c3"
     },
-    "ubuntu_bun": "1.4.2",
+    "ubuntu_bun": "1.4.3",
     "ubuntu_bun_sha256": {
-      "x64": "36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913",
-      "x64-baseline": "c678040f14fe0440eb839d37cbd0ce4c051a32da72806ac97de6a6aab6bf728f",
-      "arm64": "54328bbc2d9c8e0c9f892c544d66c57a83b84139e34909e5ee81758f1ac8fda7"
+      "x64": "3e730528d89775f03f87f05c06787c4df4099d0a37f3f252e7b829cb23816e18",
+      "x64-baseline": "1fc2edac843102909e3a1be1d8d9802cc6071cf074e67e88231f4ffe0f8b397b",
+      "arm64": "efa9813da5ed72423bf847f916e8d2c47c0d776add972354026a75e10da9aa21"
     },
-    "ubuntu_go": "1.27.1",
+    "ubuntu_go": "1.27.2",
     "ubuntu_go_sha256": {
-      "amd64": "b477e877a104211f3010911c61b501c0c015533d80290ddfa9f3dd43c5b4120e",
-      "arm64": "01d80e8ca1b7abddafaac6f0864a407aa35ab120483381df73d6070b9faec60b"
+      "amd64": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5",
+      "arm64": "94f3e30b8e374bc285e7dadc11e0865726b9bc6e85b841ccceaabc0214c6b7c8"
     },
     "ubuntu_gopls": "v0.23.0",
     "ubuntu_gopls_provenance": "go-module-checksum-database",
@@ -508,10 +508,10 @@
         }
       },
       "osv-scanner": {
-        "version": "2.6.0",
+        "version": "2.7.0",
         "sha256": {
-          "x64": "ca69b3d3cd08f889a49dc0a383122f71cc528b83803671df5fd874d97485b108",
-          "arm64": "2c71403eb443d05891c4f268c3ad771cf4f16e5443463fd7851ef8f454d3c7e4"
+          "x64": "160c6253e2922e9e0a6a9771c5c4c40a4b3c6090b34a3cdd5e80c96cc2e4218b",
+          "arm64": "4061ef4c021ed3c47f203b818f337e351336cc5cd67c0274fc36bd1dfc728dd7"
         }
       },
       "actionlint": {
@@ -564,10 +564,10 @@
         }
       },
       "ast-grep": {
-        "version": "0.45.3",
+        "version": "0.50.0",
         "sha256": {
-          "x64": "f8ac830881339d1edee6b2652f54798c0f4da5a827f2db38a08ee31117783ce8",
-          "arm64": "b39cfbc58da4b869a88b8a4bc57bd5deb0d24541e704cf7c257da7b53ec81c8f"
+          "x64": "0fd3f489639abb8465a914b74b8779171577582318d8a940d00399f59dba81c5",
+          "arm64": "3a4ad22dd1dca7a4900a173de65885578617af57fa13dd93b8d345d6b352770e"
         }
       },
       "eza": {
@@ -578,10 +578,10 @@
         }
       },
       "lazygit": {
-        "version": "0.65.1",
+        "version": "0.66.1",
         "sha256": {
-          "x64": "02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6",
-          "arm64": "49abecdf6adf4f2dfdb11bf7b9bfada267ea523612ed809d1c6d87f6c04000a7"
+          "x64": "7b3f30c2c06a42cf575280f907e58d7ea08411408b6b62bc926bc91cbc6c3f46",
+          "arm64": "add91327af13343f37d2d610512d0982ef5c75da5cc962b5159748adc8a11a86"
         }
       },
       "difft": {
@@ -632,7 +632,7 @@
   },
   "user_tools": {
     "herdr": {
-      "version": "0.9.3",
+      "version": "0.9.4",
       "summary": "Terminal workspace manager for AI coding agents (tmux-style multiplexer with agent session support).",
       "install_method": {
         "linux": "verified-github-release-binary",
@@ -640,25 +640,25 @@
       },
       "source": {
         "repository": "https://github.com/herdrdev/herdr",
-        "tag": "v0.9.3",
-        "tag_object": "7eaf574ba6362c36c3d8fe89f411bb7d5bb34660",
-        "commit": "7b116c05bfda646af39d2524c54e70c751f57ee8",
-        "release": "https://github.com/herdrdev/herdr/releases/tag/v0.9.3",
+        "tag": "v0.9.4",
+        "tag_object": "04b8b2ee4f6cdcfbaf0b6e8f8e4935cb9bbca8ab",
+        "commit": "7e26bad94044eba205033111a0ce8033ede7e24f",
+        "release": "https://github.com/herdrdev/herdr/releases/tag/v0.9.4",
         "release_feed": "https://github.com/herdrdev/herdr/releases.atom",
         "upstream_manifest": "https://herdr.dev/latest.json",
-        "verified_at": "2026-10-04",
+        "verified_at": "2026-10-13",
         "assets": {
           "macos-aarch64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.3/herdr-macos-aarch64",
-            "sha256": "5173a3e0ae42d5d1ab7ebfa5d5e6329f7c3d23f8e1a3677c7ce3231da2884157"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-macos-aarch64",
+            "sha256": "ea20bfff9cb8c83a996081c926e6ff9370de8e543baa859bca48d19175d895ff"
           },
           "linux-x86_64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.3/herdr-linux-x86_64",
-            "sha256": "18a8dc65f1c2fa485884344356dea1cfd911c6f06cf46fa78e193f4087f4dba7"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-x86_64",
+            "sha256": "493304fbefb0ed0ea0455f373b47f48d24e8774bc7974f4c916ad2e937675b23"
           },
           "linux-aarch64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.3/herdr-linux-aarch64",
-            "sha256": "4de7aa3e25678812e92960de64f7c2aaa1bca1f0f80a3c5e559837e231e1f5c0"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-aarch64",
+            "sha256": "9511cb70982c1ef115f232058e7ed7cf9640aa5a2c0ca78934cefda3aeb093fd"
           }
         }
       },
@@ -685,12 +685,12 @@
       ]
     },
     "telegram": {
-      "version": "7.2.9",
+      "version": "7.3.1",
       "summary": "Telegram Desktop messenger from the official telegramdesktop/tdesktop GitHub release.",
       "install_method": "verified-github-release-tarball",
       "repo": "telegramdesktop/tdesktop",
-      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v7.2.9/td-setup-linux-x64-7.2.9.tar.xz",
-      "archive_sha256": "dc0698eb8011ed4e75f1fad9d55a8ab54e375c9791b9c577baa6073d9a4c50fa",
+      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.1/td-setup-linux-x64-7.3.1.tar.xz",
+      "archive_sha256": "654a5b266d653b072b4407a4644bd441e37ee393f502c71b2e1d86fc115b8ab6",
       "architectures": [
         "x86_64"
       ],
@@ -715,23 +715,23 @@
       "gui_required": true
     },
     "doctl": {
-      "version": "1.177.0",
+      "version": "1.185.0",
       "summary": "DigitalOcean command-line interface from the official digitalocean/doctl GitHub release.",
       "install_method": "verified-github-release-tarball",
       "version_flag": "version",
       "source": {
         "repository": "https://github.com/digitalocean/doctl",
-        "tag": "v1.177.0",
-        "release": "https://github.com/digitalocean/doctl/releases/tag/v1.177.0",
-        "verified_at": "2026-10-04",
+        "tag": "v1.185.0",
+        "release": "https://github.com/digitalocean/doctl/releases/tag/v1.185.0",
+        "verified_at": "2026-10-13",
         "assets": {
           "linux-x86_64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-amd64.tar.gz",
-            "sha256": "34d3954721bfb8cdb42032e78d98274f157426fa6332511ae356edcce59dade3"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-amd64.tar.gz",
+            "sha256": "caf03c52f25d821794638460012d7ae1cd7b665796015f0f8311106f8e566be8"
           },
           "linux-aarch64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-arm64.tar.gz",
-            "sha256": "3adfe5bb667c2cdee15eb3501d53b57d8f04dfa945ddd4584f6f760834506992"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-arm64.tar.gz",
+            "sha256": "a0feffea34fb519d3c14da4673ed038978b8d6fbd1b88f4b12a2f414dcd49da4"
           }
         }
       },
@@ -749,22 +749,22 @@
       ]
     },
     "stripe": {
-      "version": "1.53.0",
+      "version": "1.53.1",
       "summary": "Stripe CLI from the official stripe/stripe-cli GitHub release.",
       "install_method": "verified-github-release-tarball",
       "source": {
         "repository": "https://github.com/stripe/stripe-cli",
-        "tag": "v1.53.0",
-        "release": "https://github.com/stripe/stripe-cli/releases/tag/v1.53.0",
-        "verified_at": "2026-10-04",
+        "tag": "v1.53.1",
+        "release": "https://github.com/stripe/stripe-cli/releases/tag/v1.53.1",
+        "verified_at": "2026-10-13",
         "assets": {
           "linux-x86_64": {
-            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.0/stripe_1.53.0_linux_x86_64.tar.gz",
-            "sha256": "a12205df4aecb18153b8b3f76d5029386b1e94944d559900f9082ca489a8521b"
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_x86_64.tar.gz",
+            "sha256": "032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1"
           },
           "linux-aarch64": {
-            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.0/stripe_1.53.0_linux_arm64.tar.gz",
-            "sha256": "6cc195da6081237634f5b7feba4e2e9d71d33ed805d6219e443fd066fae07109"
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_arm64.tar.gz",
+            "sha256": "b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6"
           }
         }
       },
@@ -782,21 +782,21 @@
       ]
     },
     "gcloud": {
-      "version": "585.0.0",
+      "version": "589.0.0",
       "summary": "Google Cloud SDK CLI (gcloud, gsutil, bq) from the versioned cloud-sdk-release archive.",
       "install_method": "verified-google-cloud-sdk-tarball",
       "source": {
         "repository": "https://cloud.google.com/sdk/docs/install",
-        "tag": "585.0.0",
-        "verified_at": "2026-10-04",
+        "tag": "589.0.0",
+        "verified_at": "2026-10-13",
         "assets": {
           "linux-x86_64": {
-            "url": "https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-585.0.0-linux-x86_64.tar.gz",
-            "sha256": "7b97198ef306f5400b67f057f7415a46bd9a34367eeabd87516ee3f74bc76a36"
+            "url": "https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-x86_64.tar.gz",
+            "sha256": "f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f"
           },
           "linux-aarch64": {
-            "url": "https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-585.0.0-linux-arm.tar.gz",
-            "sha256": "58cb835c823514d1eee2b87f938f2bc6240f5a745e9cc73d142a1260da129e25"
+            "url": "https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-arm.tar.gz",
+            "sha256": "3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97"
           }
         }
       },
@@ -835,7 +835,7 @@
       ]
     },
     "wrangler": {
-      "version": "4.147.0",
+      "version": "4.150.0",
       "summary": "Cloudflare Wrangler CLI from the npm wrangler package, installed through pinned Bun global.",
       "install_method": "npm-registry",
       "source": {
@@ -856,7 +856,7 @@
       ]
     },
     "gddy": {
-      "version": "0.2.25",
+      "version": "0.2.28",
       "command": "gddy",
       "bin_target": "${HOME}/.local/bin/gddy",
       "os": [
@@ -867,25 +867,25 @@
       "shape": "gzip-tar",
       "source": {
         "repository": "godaddy/cli",
-        "tag": "v0.2.25"
+        "tag": "v0.2.28"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.25/gddy-x86_64-unknown-linux-gnu.tar.gz",
-          "bytes": 11184785,
-          "sha256": "57895f3ec18813243ca22c9ff26cfc6198bed5bcdee364f0d1f7d8074bbc8734",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-x86_64-unknown-linux-gnu.tar.gz",
+          "bytes": 11351226,
+          "sha256": "ac93df173f34051c8b762393403421e93b34a9d3787f3ee28a6f9c44dfbe570e",
           "member": "gddy"
         },
         "linux/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.25/gddy-aarch64-unknown-linux-gnu.tar.gz",
-          "bytes": 11150169,
-          "sha256": "872d0f888344f6527360c4a6dc473d88a726cfe081af0c5c1bc50436d5cf88c3",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-aarch64-unknown-linux-gnu.tar.gz",
+          "bytes": 11330070,
+          "sha256": "47be8806bb911e8fe84a5d92101f3875ddedfe225ebf1cf8aa62ea9adac8194f",
           "member": "gddy"
         },
         "macos/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.25/gddy-aarch64-apple-darwin.tar.gz",
-          "bytes": 8818525,
-          "sha256": "b3bc56750e294b6eaa757d3be8e68ec9bcbfbf4eeebe3949aa929350f4c14392",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-aarch64-apple-darwin.tar.gz",
+          "bytes": 8990504,
+          "sha256": "4b56bb40467e37cf867c39d609360489c1d5d12426f1a9b6930f9f81c71066c6",
           "member": "gddy"
         }
       }
@@ -911,26 +911,26 @@
       "source": "templates/desktop/org.telegram.desktop.desktop",
       "target": "${HOME}/.local/share/applications/org.telegram.desktop.desktop",
       "icon": "org.telegram.desktop",
-      "upstream_source_commit": "a1e89e1f64f08cb058caf1c61ff43f319f98a6ec",
-      "upstream_desktop_entry": "https://github.com/telegramdesktop/tdesktop/blob/v7.2.9/lib/xdg/org.telegram.desktop.desktop",
+      "upstream_source_commit": "6fed91ffab9861771a75f29df65031b3c80b6941",
+      "upstream_desktop_entry": "https://github.com/telegramdesktop/tdesktop/blob/v7.3.1/lib/xdg/org.telegram.desktop.desktop",
       "icon_assets": [
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/art/logo_256.png",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/art/logo_256.png",
           "target": "${HOME}/.local/share/icons/hicolor/256x256/apps/org.telegram.desktop.png",
           "sha256": "3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg",
           "sha256": "a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome_attention.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_attention.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg",
           "sha256": "2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome_mute.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_mute.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg",
           "sha256": "efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc"
         }

@@ -298,7 +298,7 @@ def test_telegram_presence_probe_never_executes_the_gui(
     assert "herdr" in calls
     assert "telegram-desktop" not in calls
     assert state["telegram"]["raw"] == "presence-only"
-    assert state["telegram"]["installed_version"] == "7.2.9"
+    assert state["telegram"]["installed_version"] == "7.3.1"
 
 
 # ----------------------------- profile awareness -----------------------------
@@ -428,13 +428,13 @@ def test_herdr_declared_in_contract_and_install_sh() -> None:
     contract = di.load_contract()
     assert "herdr" in contract["user_tools"], "herdr not in contract user_tools"
     assert (
-        contract["user_tools"]["herdr"]["version"] == "0.9.3"
+        contract["user_tools"]["herdr"]["version"] == "0.9.4"
     ), "herdr version mismatch in contract"
 
     installer = (ROOT / "scripts/ubuntu/install.sh").read_text(encoding="utf-8")
     assert "USER_TOOLS=(" in installer, "USER_TOOLS array missing from install.sh"
     assert (
-        "herdr;0.9.3;raw" in installer
+        "herdr;0.9.4;raw" in installer
     ), "herdr row missing from USER_TOOLS array in install.sh"
 
 
@@ -465,7 +465,7 @@ def test_telegram_runtime_and_launcher_policies_are_explicit() -> None:
         "/applications/org.telegram.desktop.desktop"
     )
     assert desktop["upstream_source_commit"] == (
-        "a1e89e1f64f08cb058caf1c61ff43f319f98a6ec"
+        "6fed91ffab9861771a75f29df65031b3c80b6941"
     )
     assert len(desktop["icon_assets"]) == 4
     assert desktop["icon_assets"][0]["target"].endswith(

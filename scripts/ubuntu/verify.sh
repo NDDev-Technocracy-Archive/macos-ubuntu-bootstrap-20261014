@@ -168,13 +168,13 @@ rldyour::ubuntu_verify::tool_host_provenance() {
   if [ "$arch" = "x64" ] && ! rldyour::cpu_has_avx2; then bun_arch="x64-baseline"; fi
   bun_sha=$(rldyour::ubuntu_verify::contract_hash ubuntu_bun_sha256 "$bun_arch")
   node_root="$HOME/.local/share/rldyour/node/v24.21.0"
-  uv_root="$HOME/.local/share/rldyour/uv/0.12.23"
-  bun_root="$HOME/.local/share/rldyour/bun/1.4.2"
+  uv_root="$HOME/.local/share/rldyour/uv/0.13.0"
+  bun_root="$HOME/.local/share/rldyour/bun/1.4.3"
 
   rldyour::ubuntu_verify::runtime_receipt node 24.21.0 "$node_sha" "$node_root" \
     bin/node bin/npm bin/npx bin/corepack || return 1
-  rldyour::ubuntu_verify::runtime_receipt uv 0.12.23 "$uv_sha" "$uv_root" uv uvx || return 1
-  rldyour::ubuntu_verify::runtime_receipt bun 1.4.2 "$bun_sha" "$bun_root" bun || return 1
+  rldyour::ubuntu_verify::runtime_receipt uv 0.13.0 "$uv_sha" "$uv_root" uv uvx || return 1
+  rldyour::ubuntu_verify::runtime_receipt bun 1.4.3 "$bun_sha" "$bun_root" bun || return 1
   # Only node is published to the managed PATH; npm/npx/corepack must NOT be
   # linked (uv and bun are the only package managers). Their integrity inside
   # the tarball is still covered by the runtime receipt checked above.
@@ -301,12 +301,12 @@ done
   rldyour::log "missing" "Node.js exact managed Ubuntu version 24.21.0"
   exit 1
 }
-[ "$(bun --version 2>/dev/null | head -n 1)" = "1.4.2" ] || {
-  rldyour::log "missing" "Bun exact managed Ubuntu version 1.4.2"
+[ "$(bun --version 2>/dev/null | head -n 1)" = "1.4.3" ] || {
+  rldyour::log "missing" "Bun exact managed Ubuntu version 1.4.3"
   exit 1
 }
-uv --version 2>/dev/null | head -n 1 | grep -Eq '^uv 0\.12\.23([[:space:]]|$)' || {
-  rldyour::log "missing" "uv exact managed Ubuntu version 0.12.23"
+uv --version 2>/dev/null | head -n 1 | grep -Eq '^uv 0\.13\.0([[:space:]]|$)' || {
+  rldyour::log "missing" "uv exact managed Ubuntu version 0.13.0"
   exit 1
 }
 rldyour::verify_terminal_environment
@@ -345,8 +345,8 @@ if [ "$PROFILE" != "server" ]; then
       *) rldyour::log "info" "Telegram skipped: upstream publishes no $(uname -m) build" ;;
     esac
   fi
-  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.1" ] || {
-    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.1"
+  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.2" ] || {
+    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.2"
     exit 1
   }
   [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.0" ] || {
@@ -413,8 +413,8 @@ else
     eza lazygit difft jaq kotlin-lsp; do
     rldyour::require_cmd "$cmd" required
   done
-  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.1" ] || {
-    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.1"; exit 1;
+  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.2" ] || {
+    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.2"; exit 1;
   }
   [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.0" ] || {
     rldyour::log "missing" "Rust exact managed Ubuntu version 1.99.0"; exit 1;
