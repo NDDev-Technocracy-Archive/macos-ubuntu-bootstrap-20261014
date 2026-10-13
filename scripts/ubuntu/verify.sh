@@ -380,7 +380,6 @@ if [ "$PROFILE" != "server" ]; then
   fi
   if [ "$GUI_ENABLED" -eq 1 ]; then
     command -v google-chrome-stable >/dev/null 2>&1 || { rldyour::log "missing" "Google Chrome stable"; exit 1; }
-    command -v rustdesk >/dev/null 2>&1 || { rldyour::log "missing" "RustDesk"; exit 1; }
     # The contract owns the expected fingerprint and the apt-source check; the
     # shared primitive owns key identity. Both lines of work are kept: the
     # checkpoint's contract-derived expectation, and main's repaired identity

@@ -168,46 +168,6 @@ PY
     assert "NOT_INSTALLED" in combined
 
 
-@requires_systemd_container
-@requires_container
-def test_pinned_deb_installs_from_its_declared_digest() -> None:
-    """RustDesk is the other install branch that had never been executed."""
-    result = run_in_container(
-        """
-        /usr/local/libexec/rldyour-bootstrap-privileged ubuntu-desktop-gui-system
-        dpkg-query -W -f='${Version}' rustdesk | grep -q '1.4.9' && echo VERSION_OK
-        su dev -c 'cd /repo && source scripts/ubuntu/desktop.sh &&
-                   nddev::_record() { :; } && nddev::_install_desktop_deb rustdesk' \
-          | grep -q 'installed' && echo IDEMPOTENT_OK
-        """
-    )
-    combined = result.stdout + result.stderr
-    for marker in ("VERSION_OK", "IDEMPOTENT_OK"):
-        assert marker in combined, f"{marker} missing\n{combined[-3000:]}"
-    assert result.returncode == 0, combined[-3000:]
-
-
-@requires_container
-def test_pinned_deb_refuses_a_digest_mismatch() -> None:
-    """A tampered artifact must never reach dpkg."""
-    result = run_in_container(
-        """
-        python3 - <<'PY'
-import json
-p='/usr/local/share/rldyour-bootstrap/rldyour-contract.json'
-d=json.load(open(p)); next(x for x in d['ubuntu_apt_packages']['desktop_apps'] if x['name']=='rustdesk')['sha256']['x64']='0'*64
-open(p,'w').write(json.dumps(d))
-PY
-        /usr/local/libexec/rldyour-bootstrap-privileged ubuntu-desktop-gui-system \
-          && echo UNEXPECTED_SUCCESS || echo REFUSED
-        dpkg-query -W rustdesk 2>/dev/null && echo UNEXPECTED_INSTALL || echo NOT_INSTALLED
-        """
-    )
-    combined = result.stdout + result.stderr
-    assert "REFUSED" in combined, combined[-3000:]
-    assert "NOT_INSTALLED" in combined, "a digest mismatch must never reach dpkg"
-
-
 # --------------------------------------------------------------------------
 # Privileged descendant supervision (#64)
 #
@@ -327,7 +287,7 @@ def test_the_supervisor_never_signals_every_process_when_it_is_pid_one() -> None
 #
 # `apt_install --purge firefox` was rejected by the helper's own allowlist --
 # neither `--purge` nor `firefox` is a member -- so a GUI apply aborted under
-# `set -euo pipefail` after locale, keymap, RustDesk and Chrome had been
+# `set -euo pipefail` after locale, keymap and Chrome had been
 # applied. The call was also inverted: `apt-get install … --purge firefox`
 # installs Firefox.
 #

@@ -48,8 +48,8 @@ enforcement this repository cannot observe.
 - `cx`, `cl`, and `gk` invoke the three AI CLIs in their documented unrestricted
   modes. Keep the ordinary vendor commands unchanged.
 - Google Chrome stable is the only installed browser. macOS GUI installs
-  ChatGPT, Claude, Ghostty, cmux, RustDesk, and Telegram. Ubuntu GUI installs
-  Chrome, RustDesk, Telegram, and removes Firefox.
+  ChatGPT, Claude, Ghostty, cmux, and Telegram. Ubuntu GUI installs
+  Chrome, Telegram, and removes Firefox.
 - Herdr 0.9.4 is installed from the official, checksum-pinned GitHub release
   asset on macOS and every Ubuntu profile; `config/rldyour-contract.json` owns
   its tag, source URLs, architecture hashes, and receipt identities. Never

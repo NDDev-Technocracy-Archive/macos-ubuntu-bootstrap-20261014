@@ -580,21 +580,6 @@
       "update_policy": "tracks stable channel"
     },
     {
-      "id": "rustdesk",
-      "inventory_ref": "rldyour-contract.json#/ubuntu_apt_packages/desktop_apps/1",
-      "source": "official GitHub release debs on Ubuntu; Homebrew cask on macOS",
-      "version_discovery": "reviewed official release",
-      "integrity": "exact Ubuntu per-architecture SHA-256; package-manager cask integrity",
-      "architectures": [
-        "macos-arm64",
-        "linux-amd64",
-        "linux-arm64"
-      ],
-      "idempotency": "package version verification",
-      "partial_failure": "digest checked before dpkg; existing application preserved",
-      "update_policy": "reviewed Ubuntu pin; macOS cask channel"
-    },
-    {
       "id": "telegram",
       "inventory_ref": "rldyour-contract.json#/user_tools/telegram",
       "source": "official GitHub release tarball on Ubuntu; Homebrew cask on macOS",

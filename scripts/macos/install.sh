@@ -65,7 +65,7 @@ BUN_LSP_PACKAGES=(
   "sql-language-server@1.7.1"
 )
 
-GUI_CASKS=(ghostty cmux google-chrome chatgpt claude rustdesk telegram)
+GUI_CASKS=(ghostty cmux google-chrome chatgpt claude telegram)
 
 usage() {
   cat <<'EOF'
@@ -279,7 +279,6 @@ cask_app_path() {
     chatgpt) printf '%s\n' "/Applications/ChatGPT.app" ;;
     claude) printf '%s\n' "/Applications/Claude.app" ;;
     google-chrome) printf '%s\n' "/Applications/Google Chrome.app" ;;
-    rustdesk) printf '%s\n' "/Applications/RustDesk.app" ;;
     telegram) printf '%s\n' "/Applications/Telegram.app" ;;
     *) return 1 ;;
   esac

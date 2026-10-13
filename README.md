@@ -25,8 +25,8 @@ set (`duckdb`, `jnv`, `xh`, `yazi`); the contract records why for each. These la
 mode; use them only on machines and repositories you trust.
 
 GUI workstations install Google Chrome stable. macOS GUI additionally installs
-Ghostty, cmux, ChatGPT, Claude, RustDesk, and Telegram. Ubuntu GUI installs
-Chrome, RustDesk, Telegram, desktop integration, and removes Firefox. Headless
+Ghostty, cmux, ChatGPT, Claude, and Telegram. Ubuntu GUI installs
+Chrome, Telegram, desktop integration, and removes Firefox. Headless
 profiles do not install GUI applications. Herdr is installed and verified on
 macOS and every Ubuntu profile, including headless desktops and servers.
 Ubuntu GUI is supported on amd64; ARM64 remains supported with `--no-gui`

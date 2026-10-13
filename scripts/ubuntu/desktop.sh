@@ -12,8 +12,7 @@
 #   1. GNOME dock: move to bottom, centered, macOS-style.
 #   2. Keyboard: add Russian layout with Alt+Shift toggle.
 #   3. Google Chrome: install from the fingerprint-verified signed apt source.
-#   4. RustDesk: required pinned .deb.
-#   5. Firefox: remove the stock snap+apt Firefox completely.
+#   4. Firefox: remove the stock snap+apt Firefox completely.
 #
 # Server profile (headless) skips this entirely.
 # ------------------------------------------------------------
@@ -37,10 +36,10 @@ die()  { printf '\033[1;31m  \u2717 %s\033[0m\n' "$*" >&2; exit 1; }
 
 # Steps whose failure makes the desktop layer wrong rather than merely
 # incomplete. Google Chrome is the estate's standard browser and the Firefox
-# removal and RustDesk are declared policy, so all three are required. The dock and keyboard layout are cosmetic
+# removal is declared policy, so both are required. The dock and keyboard layout are cosmetic
 # and legitimately unavailable on a session without the dash-to-dock extension
 # or xkb data. Only a required failure fails the run.
-REQUIRED_STEPS=(google_chrome rustdesk firefox_removal)
+REQUIRED_STEPS=(google_chrome firefox_removal)
 OPTIONAL_STEPS=(gnome_dock russian_layout)
 
 # Populated by nddev::_record; read by the aggregate report.
@@ -78,7 +77,7 @@ nddev::desktop_configure() {
   command -v localectl >/dev/null || die "localectl missing (needs systemd)"
 
   if [ "${RLDYOUR_DRY_RUN:-1}" -eq 1 ]; then
-    rldyour::log "info" "[DRY-RUN] desktop customization: GNOME dock bottom, Russian layout, Google Chrome install, RustDesk install, Firefox removal"
+    rldyour::log "info" "[DRY-RUN] desktop customization: GNOME dock bottom, Russian layout, Google Chrome install, Firefox removal"
     return 0
   fi
 
@@ -90,7 +89,6 @@ nddev::desktop_configure() {
   nddev::_step gnome_dock nddev::_gnome_dock_bottom
   nddev::_step russian_layout nddev::_russian_keyboard_layout
   nddev::_step google_chrome nddev::_install_google_chrome
-  nddev::_step rustdesk nddev::_install_desktop_deb rustdesk
   nddev::_step firefox_removal nddev::_remove_firefox
 
   # Report the real outcome. Announcing "complete" unconditionally is what let
@@ -212,30 +210,6 @@ PY
   fi
   gsettings set org.gnome.desktop.input-sources sources "$updated" || return 1
   ok "added ru to the GNOME input sources"
-}
-
-# ----------------------------- pinned .deb applications -----------------------------
-
-# Verify a package installed by the single privileged desktop transaction.
-# Artifact URLs and hashes live only in the machine-readable root contract.
-nddev::_install_desktop_deb() {
-  local wanted=$1 package
-  case "$wanted" in
-    rustdesk) package=rustdesk ;;
-    *)
-    warn "unknown required desktop package: ${wanted}"
-    return 1
-    ;;
-  esac
-
-  info "Verifying ${wanted} from the completed privileged desktop transaction"
-  if dpkg-query -W -f='${Status}' "$package" 2>/dev/null |
-    command grep -q "install ok installed"; then
-    ok "${wanted} installed"
-    return 0
-  fi
-  warn "${wanted} missing after the privileged desktop transaction"
-  return 1
 }
 
 nddev::_install_google_chrome() {

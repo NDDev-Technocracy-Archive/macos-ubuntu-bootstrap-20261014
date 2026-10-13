@@ -616,12 +616,10 @@
       "google-chrome",
       "chatgpt",
       "claude",
-      "rustdesk",
       "telegram"
     ],
     "ubuntu": [
       "google-chrome",
-      "rustdesk",
       "telegram"
     ]
   },
@@ -1034,19 +1032,6 @@
           "vendor_repo_add_once": "false",
           "vendor_source_policy": "preserve-when-key-verifies"
         }
-      },
-      {
-        "name": "rustdesk",
-        "requirement": "required",
-        "version": "1.4.9",
-        "sha256": {
-          "x64": "7244ba47c40e804172044bfbe659467c54ce46554c98e78c8c0406f1d612fda3",
-          "arm64": "ce62c996f14d33f3bbe3a330e953644a44bace7f05885a7953f7395d69fb49c0"
-        },
-        "url": {
-          "x64": "https://github.com/rustdesk/rustdesk/releases/download/1.4.9/rustdesk-1.4.9-x86_64.deb",
-          "arm64": "https://github.com/rustdesk/rustdesk/releases/download/1.4.9/rustdesk-1.4.9-aarch64.deb"
-        }
       }
     ],
     "profiles": {
@@ -1192,7 +1177,6 @@
       "cmux",
       "ghostty",
       "google-chrome",
-      "rustdesk",
       "telegram"
     ],
     "registry-pinned": [

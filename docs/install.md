@@ -73,7 +73,7 @@ with exact per-platform digest and payload receipts. Operator-authored
 wrappers (`cf`, `cfapi`) remain outside this contract.
 
 GUI profiles install current Google Chrome stable. macOS also installs the
-desktop applications listed in the contract. Ubuntu GUI installs RustDesk and
+desktop applications listed in the contract. Ubuntu GUI installs
 Telegram, configures GNOME, and removes Firefox. `--no-gui` retains command-line
 tools, Herdr, language servers, and source checks.
 
