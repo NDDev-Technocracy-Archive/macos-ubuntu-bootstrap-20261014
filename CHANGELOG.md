@@ -19,6 +19,20 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
   OpenCode Desktop, and support one GUI-enabled bootstrap apply for all official
   harness applications.
 
+## [0.3.3] - 2026-10-13
+
+- Refresh managed pins to the latest verified upstream releases: uv 0.13.0,
+  Bun 1.4.3, Go 1.27.2, atuin 18.23.0, carapace-bin 1.8.0, Herdr 0.9.4,
+  Telegram 7.3.1, doctl 1.185.0, stripe 1.53.1, gcloud 589.0.0,
+  Wrangler 4.150.0, GoDaddy CLI 0.2.28, osv-scanner 2.7.0, ast-grep 0.50.0,
+  lazygit 0.66.1, ChatGPT desktop 26.1007.21434, OpenCode Desktop 2.0.28, and
+  the Python/npm source-quality sets (ruff 0.17.0, ty 0.0.86, semgrep 1.180.0,
+  pyright 1.1.414, basedpyright 1.40.2, markdownlint-cli2 0.23.3,
+  prettier 3.9.10). Every artifact hash was re-derived from the artifact the
+  installer actually fetches (including the Go module-proxy toolchain zips,
+  which differ from the go.dev tarballs); vendor CLI harness pins stay bound
+  to the released setup-system baselines and are unchanged.
+
 ## [0.3.2] - 2026-10-05
 
 - Align the command-line profile help with the seven installed vendor AI CLIs.

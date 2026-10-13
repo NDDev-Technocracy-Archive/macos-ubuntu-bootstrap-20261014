@@ -34,21 +34,21 @@ SET_LOGIN_SHELL="${RLDYOUR_SET_LOGIN_SHELL:-0}"
 NODE_VERSION="24.21.0"
 NODE_SHA256_X64="fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6"
 NODE_SHA256_ARM64="6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2"
-UV_VERSION="0.12.23"
-UV_SHA256_X64="9167d72b3319674b6303c4cbe071854bba13ebdf3d76b1a7cbdc175471fb66d6"
-UV_SHA256_ARM64="6524bd338177ed50d035d39354e12545e993bbeba2ecbddf0480c5b3a81d313f"
-BUN_VERSION="1.4.2"
-BUN_SHA256_X64="36368faef7527875d5ffa52e53cd48021741f2a83eb6208a8dd64068d422a913"
-BUN_SHA256_X64_BASELINE="c678040f14fe0440eb839d37cbd0ce4c051a32da72806ac97de6a6aab6bf728f"
-BUN_SHA256_ARM64="54328bbc2d9c8e0c9f892c544d66c57a83b84139e34909e5ee81758f1ac8fda7"
+UV_VERSION="0.13.0"
+UV_SHA256_X64="1468ebd5a5541121837c5a2817b9972ba6090fa6caa3d142620850a47fb75154"
+UV_SHA256_ARM64="3ccfb6af6e242433eb552f7d9676abd5412c6595c497e990d9c8cb7b5bd4d2c3"
+BUN_VERSION="1.4.3"
+BUN_SHA256_X64="3e730528d89775f03f87f05c06787c4df4099d0a37f3f252e7b829cb23816e18"
+BUN_SHA256_X64_BASELINE="1fc2edac843102909e3a1be1d8d9802cc6071cf074e67e88231f4ffe0f8b397b"
+BUN_SHA256_ARM64="efa9813da5ed72423bf847f916e8d2c47c0d776add972354026a75e10da9aa21"
 # Go and Rust are desktop language-server hosts, exactly like Node and uv: they
 # back gopls and rust-analyzer over the estate's Go and Rust sources. Installing
 # them does not authorize local project builds; the desktop execution policy
 # stays `source-lsp-only` and the server profile never receives them (project
 # builds belong in Docker under `container-execution-only`).
-GO_VERSION="1.27.1"
-GO_SHA256_AMD64="b477e877a104211f3010911c61b501c0c015533d80290ddfa9f3dd43c5b4120e"
-GO_SHA256_ARM64="01d80e8ca1b7abddafaac6f0864a407aa35ab120483381df73d6070b9faec60b"
+GO_VERSION="1.27.2"
+GO_SHA256_AMD64="3a467ed067f27cd55bf3a702f8e2bf12479f53c9d8ae0de548f48ebcb3c67796"
+GO_SHA256_ARM64="b5d2cb7bfe76d9cb10141eff26ad2c591c752bce8bf4dd9f24521bb6b5994dfb"
 # gopls publishes no prebuilt archive. It is pinned to an exact version and its
 # provenance comes from the Go module checksum database (sum.golang.org), which
 # is a transparency log rather than a hash this repository tracks. GOFLAGS and
@@ -77,12 +77,12 @@ DART_SHA256_ARM64="19a731647c3ed55058ee46dde00330150e6a8729bb6121b4a31e86084c8a3
 STARSHIP_VERSION="1.26.0"
 STARSHIP_SHA256_X64="321f0dd7af8340a5f2e6a8fec6538a04f617486f9ec70d878f91c09cd8deef22"
 STARSHIP_SHA256_ARM64="dc30189378d2f2e287384e8a692d3f95ad1df64cf0e8c36aa9201516028aed6b"
-ATUIN_VERSION="18.22.0"
-ATUIN_SHA256_X64="920200b8e2ecff88eb8f2c2d4bfc4c62ed1c2f4efca2ba854a23bd157a542328"
-ATUIN_SHA256_ARM64="591680ad8045f87f2b524a3654232a1e91b4ba7e8d52fe2d18885437a3fc5265"
-CARAPACE_VERSION="1.7.3"
-CARAPACE_SHA256_X64="35ab52bfe7bdd8296d90c3687660bde80497599badde840ab615d2f421f5f053"
-CARAPACE_SHA256_ARM64="b2456cb09d77004db87de2567d6d7588a61ceb4724522c463e2b1c1f87b4d4b9"
+ATUIN_VERSION="18.23.0"
+ATUIN_SHA256_X64="5cf46e926b696a9b23a3c61ef3cb00f8f7c156d1d7b7967a3b51741653b48ba3"
+ATUIN_SHA256_ARM64="21869faff1fedb9f8fb27837136567b089bcd588d21252533d5b314605517ae2"
+CARAPACE_VERSION="1.8.0"
+CARAPACE_SHA256_X64="6883bb61fe88a8f56c7b74bc9ff68445791ee22697f705b59a063443d8ffc8ad"
+CARAPACE_SHA256_ARM64="d501dfb17f3d1fe32d71e2a3704ef92572fc407f90fa9684d07c64f50d9d2fe4"
 
 APT_SOURCE_PACKAGES=(
   ca-certificates curl gpg gnupg git jq python3 python3-venv python3-yaml
@@ -107,8 +107,8 @@ BUN_LSP_PACKAGES=(
   "gh-actions-language-server@0.0.3"
   "@biomejs/biome@2.5.4"
   "oxlint@1.74.0"
-  "markdownlint-cli2@0.23.1"
-  "prettier@3.9.6"
+  "markdownlint-cli2@0.23.3"
+  "prettier@3.9.10"
   "@ansible/ansible-language-server@26.6.0"
   "svelte-language-server@0.18.4"
   "sql-language-server@1.7.1"
@@ -119,12 +119,12 @@ BUN_LSP_PACKAGES=(
 # (RVR-P2-003). uv installs the exact pin; a divergent installed version is
 # re-pinned, not silently preserved.
 PYTHON_SOURCE_TOOLS=(
-  "pyright==1.1.411"
-  "ruff==0.15.22"
-  "ty==0.0.61"
+  "pyright==1.1.414"
+  "ruff==0.17.0"
+  "ty==0.0.86"
   "cmake-language-server==0.1.11"
-  "basedpyright==1.39.9"
-  "semgrep==1.170.0"
+  "basedpyright==1.40.2"
+  "semgrep==1.180.0"
 )
 
 # Pinned upstream CLI artifacts: the tools macOS gets from Homebrew for which
@@ -154,7 +154,7 @@ PINNED_SOURCE_TOOLS=(
   # Reproduce the estate's CI checks locally: these four are exactly what the
   # gitleaks, OSV, actionlint, and hadolint workflows run.
   "gitleaks;8.30.1;tar0;gitleaks;gitleaks;gitleaks;551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb;e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080;https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz;https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz"
-  "osv-scanner;2.6.0;raw;osv-scanner;osv-scanner;osv-scanner;ca69b3d3cd08f889a49dc0a383122f71cc528b83803671df5fd874d97485b108;2c71403eb443d05891c4f268c3ad771cf4f16e5443463fd7851ef8f454d3c7e4;https://github.com/google/osv-scanner/releases/download/v2.6.0/osv-scanner_linux_amd64;https://github.com/google/osv-scanner/releases/download/v2.6.0/osv-scanner_linux_arm64"
+  "osv-scanner;2.7.0;raw;osv-scanner;osv-scanner;osv-scanner;160c6253e2922e9e0a6a9771c5c4c40a4b3c6090b34a3cdd5e80c96cc2e4218b;4061ef4c021ed3c47f203b818f337e351336cc5cd67c0274fc36bd1dfc728dd7;https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_amd64;https://github.com/google/osv-scanner/releases/download/v2.7.0/osv-scanner_linux_arm64"
   "actionlint;1.7.12;tar0;actionlint;actionlint;actionlint;8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8;325e971b6ba9bfa504672e29be93c24981eeb1c07576d730e9f7c8805afff0c6;https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz;https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_arm64.tar.gz"
   "hadolint;2.15.1;raw;hadolint;hadolint;hadolint;c7187db94eeeeca956519a6af171adc31453941a1e777961f6e680f697c8c507;f6198ef8090f404dbb771abfee086eb8c48ac177f30da7fd3510aca35b344b5d;https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-linux-x86_64;https://github.com/hadolint/hadolint/releases/download/v2.15.1/hadolint-linux-arm64"
   # Markdown language server. Ubuntu uses markdown-oxide rather than macOS's
@@ -169,7 +169,7 @@ PINNED_SOURCE_TOOLS=(
   # The archive also ships an `sg` shim. It is not published: upstream prints a
   # deprecation banner and exits non-zero, and on a host that has util-linux it
   # would shadow the setgid `sg`.
-  "ast-grep;0.45.3;zip;ast-grep;ast-grep;ast-grep;f8ac830881339d1edee6b2652f54798c0f4da5a827f2db38a08ee31117783ce8;b39cfbc58da4b869a88b8a4bc57bd5deb0d24541e704cf7c257da7b53ec81c8f;https://github.com/ast-grep/ast-grep/releases/download/0.45.3/app-x86_64-unknown-linux-gnu.zip;https://github.com/ast-grep/ast-grep/releases/download/0.45.3/app-aarch64-unknown-linux-gnu.zip"
+  "ast-grep;0.50.0;zip;ast-grep;ast-grep;ast-grep;0fd3f489639abb8465a914b74b8779171577582318d8a940d00399f59dba81c5;3a4ad22dd1dca7a4900a173de65885578617af57fa13dd93b8d345d6b352770e;https://github.com/ast-grep/ast-grep/releases/download/0.50.0/app-x86_64-unknown-linux-gnu.zip;https://github.com/ast-grep/ast-grep/releases/download/0.50.0/app-aarch64-unknown-linux-gnu.zip"
   # Command runner used across the estate's repositories. Ubuntu 26.04 ships
   # 1.45.0 against upstream 1.58.0; a justfile written against a newer feature
   # would fail on the distribution build, so the recipe runner is pinned like
@@ -190,7 +190,7 @@ PINNED_SOURCE_TOOLS=(
   # 24.04, lazygit and difftastic are in no Ubuntu archive at all, and jaq
   # arrived only in 24.10 -- so each is pinned rather than left to apt.
   "eza;0.23.5;tar0;eza;eza;eza;35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4;40b87ae8628aa2ff0f0d2dc24ab52f689631366385c3da630bae745671fd71ec;https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz;https://github.com/eza-community/eza/releases/download/v0.23.5/eza_aarch64-unknown-linux-gnu.tar.gz"
-  "lazygit;0.65.1;tar0;lazygit;lazygit;lazygit;02beacbcda0fa342e50ae3480ba8147307353af3fb28e1d5f790e02329c201a6;49abecdf6adf4f2dfdb11bf7b9bfada267ea523612ed809d1c6d87f6c04000a7;https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_x86_64.tar.gz;https://github.com/jesseduffield/lazygit/releases/download/v0.65.1/lazygit_0.65.1_linux_arm64.tar.gz"
+  "lazygit;0.66.1;tar0;lazygit;lazygit;lazygit;7b3f30c2c06a42cf575280f907e58d7ea08411408b6b62bc926bc91cbc6c3f46;add91327af13343f37d2d610512d0982ef5c75da5cc962b5159748adc8a11a86;https://github.com/jesseduffield/lazygit/releases/download/v0.66.1/lazygit_0.66.1_linux_x86_64.tar.gz;https://github.com/jesseduffield/lazygit/releases/download/v0.66.1/lazygit_0.66.1_linux_arm64.tar.gz"
   # difftastic publishes its binary as `difft`; the row is named for the command
   # it publishes, like every other row here.
   "difft;0.71.0;tar0;difft;difft;difft;61aea5394a53c56f144637cf39b3a0c0dafa27769731745e5851ff276e6478da;5f046098b36ff985d0f99fec6f22cf74961db60386ff9d40df39fd99660aae2c;https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-x86_64-unknown-linux-gnu.tar.gz;https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -212,7 +212,7 @@ PINNED_SOURCE_TOOLS=(
 # architecture hashes live in config/rldyour-contract.json and parity tests bind
 # this shell row to them; installation never resolves mutable `latest` state.
 USER_TOOLS=(
-  "herdr;0.9.3;raw;herdr;herdr;herdr;18a8dc65f1c2fa485884344356dea1cfd911c6f06cf46fa78e193f4087f4dba7;4de7aa3e25678812e92960de64f7c2aaa1bca1f0f80a3c5e559837e231e1f5c0;https://github.com/herdrdev/herdr/releases/download/v0.9.3/herdr-linux-x86_64;https://github.com/herdrdev/herdr/releases/download/v0.9.3/herdr-linux-aarch64"
+  "herdr;0.9.4;raw;herdr;herdr;herdr;493304fbefb0ed0ea0455f373b47f48d24e8774bc7974f4c916ad2e937675b23;9511cb70982c1ef115f232058e7ed7cf9640aa5a2c0ca78934cefda3aeb093fd;https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-x86_64;https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-aarch64"
   # Telegram Desktop official portable build. Only Telegram/Telegram is
   # published. The binary also has an internal updater, disabled separately by
   # install_telegram_update_policy so it cannot mutate this receipt-bound tree.
@@ -220,10 +220,10 @@ USER_TOOLS=(
   # digest and URL are deliberately empty and the row is skipped there. They
   # used to hold the x86_64 values, which meant an arm64 desktop verified the
   # SHA-256 of an executable it could not run.
-  "telegram;7.2.9;tarx;Telegram/Telegram;Telegram/Telegram;telegram-desktop;dc0698eb8011ed4e75f1fad9d55a8ab54e375c9791b9c577baa6073d9a4c50fa;;https://github.com/telegramdesktop/tdesktop/releases/download/v7.2.9/td-setup-linux-x64-7.2.9.tar.xz;"
-  "doctl;1.177.0;tar0;doctl;doctl;doctl;34d3954721bfb8cdb42032e78d98274f157426fa6332511ae356edcce59dade3;3adfe5bb667c2cdee15eb3501d53b57d8f04dfa945ddd4584f6f760834506992;https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v1.177.0/doctl-1.177.0-linux-arm64.tar.gz"
-  "stripe;1.53.0;tar0;stripe;stripe;stripe;a12205df4aecb18153b8b3f76d5029386b1e94944d559900f9082ca489a8521b;6cc195da6081237634f5b7feba4e2e9d71d33ed805d6219e443fd066fae07109;https://github.com/stripe/stripe-cli/releases/download/v1.53.0/stripe_1.53.0_linux_x86_64.tar.gz;https://github.com/stripe/stripe-cli/releases/download/v1.53.0/stripe_1.53.0_linux_arm64.tar.gz"
-  "gcloud;585.0.0;tar1;bin/gcloud,bin/gsutil,bin/bq;bin/gcloud,bin/gsutil,bin/bq;gcloud,gsutil,bq;7b97198ef306f5400b67f057f7415a46bd9a34367eeabd87516ee3f74bc76a36;58cb835c823514d1eee2b87f938f2bc6240f5a745e9cc73d142a1260da129e25;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-585.0.0-linux-x86_64.tar.gz;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-585.0.0-linux-arm.tar.gz"
+  "telegram;7.3.1;tarx;Telegram/Telegram;Telegram/Telegram;telegram-desktop;654a5b266d653b072b4407a4644bd441e37ee393f502c71b2e1d86fc115b8ab6;;https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.1/td-setup-linux-x64-7.3.1.tar.xz;"
+  "doctl;1.185.0;tar0;doctl;doctl;doctl;caf03c52f25d821794638460012d7ae1cd7b665796015f0f8311106f8e566be8;a0feffea34fb519d3c14da4673ed038978b8d6fbd1b88f4b12a2f414dcd49da4;https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-arm64.tar.gz"
+  "stripe;1.53.1;tar0;stripe;stripe;stripe;032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1;b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_x86_64.tar.gz;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_arm64.tar.gz"
+  "gcloud;589.0.0;tar1;bin/gcloud,bin/gsutil,bin/bq;bin/gcloud,bin/gsutil,bin/bq;gcloud,gsutil,bq;f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f;3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-x86_64.tar.gz;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-arm.tar.gz"
 )
 
 # Operator CLIs that only exist as npm packages. Exact versions, same taxonomy
@@ -231,7 +231,7 @@ USER_TOOLS=(
 # postinstall fetches the workerd binary that package version requires.
 NPM_USER_TOOLS=(
   "resend-cli@2.23.0"
-  "wrangler@4.147.0"
+  "wrangler@4.150.0"
 )
 
 # The reviewed Telegram release installs these four files from
@@ -240,10 +240,10 @@ NPM_USER_TOOLS=(
 # exact upstream assets itself. Rows are source_url;sha256;path under
 # ~/.local/share, which is the location the contract declares.
 TELEGRAM_DESKTOP_ASSETS=(
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/art/logo_256.png;3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090;icons/hicolor/256x256/apps/org.telegram.desktop.png"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome.svg;a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1;icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome_attention.svg;2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7;icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/a1e89e1f64f08cb058caf1c61ff43f319f98a6ec/Telegram/Resources/icons/tray_monochrome_mute.svg;efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc;icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/art/logo_256.png;3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090;icons/hicolor/256x256/apps/org.telegram.desktop.png"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome.svg;a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1;icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_attention.svg;2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7;icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_mute.svg;efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc;icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg"
 )
 
 
