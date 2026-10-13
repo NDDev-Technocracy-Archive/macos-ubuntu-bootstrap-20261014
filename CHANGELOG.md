@@ -28,9 +28,10 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
   lazygit 0.66.1, ChatGPT desktop 26.1007.21434, OpenCode Desktop 2.0.28, and
   the Python/npm source-quality sets (ruff 0.17.0, ty 0.0.86, semgrep 1.180.0,
   pyright 1.1.414, basedpyright 1.40.2, markdownlint-cli2 0.23.3,
-  prettier 3.9.10). Every artifact hash was re-derived from the published
-  archives; vendor CLI harness pins stay bound to the released setup-system
-  baselines and are unchanged.
+  prettier 3.9.10). Every artifact hash was re-derived from the artifact the
+  installer actually fetches (including the Go module-proxy toolchain zips,
+  which differ from the go.dev tarballs); vendor CLI harness pins stay bound
+  to the released setup-system baselines and are unchanged.
 
 ## [0.3.2] - 2026-10-05
 
