@@ -47,8 +47,8 @@ BUN_SHA256_ARM64="efa9813da5ed72423bf847f916e8d2c47c0d776add972354026a75e10da9aa
 # stays `source-lsp-only` and the server profile never receives them (project
 # builds belong in Docker under `container-execution-only`).
 GO_VERSION="1.27.2"
-GO_SHA256_AMD64="ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5"
-GO_SHA256_ARM64="94f3e30b8e374bc285e7dadc11e0865726b9bc6e85b841ccceaabc0214c6b7c8"
+GO_SHA256_AMD64="3a467ed067f27cd55bf3a702f8e2bf12479f53c9d8ae0de548f48ebcb3c67796"
+GO_SHA256_ARM64="b5d2cb7bfe76d9cb10141eff26ad2c591c752bce8bf4dd9f24521bb6b5994dfb"
 # gopls publishes no prebuilt archive. It is pinned to an exact version and its
 # provenance comes from the Go module checksum database (sum.golang.org), which
 # is a transparency log rather than a hash this repository tracks. GOFLAGS and

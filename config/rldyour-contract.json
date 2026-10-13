@@ -468,8 +468,8 @@
     },
     "ubuntu_go": "1.27.2",
     "ubuntu_go_sha256": {
-      "amd64": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5",
-      "arm64": "94f3e30b8e374bc285e7dadc11e0865726b9bc6e85b841ccceaabc0214c6b7c8"
+      "amd64": "3a467ed067f27cd55bf3a702f8e2bf12479f53c9d8ae0de548f48ebcb3c67796",
+      "arm64": "b5d2cb7bfe76d9cb10141eff26ad2c591c752bce8bf4dd9f24521bb6b5994dfb"
     },
     "ubuntu_gopls": "v0.23.0",
     "ubuntu_gopls_provenance": "go-module-checksum-database",
