@@ -5,6 +5,13 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
 
 ## [Unreleased]
 
+- Remove RustDesk from the managed policy: it is dropped from the contract
+  desktop app lists, the macOS cask set, the Ubuntu privileged deb install
+  path (`install_rustdesk`, its two contract records and the
+  `nddev::_install_desktop_deb` helper), both platform verifiers, the support
+  evidence matrix, and the docs. Google Chrome remains the only contract-bound
+  Ubuntu desktop package; the helper now expects five contract records.
+
 - Publish the bundled rustdoc command and require it in Ubuntu verification so
   normal Cargo doctests work without an ad-hoc PATH override.
 

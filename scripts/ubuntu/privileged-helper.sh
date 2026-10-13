@@ -247,7 +247,6 @@ assert p["operation_owners"]["ubuntu-desktop-gui-system"] == "scripts/ubuntu/pri
 assert p["operation_owners"]["ubuntu-server-system"] == "scripts/ubuntu/server.sh"
 apps = {x["name"]: x for x in data["ubuntu_apt_packages"]["desktop_apps"]}
 chrome = apps["google-chrome-stable"]["apt_source"]
-rustdesk = apps["rustdesk"]
 identities = chrome["accepted_source_identities"]
 assert isinstance(identities, list) and len(identities) == 2
 normalized = []
@@ -264,18 +263,16 @@ assert not canonical.query and not canonical.fragment
 values = (
     chrome["key_url"], re.sub(r"[^0-9A-Fa-f]", "", chrome["key_fingerprint"]).upper(),
     chrome["uri"], chrome["managed_keyring"], chrome["managed_source"],
-    rustdesk["url"]["x64"], rustdesk["sha256"]["x64"],
 )
 assert re.fullmatch(r"[0-9A-F]{40}", values[1])
-assert re.fullmatch(r"[0-9a-f]{64}", values[6])
-for url in (values[0], values[2], values[5]):
+for url in (values[0], values[2]):
     parsed = urlsplit(url)
     assert parsed.scheme == "https" and parsed.hostname and not parsed.username and not parsed.password
     assert not parsed.fragment
 assert pathlib.PurePosixPath(values[3]).parent == pathlib.PurePosixPath("/etc/apt/keyrings")
 assert pathlib.PurePosixPath(values[4]).parent == pathlib.PurePosixPath("/etc/apt/sources.list.d")
-names = ("chrome_key_url", "chrome_fingerprint", "chrome_repo_uri", "chrome_keyring", "chrome_source", "rustdesk_url", "rustdesk_sha256")
-assert len(names) == 7 and len(values) == 7
+names = ("chrome_key_url", "chrome_fingerprint", "chrome_repo_uri", "chrome_keyring", "chrome_source")
+assert len(names) == 5 and len(values) == 5
 for name, value in zip(names, values):
     assert "\n" not in value and "=" not in value
     print(f"{name}={value}")
@@ -304,14 +301,12 @@ load_contract_values() {
     fi
     CONTRACT_RECORDS+=("$key=$value")
   done <"$capture"
-  [ "${#CONTRACT_RECORDS[@]}" -eq 7 ] || return 1
+  [ "${#CONTRACT_RECORDS[@]}" -eq 5 ] || return 1
   if [ "${CONTRACT_RECORDS[0]%%=*}" = chrome_key_url ] &&
     [ "${CONTRACT_RECORDS[1]%%=*}" = chrome_fingerprint ] &&
     [ "${CONTRACT_RECORDS[2]%%=*}" = chrome_repo_uri ] &&
     [ "${CONTRACT_RECORDS[3]%%=*}" = chrome_keyring ] &&
-    [ "${CONTRACT_RECORDS[4]%%=*}" = chrome_source ] &&
-    [ "${CONTRACT_RECORDS[5]%%=*}" = rustdesk_url ] &&
-    [ "${CONTRACT_RECORDS[6]%%=*}" = rustdesk_sha256 ]; then
+    [ "${CONTRACT_RECORDS[4]%%=*}" = chrome_source ]; then
     return 0
   else
     return 1
@@ -409,14 +404,6 @@ desktop_baseline() {
   apt_install "${DESKTOP_APT_PACKAGES[@]}"
 }
 
-install_rustdesk() {
-  local url=$1 sha=$2
-  /usr/bin/dpkg-query -W -f='${Status}' rustdesk 2>/dev/null | /usr/bin/grep -q 'install ok installed' && return 0
-  clean_env /usr/bin/curl --proto '=https' --tlsv1.2 --fail --silent --show-error --location "$url" --output "$tmp_dir/rustdesk.deb"
-  [ "$(/usr/bin/sha256sum "$tmp_dir/rustdesk.deb" | /usr/bin/awk '{print $1}')" = "$sha" ] || return 1
-  /usr/bin/dpkg -i "$tmp_dir/rustdesk.deb" >/dev/null 2>&1 || apt_install -f
-}
-
 install_chrome() {
   local key_url=$1 fingerprint=$2 repo_uri=$3 keyring=$4 source=$5
   local legacy=/etc/apt/sources.list.d/google-chrome.sources
@@ -466,13 +453,12 @@ configure_x11_keymap() {
 }
 
 desktop_gui() {
-  local key_url=$1 fingerprint=$2 repo_uri=$3 keyring=$4 source=$5 rustdesk_url=$6 rustdesk_sha=$7
+  local key_url=$1 fingerprint=$2 repo_uri=$3 keyring=$4 source=$5
   [ "$(/usr/bin/dpkg --print-architecture)" = amd64 ] || return 1
   apt_install fonts-jetbrains-mono
   /usr/bin/sed -i 's/^# *ru_RU\.UTF-8 UTF-8/ru_RU.UTF-8 UTF-8/' /etc/locale.gen
   /usr/sbin/locale-gen >/dev/null
   configure_x11_keymap
-  install_rustdesk "$rustdesk_url" "$rustdesk_sha"
   install_chrome "$key_url" "$fingerprint" "$repo_uri" "$keyring" "$source"
   if /usr/bin/snap list firefox >/dev/null 2>&1; then /usr/bin/snap remove --purge firefox; fi
   if /usr/bin/dpkg-query -W -f='${Status}' firefox 2>/dev/null | /usr/bin/grep -q 'install ok installed'; then

@@ -196,7 +196,7 @@ def test_contract_capture_binds_success_to_exact_typed_records(tmp_path: Path) -
     assert result.returncode == 0, result.stderr
     assert [line.split("=", 1)[0] for line in result.stdout.splitlines()] == [
         "chrome_key_url", "chrome_fingerprint", "chrome_repo_uri", "chrome_keyring",
-        "chrome_source", "rustdesk_url", "rustdesk_sha256",
+        "chrome_source",
     ]
 
 
@@ -914,7 +914,7 @@ def test_system_python_inventory_is_complete_and_isolated() -> None:
     assert "scripts/ci/shell_contract.py chrome-runtime" in docs
     helper = HELPER.read_text(encoding="utf-8")
     assert "zip(names, values, strict=True)" not in helper
-    assert "assert len(names) == 7 and len(values) == 7" in helper
+    assert "assert len(names) == 5 and len(values) == 5" in helper
 
 
 def test_secure_publisher_uses_anchored_no_follow_no_replace_and_fsync() -> None:

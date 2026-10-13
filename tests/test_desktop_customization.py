@@ -27,7 +27,7 @@ BASE_STUBS: dict[str, str] = {
     "locale": "echo ru_RU.utf8\n",
     "sed": "exit 0\n",
     "locale-gen": "exit 0\n",
-    "dpkg-query": 'case "$*" in *rustdesk*|*google-chrome-stable*) printf "install ok installed\\n" ;; *) exit 1 ;; esac\n',
+    "dpkg-query": 'case "$*" in *google-chrome-stable*) printf "install ok installed\\n" ;; *) exit 1 ;; esac\n',
     "dpkg": "exit 1\n",
     # `snap list firefox >/dev/null 2>&1` discards both streams, so the only
     # way a stub can prove it ran is a side effect on disk.
@@ -111,7 +111,7 @@ def test_failed_deb_step_does_not_skip_the_firefox_step(tmp_path: Path) -> None:
     result = run_desktop(stubs)
     combined = result.stdout + result.stderr
     assert (stubs / "snap-ran").exists(), "Firefox removal never ran after the .deb step failed"
-    assert "rustdesk: FAILED (required)" in combined
+    assert "google_chrome: FAILED (required)" in combined
     # google_chrome is required and also fails under these stubs.
     assert result.returncode != 0
 
@@ -255,11 +255,12 @@ def test_helper_and_verifier_consume_the_contract_without_duplicate_fingerprint(
     assert "rldyour-contract.json" in verify
 
 
-def test_chrome_and_rustdesk_are_required() -> None:
+def test_chrome_and_firefox_removal_are_required() -> None:
     source = DESKTOP.read_text(encoding="utf-8")
-    assert "REQUIRED_STEPS=(google_chrome rustdesk firefox_removal)" in source
+    assert "REQUIRED_STEPS=(google_chrome firefox_removal)" in source
     body = source.split("nddev::desktop_configure() {", 1)[1]
-    assert "nddev::_step rustdesk nddev::_install_desktop_deb rustdesk" in body
+    assert "nddev::_step google_chrome nddev::_install_google_chrome" in body
+    assert "nddev::_step firefox_removal nddev::_remove_firefox" in body
     assert "OPTIONAL_STEPS=(gnome_dock russian_layout)" in source
 
 
@@ -553,38 +554,6 @@ def test_chrome_source_authority_accepts_deb822_and_rejects_binding_drift(tmp_pa
         refused = subprocess.run(command, capture_output=True, text=True, check=False)
         assert refused.returncode == 3, (old, new, refused.stdout, refused.stderr)
 
-
-# ------------------- privileged .deb ownership -------------------
-
-
-def test_rustdesk_identity_has_one_contract_owner() -> None:
-    source = DESKTOP.read_text(encoding="utf-8")
-    helper = PRIVILEGED_HELPER.read_text(encoding="utf-8")
-    assert "REQUIRED_DESKTOP_PACKAGES" not in source
-    assert "rustdesk/releases/download" not in source
-    apps = json.loads(CONTRACT.read_text(encoding="utf-8"))["ubuntu_apt_packages"]["desktop_apps"]
-    rustdesk = next(item for item in apps if item["name"] == "rustdesk")
-    assert all(value.startswith("https://") for value in rustdesk["url"].values())
-    assert all(re.fullmatch(r"[0-9a-f]{64}", value) for value in rustdesk["sha256"].values())
-    assert 'rustdesk = apps["rustdesk"]' in helper
-    assert 'nddev::_install_desktop_deb rustdesk' in source
-
-
-def test_unknown_required_desktop_package_is_refused(tmp_path: Path) -> None:
-    prelude = tmp_path / "prelude.sh"
-    call = tmp_path / "call.sh"
-    prelude.write_text('info(){ :; }; ok(){ :; }; warn(){ printf "%s\\n" "$*"; }\n', encoding="utf-8")
-    call.write_text("nddev::_install_desktop_deb nonesuch\n", encoding="utf-8")
-    result = subprocess.run(
-        [sys.executable, str(ROOT / "scripts/ci/shell_function_harness.py"), "run",
-         "--source", str(DESKTOP), "--function", "nddev::_install_desktop_deb",
-         "--prelude", str(prelude), "--call", str(call)],
-        capture_output=True, text=True, check=False,
-    )
-    assert result.returncode == 0, result.stderr
-    observed = json.loads(result.stdout)["result"]
-    assert observed["returncode"] != 0
-    assert "unknown required desktop package" in observed["stdout"]
 
 
 # ------------------- macOS: an optional layer cannot strand the rest -------------------

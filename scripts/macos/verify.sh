@@ -121,7 +121,7 @@ rldyour::verify_terminal_environment
 rldyour::verify_managed_clis
 
 if [ "$GUI_ENABLED" -eq 1 ]; then
-  for app in Ghostty cmux "Google Chrome" ChatGPT Claude RustDesk Telegram; do
+  for app in Ghostty cmux "Google Chrome" ChatGPT Claude Telegram; do
     [ -d "/Applications/${app}.app" ] || {
       rldyour::log "missing" "required GUI app: /Applications/${app}.app"
       exit 1
