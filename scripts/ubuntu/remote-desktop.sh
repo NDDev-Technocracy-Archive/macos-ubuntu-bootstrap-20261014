@@ -35,6 +35,31 @@ rldyour::remote_desktop::supported_host() {
   )
 }
 
+# On releases where the contract delegates the remote-desktop layer to the
+# owner environment (remote_desktop.release_delegation), this script is an
+# explicit no-op instead of a failure: it installs and verifies nothing, so
+# the delegated path is decided entirely by the overlay that owns it.
+rldyour::remote_desktop::delegated_release() {
+  [ -r /etc/os-release ] || return 1
+  (
+    # shellcheck disable=SC1091
+    source /etc/os-release
+    [ "${ID:-}" = ubuntu ] && [ "${VERSION_ID:-}" = 26.04 ]
+  )
+}
+
+rldyour::remote_desktop::unsupported_or_delegated() {
+  # returns: 0 = host handled (supported or delegated), 1 = unsupported
+  if rldyour::remote_desktop::supported_host; then
+    return 0
+  fi
+  if rldyour::remote_desktop::delegated_release; then
+    rldyour::log "info" "remote_desktop layer is delegated to the external owner overlay on this release; skipping (contract remote_desktop.release_delegation)"
+    return 0
+  fi
+  return 1
+}
+
 rldyour::remote_desktop::validate_user() {
   local user=$1 record uid home shell
   [[ "$user" =~ ^[a-z_][a-z0-9_-]{0,31}$ ]] || return 1
@@ -128,10 +153,11 @@ PY
 rldyour::remote_desktop::root_apply() {
   local user=$1 home hostname_value tmp leaf mode
   [ "$EUID" -eq 0 ] || return 1
-  rldyour::remote_desktop::supported_host || {
+  rldyour::remote_desktop::unsupported_or_delegated || {
     rldyour::log "error" "desktop-server RDP supports Ubuntu 24.04 amd64 only"
     return 2
   }
+  rldyour::remote_desktop::supported_host || return 0
   rldyour::remote_desktop::validate_user "$user" || {
     rldyour::log "error" "RDP user must be an existing non-root login account under /home"
     return 2
@@ -276,7 +302,8 @@ EOF
 
 rldyour::remote_desktop::verify() {
   local user=$1 package listeners address
-  rldyour::remote_desktop::supported_host || return 1
+  rldyour::remote_desktop::unsupported_or_delegated || return 1
+  rldyour::remote_desktop::supported_host || return 0
   rldyour::remote_desktop::validate_user "$user" || return 1
   for package in ubuntu-desktop-minimal xrdp xorgxrdp; do
     [ "$(dpkg-query -W -f='${Status}' "$package" 2>/dev/null)" = 'install ok installed' ] || return 1
@@ -319,10 +346,11 @@ rldyour::remote_desktop::main() {
       return 2
     }
   else
-    rldyour::remote_desktop::supported_host || {
+    rldyour::remote_desktop::unsupported_or_delegated || {
       rldyour::log "error" "desktop-server RDP supports Ubuntu 24.04 amd64 only"
       return 2
     }
+    rldyour::remote_desktop::supported_host || return 0
     rldyour::remote_desktop::validate_user "$user" || {
       rldyour::log "error" "RDP user must be an existing non-root login account under /home"
       return 2

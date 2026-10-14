@@ -28,6 +28,27 @@ def test_remote_desktop_contract_binds_server_and_client_boundaries() -> None:
     assert remote["default_ssh_ports"] == [22, 443]
     assert ROOT / remote["server_entrypoint"] == SERVER
     assert ROOT / remote["client_renderer"] == CLIENT
+    # 26.04 lost the Xorg GNOME session the XRDP composition needs, so the
+    # remote layer is delegated to the owner environment there (ADR 0012).
+    assert remote["release_delegation"] == {"26.04": "external-owner-overlay"}
+
+
+def test_remote_desktop_delegated_release_is_an_explicit_noop() -> None:
+    """Delegated releases must not fail apply/verify nor run XRDP work."""
+    source = SERVER.read_text(encoding="utf-8")
+    assert "rldyour::remote_desktop::delegated_release" in source
+    # Every entry into the privileged path goes through the combined gate.
+    assert source.count("rldyour::remote_desktop::unsupported_or_delegated") >= 3
+    contract = json.loads((ROOT / "config/rldyour-contract.json").read_text(encoding="utf-8"))
+    delegated = set(contract["remote_desktop"]["release_delegation"])
+    profile = contract["targets"]["ubuntu"]["profiles"]["desktop-server"]
+    assert delegated <= set(profile["releases"])
+    assert "24.04" in set(profile["releases"]) - delegated, "the XRDP lane must stay supported"
+    matrix = json.loads((ROOT / "config/support-evidence-matrix.json").read_text(encoding="utf-8"))
+    compositions = {
+        c["id"] for c in matrix["support_compositions"] if "desktop-server" in c.get("profiles", [])
+    }
+    assert {"ubuntu-24.04-amd64-desktop-server", "ubuntu-26.04-amd64-desktop-server"} <= compositions
 
 
 def _client_module():

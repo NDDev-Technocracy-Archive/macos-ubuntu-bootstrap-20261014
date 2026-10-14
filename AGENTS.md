@@ -32,11 +32,14 @@ enforcement this repository cannot observe.
   builds/tests without the server baseline.
 - Ubuntu `server` is headless, defaults to rootful Docker, and supports explicit
   `rootless` or `none` alternatives.
-- Ubuntu `desktop-server` is Ubuntu 24.04 amd64 only, requires GUI, defaults to
-  no Docker, and accepts explicit `--docker-mode rootful` or `rootless` for a
+- Ubuntu `desktop-server` is amd64 only and requires GUI, defaults to no
+  Docker, and accepts explicit `--docker-mode rootful` or `rootless` for a
   host that develops, deploys and tests locally. It still composes the full
-  server baseline and exposes XRDP only on loopback through an owner-managed
-  SSH tunnel. It never owns credentials.
+  server baseline. On 24.04 it exposes XRDP only on loopback through an
+  owner-managed SSH tunnel; on 26.04 — which dropped the Xorg GNOME session —
+  the remote-desktop layer is delegated to the owner environment
+  (`remote_desktop.release_delegation`), so the install and verify paths
+  there are explicit no-ops. It never owns credentials.
 - All profiles receive the eight vendor CLIs (Antigravity, Claude Code, Codex,
   Cursor, Grok Build, OpenCode, Pi and Devin), GoDaddy CLI, zsh configuration,
   modern terminal tools, source-quality tools, and applicable language servers.

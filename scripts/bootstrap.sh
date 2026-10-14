@@ -43,9 +43,12 @@ Profiles:
   - desktop-builds: Ubuntu-only — everything desktop has, PLUS Docker rootful for
                     local builds/tests. Receives the server Docker layer without the
                     server baseline (no openssh-server, unattended-upgrades, or chrony).
-  - desktop-server: Ubuntu 24.04 amd64 remote workstation — desktop, source/LSP and
-                    AI tooling plus the server baseline and loopback-only RDP over an
-                    owner-managed SSH tunnel. Docker is optional and defaults to none.
+  - desktop-server: Ubuntu 24.04/26.04 amd64 remote workstation — desktop, source/LSP
+                    and AI tooling plus the server baseline. On 24.04 it also installs
+                    loopback-only RDP over an owner-managed SSH tunnel; on 26.04 that
+                    layer is delegated to the owner environment (contract
+                    remote_desktop.release_delegation). Docker is optional and
+                    defaults to none.
   - server:         Ubuntu-only headless build/runtime host with Docker, AI CLIs,
                     LSPs, terminal tooling, and safe server verification.
 

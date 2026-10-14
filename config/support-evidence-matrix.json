@@ -139,6 +139,35 @@
       "support": "SUPPORTED"
     },
     {
+      "id": "ubuntu-26.04-amd64-desktop-server",
+      "os": "ubuntu",
+      "releases": [
+        "26.04"
+      ],
+      "architectures": [
+        "amd64"
+      ],
+      "profiles": [
+        "desktop-server"
+      ],
+      "gui_modes": [
+        "enabled"
+      ],
+      "docker_modes": [
+        "none",
+        "rootful",
+        "rootless"
+      ],
+      "apply_privilege": [
+        "non-root-sudo"
+      ],
+      "interaction": [
+        "interactive-terminal",
+        "noninteractive-passwordless-sudo"
+      ],
+      "support": "SUPPORTED"
+    },
+    {
       "id": "ubuntu-amd64-server",
       "os": "ubuntu",
       "releases": [
