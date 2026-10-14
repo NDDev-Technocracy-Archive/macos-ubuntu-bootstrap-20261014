@@ -1,7 +1,7 @@
 # rldyour macOS and Ubuntu bootstrap
 
 Plan-first bootstrap for Apple Silicon macOS, Ubuntu 24.04/26.04 desktops,
-headless Ubuntu servers, and an Ubuntu 24.04 amd64 remote desktop server. The
+headless Ubuntu servers, and an Ubuntu 24.04/26.04 amd64 remote desktop server. The
 current contract is `0.3.3`.
 
 ## Profiles
@@ -11,7 +11,7 @@ current contract is `0.3.3`.
 | macOS `desktop` | optional | none | source analysis and local checks |
 | Ubuntu `desktop` | optional | none | source analysis and local checks |
 | Ubuntu `desktop-builds` | optional | rootful | local builds and tests |
-| Ubuntu 24.04 `desktop-server` | required | none by default | interactive remote workstation |
+| Ubuntu 24.04/26.04 `desktop-server` | required | none by default | interactive remote workstation |
 | Ubuntu `server` | none | rootful by default | production server/container host |
 
 Every profile receives the zsh-first terminal environment, source-analysis
@@ -45,9 +45,12 @@ unattended security updates, and time synchronization. UFW, key-only SSH, and
 Fail2ban remain independent explicit opt-ins to prevent accidental lockout.
 
 `desktop-server` composes the GUI workstation and full server baseline while
-leaving Docker disabled unless explicitly selected. XRDP listens only on
-`127.0.0.1:3389`; clients reach it through an owner-managed OpenSSH local
-forward. The deployment-time client renderer emits credential-free macOS and
+leaving Docker disabled unless explicitly selected. On 24.04 XRDP listens only
+on `127.0.0.1:3389`; clients reach it through an owner-managed OpenSSH local
+forward. On 26.04 — where upstream GNOME removed the Xorg session this XRDP
+composition uses — the remote-desktop layer is delegated to the owner
+environment (`remote_desktop.release_delegation` in the contract) and this
+repository installs and verifies none of it. The deployment-time client renderer emits credential-free macOS and
 Windows installers, pins the server's Ed25519 host key, tries SSH ports 22 and
 443, and creates normal and slow-network RDP profiles. See the
 [desktop-server reference](docs/reference/desktop-server.md).

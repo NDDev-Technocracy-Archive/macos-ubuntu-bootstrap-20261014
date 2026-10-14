@@ -61,7 +61,8 @@
         },
         "desktop-server": {
           "releases": [
-            "24.04"
+            "24.04",
+            "26.04"
           ],
           "architectures": [
             "amd64"
@@ -119,7 +120,11 @@
     "public_rdp_listener": "forbidden",
     "docker_default": "none",
     "fresh_install_package_policy": "ubuntu-signed-archive-candidate-when-absent-no-upgrade",
-    "preinstalled_xrdp_policy": "preserve-compatible-installed-version"
+    "preinstalled_xrdp_policy": "preserve-compatible-installed-version",
+    "release_delegation": {
+      "26.04": "external-owner-overlay"
+    },
+    "_delegation_note": "Ubuntu 26.04 removed the Xorg GNOME session this XRDP composition uses; on that release the owner environment supplies the remote-desktop session and this repository's layer is an explicit no-op."
   },
   "remote_execution": {
     "client_profiles": [

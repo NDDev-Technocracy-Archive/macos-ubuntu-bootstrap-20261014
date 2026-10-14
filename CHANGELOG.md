@@ -5,6 +5,14 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
 
 ## [Unreleased]
 
+- Support `desktop-server` on Ubuntu 26.04 amd64: the contract profile gains
+  the release, the support-evidence matrix gains the
+  `ubuntu-26.04-amd64-desktop-server` composition, and
+  `remote_desktop.release_delegation` records that the owner environment
+  supplies the remote session there — GNOME 26.04 removed the Xorg session
+  the XRDP composition needs, so `remote-desktop.sh` is an explicit no-op on
+  delegated releases instead of failing the whole apply/verify.
+
 - Remove RustDesk from the managed policy: it is dropped from the contract
   desktop app lists, the macOS cask set, the Ubuntu privileged deb install
   path (`install_rustdesk`, its two contract records and the
