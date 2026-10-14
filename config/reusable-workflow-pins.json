@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repositories": [
     {
-      "repository": "NDDev-Technocracy-OpenNetwork/ci-workflows",
+      "repository": "NDDev-Technocracy-Archive/ci-workflows-20261014",
       "version": "commit:93eeb2a65e98a29e9dbff7909f67c6419abff046",
       "commit": "93eeb2a65e98a29e9dbff7909f67c6419abff046"
     }

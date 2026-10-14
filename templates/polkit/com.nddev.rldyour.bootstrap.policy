@@ -2,7 +2,7 @@
 <!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
   <vendor>NDDev</vendor>
-  <vendor_url>https://github.com/NDDev-OpenNetwork/macos-ubuntu-bootstrap</vendor_url>
+  <vendor_url>https://github.com/NDDev-Technocracy-Archive/macos-ubuntu-bootstrap-20261014</vendor_url>
   <action id="com.nddev.rldyour.bootstrap.desktop">
     <description>Install the declared rldyour Ubuntu desktop system layer</description>
     <message>Authentication is required to install the declared Ubuntu desktop system layer</message>

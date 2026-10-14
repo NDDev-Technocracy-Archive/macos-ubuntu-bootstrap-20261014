@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 MIRROR = ROOT / ".github/rulesets/branch-main.json"
 LIVE_ENDPOINT = "/repos/{repo}/rules/branches/main"
-DEFAULT_REPO = "NDDev-OpenNetwork/macos-ubuntu-bootstrap"
+DEFAULT_REPO = "NDDev-Technocracy-Archive/macos-ubuntu-bootstrap-20261014"
 
 
 class ContextError(RuntimeError):

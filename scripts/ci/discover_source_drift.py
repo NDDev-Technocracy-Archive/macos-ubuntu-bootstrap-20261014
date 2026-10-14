@@ -75,7 +75,7 @@ from typing import Any, Callable
 ROOT = Path(__file__).resolve().parents[2]
 CONTRACT_PATH = ROOT / "config" / "rldyour-contract.json"
 
-USER_AGENT = "macos-ubuntu-bootstrap-source-drift/1 (+https://github.com/NDDev-OpenNetwork/macos-ubuntu-bootstrap)"
+USER_AGENT = "macos-ubuntu-bootstrap-source-drift/1 (+https://github.com/NDDev-Technocracy-Archive/macos-ubuntu-bootstrap-20261014)"
 TIMEOUT_SECONDS = 30
 
 # A pin whose current value is intentionally held rather than stale. Each entry
