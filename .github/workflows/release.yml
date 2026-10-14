@@ -359,7 +359,7 @@ jobs:
       id-token: write # Request OIDC identity for release provenance.
       attestations: write # Publish the release provenance and SBOM attestations.
       artifact-metadata: write   # actions/attest artifact storage record (required at v4.1.1)
-    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/release-supply-chain.yml@93eeb2a65e98a29e9dbff7909f67c6419abff046 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
+    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/release-supply-chain.yml@7d3f40eb5864a3b73e046ea98afcfe89a1b2d190 # commit:93eeb2a65e98a29e9dbff7909f67c6419abff046
     with:
       # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
       # explicitly. The estate runner platform forbids public/fork code on a
