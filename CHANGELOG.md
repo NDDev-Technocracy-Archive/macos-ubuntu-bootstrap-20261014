@@ -5,6 +5,14 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
 
 ## [Unreleased]
 
+### Changed
+
+- Replace the unmaintained Taplo TOML language server with `tombi` on both
+  platforms (Ubuntu pins `tombi@1.8.4` through bun; macOS takes the rolling
+  Homebrew formula), drop the stale `sql-language-server` package that
+  postgres-language-server and sqls already cover, and align the macOS
+  `yaml-language-server` pin with Ubuntu at 1.25.0.
+
 ### Fixed
 
 - Verify an old managed CLI tree against the runtime recorded in its own

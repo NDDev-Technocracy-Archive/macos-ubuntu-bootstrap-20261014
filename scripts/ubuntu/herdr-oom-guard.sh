@@ -60,7 +60,7 @@ rldyour::herdr_oom::classify() {
       printf '%s\n' reclaim
       return 0
       ;;
-    *pyright*|*marksman*|*rust-analyzer*|*gopls*|*clangd*|*analysis_server*|*taplo*)
+    *pyright*|*marksman*|*rust-analyzer*|*gopls*|*clangd*|*analysis_server*|*tombi*)
       printf '%s\n' reclaim
       return 0
       ;;

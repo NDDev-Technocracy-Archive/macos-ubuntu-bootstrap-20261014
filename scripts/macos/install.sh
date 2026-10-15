@@ -34,7 +34,7 @@ HERDR_MACOS_AARCH64_URL="https://github.com/herdrdev/herdr/releases/download/v0.
 BREW_SOURCE_PACKAGES=(
   git curl ca-certificates node bun uv python
   shellcheck shfmt llvm go gopls rust rust-analyzer dart-sdk docker-language-server
-  vscode-langservers-extracted taplo marksman markdown-oxide
+  vscode-langservers-extracted tombi marksman markdown-oxide
   terraform-ls helm-ls cmake-language-server
   pyright basedpyright ruff ty
   oxlint biome osv-scanner gitleaks semgrep hadolint actionlint
@@ -50,19 +50,18 @@ BREW_SOURCE_PACKAGES=(
 
 # Registry-backed language servers, pinned to exact versions for reproducibility
 # (RVR-P2-003). This is a subset of the Ubuntu BUN_LSP_PACKAGES (8 of 15); the
-# remaining LSPs (vscode-langservers-extracted, @taplo/cli, @biomejs/biome,
+# remaining LSPs (vscode-langservers-extracted, tombi, @biomejs/biome,
 # oxlint, markdownlint-cli2, prettier, @ansible/ansible-language-server) arrive
 # via Homebrew formulae in BREW_SOURCE_PACKAGES below, where exact pins are not
-# possible. The eight shared entries below are kept version-aligned with Ubuntu.
+# possible. The shared entries below are kept version-aligned with Ubuntu.
 BUN_LSP_PACKAGES=(
   "typescript@7.0.2"
   "@vtsls/language-server@0.3.0"
-  "yaml-language-server@1.24.0"
+  "yaml-language-server@1.25.0"
   "bash-language-server@5.8.1"
   "dockerfile-language-server-nodejs@0.15.0"
   "gh-actions-language-server@0.0.3"
   "svelte-language-server@0.18.4"
-  "sql-language-server@1.7.1"
 )
 
 GUI_CASKS=(ghostty cmux google-chrome chatgpt claude telegram)
