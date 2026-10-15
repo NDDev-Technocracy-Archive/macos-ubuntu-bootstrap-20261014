@@ -279,3 +279,82 @@ def test_transport_retries_are_bounded(tmp_path, monkeypatch, capsys):
         cli.download({"url": "https://example.invalid/program"}, tmp_path / "download")
     assert len(calls) == 3
     assert capsys.readouterr().out.count("bounded resume") == 2
+
+
+def _node_runtime(home: Path, tmp_path: Path, monkeypatch, node_version: str):
+    """Publish a fake managed Node runtime receipt and pin the contract to it."""
+    node_root = home / ".local/share/rldyour/node" / f"v{node_version}"
+    node_bin = node_root / "bin"
+    node_bin.mkdir(parents=True)
+    node = node_bin / "node"
+    node.write_bytes(b"#!/bin/sh\nexit 0\n")
+    node.chmod(0o755)
+    node_sha = hashlib.sha256(node.read_bytes()).hexdigest()
+    receipt = node_root / ".rldyour-runtime-receipt"
+    receipt.write_text("\n".join([
+        "# Managed by macos-ubuntu-bootstrap: ubuntu-runtime-v1",
+        "runtime=node",
+        f"version={node_version}",
+        f"archive_sha256={'f' * 64}",
+        f"sha256_bin_node={node_sha}",
+    ]) + "\n")
+    receipt.chmod(0o600)
+    contract = tmp_path / f"contract-{node_version}.json"
+    contract.write_text(json.dumps({"runtime_support": {
+        "ubuntu_node_lts": node_version,
+        "ubuntu_node_sha256": {"x64": "f" * 64, "arm64": "f" * 64},
+    }}))
+    monkeypatch.setattr(cli, "CONTRACT", contract)
+
+
+def _runtime_spec(tmp_path: Path, monkeypatch):
+    archive = tmp_path / "cursor.tgz"
+    with tarfile.open(archive, "w:gz") as bundle:
+        for name, value, mode in [
+            ("dist-package/cursor-agent", b"#!/bin/sh\nexit 0\n", 0o755),
+            ("dist-package/index.js", b"// reviewed entry\n", 0o644),
+        ]:
+            info = tarfile.TarInfo(name)
+            info.size = len(value)
+            info.mode = mode
+            bundle.addfile(info, io.BytesIO(value))
+    artifact = {"url": "https://example.invalid/reviewed.tgz", "bytes": archive.stat().st_size,
+                "sha256": hashlib.sha256(archive.read_bytes()).hexdigest(),
+                "member": "dist-package/cursor-agent"}
+    spec = {"version": "1.2.3", "command": "check-cli", "shape": "gzip-tar",
+            "linux_runtime_entry": "dist-package/index.js", "linux_node_major": 24,
+            "artifacts": {"linux/x86_64": artifact}}
+    def download(_artifact, destination):
+        shutil.copyfile(archive, destination)
+    monkeypatch.setattr(cli, "download", download)
+    return spec
+
+
+def test_upgrade_survives_a_node_pin_move(tmp_path, monkeypatch):
+    """A managed launcher generated under node pin A must still verify when the
+    contract moves to pin B. Previously the old tree was re-derived against the
+    *new* runtime and the intact launcher was reported as unmanaged or drifted."""
+    home = tmp_path / "home"
+    home.mkdir()
+    spec = _runtime_spec(tmp_path, monkeypatch)
+    _node_runtime(home, tmp_path, monkeypatch, "24.98.0")
+    def probe(argv, **kwargs):
+        return subprocess.CompletedProcess(argv, 0, stdout="check-cli 1.2.3", stderr="")
+    monkeypatch.setattr(cli.subprocess, "run", probe)
+    cli.install(home, "check", spec, "linux/x86_64")
+    launcher = cli.launch_target(home, "check", spec, "linux/x86_64", spec["artifacts"]["linux/x86_64"])
+    assert "v24.98.0" in launcher.read_text()
+
+    # Contract moves to a new node pin; the upgrade ships the same artifact
+    # bytes under a newer version label, exactly like a catalogue pin bump.
+    _node_runtime(home, tmp_path, monkeypatch, "24.99.0")
+    newer = dict(spec, version="1.2.4")
+    def probe_new(argv, **kwargs):
+        return subprocess.CompletedProcess(argv, 0, stdout="check-cli 1.2.4", stderr="")
+    monkeypatch.setattr(cli.subprocess, "run", probe_new)
+    cli.install(home, "check", newer, "linux/x86_64")
+
+    new_launcher = cli.launch_target(home, "check", newer, "linux/x86_64", newer["artifacts"]["linux/x86_64"])
+    assert "v24.99.0" in new_launcher.read_text()
+    link = home / ".local/bin/check-cli"
+    assert link.is_symlink() and os.readlink(link) == str(new_launcher)

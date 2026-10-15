@@ -214,7 +214,7 @@ esac
 '''
 
 
-def verify_root(home: Path, name: str, spec: dict, platform: str) -> dict:
+def verify_root(home: Path, name: str, spec: dict, platform: str, recorded_runtime: dict | None = None) -> dict:
     root = root_for(home, name, spec)
     artifact = artifact_for(spec, platform)
     if root.is_symlink() or not root.is_dir() or root.stat().st_uid != os.getuid() or root.stat().st_mode & 0o022:
@@ -226,7 +226,11 @@ def verify_root(home: Path, name: str, spec: dict, platform: str) -> dict:
     if not isinstance(state, dict):
         raise CLIError("CLI receipt is not an object")
     header = expected_header(name, spec, platform, artifact)
-    runtime = node_runtime(home, spec, platform)
+    # Upgrades re-verify the previous tree, whose launcher was generated against
+    # the runtime recorded in its own receipt — not whatever the current
+    # contract pins. Without this an Ubuntu Node pin move strands every Cursor
+    # upgrade behind "unmanaged or drifted launcher".
+    runtime = recorded_runtime if recorded_runtime is not None else node_runtime(home, spec, platform)
     if runtime is not None:
         header["runtime"] = runtime
     if {key: state.get(key) for key in header} != header or state.get("tree") != tree_state(root):
@@ -279,7 +283,7 @@ def install(home: Path, name: str, spec: dict, platform: str) -> dict:
                 if state.get("schema") != MARKER or state.get("name") != name or state.get("command") != spec["command"] or state.get("platform") != platform:
                     raise ValueError("foreign receipt")
                 old_spec = dict(spec, version=state["version"], artifacts={platform: state["artifact"]})
-                verified = verify_root(home, name, old_spec, platform)
+                verified = verify_root(home, name, old_spec, platform, recorded_runtime=state.get("runtime"))
                 if previous != Path(verified["resolved"]):
                     raise ValueError("unexpected launcher target")
             except (ValueError, KeyError, IndexError, CLIError, OSError) as error:
