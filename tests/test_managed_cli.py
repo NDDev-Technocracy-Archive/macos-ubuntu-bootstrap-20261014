@@ -186,7 +186,7 @@ def test_canonical_eight_and_godaddy_have_reviewed_artifacts_for_every_target():
             if name == "devin":
                 assert spec["source"]["manifest"].startswith("https://")
             else:
-                assert spec["source"]["setup_system"].startswith("NDDev-OpenNetwork/")
+                assert spec["source"]["setup_system"].startswith("NDDev-Technocracy-Archive/")
             assert contract["harnesses"]["detection"][name]["enforcement"] == "owned-prefix"
 
 

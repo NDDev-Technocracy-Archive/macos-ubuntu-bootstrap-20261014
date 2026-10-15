@@ -224,7 +224,7 @@ Native platform validation supplies installation evidence separately.
 
 ## Seven harnesses and GoDaddy CLI (0.3.0, 2026-10-05)
 
-The seven `NDDev-OpenNetwork/*-setup-system` 0.0.88 release baselines provide
+The seven `NDDev-Technocracy-Archive/*-setup-system` 0.0.88 release baselines provide
 the reviewed program versions, archive sizes, URLs, executable members and
 SHA-256 digests. Those bytes are imported into the bootstrap contract, not
 resolved from `latest` at install time. `scripts/managed_cli.py` is the single

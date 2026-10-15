@@ -156,7 +156,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/antigravity-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/antigravity-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -186,7 +186,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/claude-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/claude-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -217,7 +217,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/codex-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/codex-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -248,7 +248,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/cursor-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/cursor-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -280,7 +280,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "raw",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/grok-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/grok-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -311,7 +311,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/opencode-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/opencode-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
@@ -341,7 +341,7 @@
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
-        "setup_system": "NDDev-OpenNetwork/pi-setup-system",
+        "setup_system": "NDDev-Technocracy-Archive/pi-setup-system",
         "tag": "0.0.88"
       },
       "artifacts": {
