@@ -4,7 +4,7 @@ repository:
   id: "repo_01M0EZ7TXGSFT0CSY7D9E00CAF"
   display_name: macos-ubuntu-bootstrap-20261014
   roles: ["project", "module"]
-  lifecycle: archived
+  lifecycle: active
 provider:
   type: "github"
   installation: "installation:github-nddev-technocracy-archive"
