@@ -183,20 +183,20 @@ changes arrive through reviewed update PRs that refresh the tag, commit, asset
 URLs, hashes, tests, and this register together.
 
 
-## Operator CLIs (2026-10-13)
+## Operator CLIs (2026-10-15)
 
 Verified by downloading the install artifacts, not by copying a checksum file.
 
 | Tool | Version | Official artifact | SHA-256 |
 |---|---|---|---|
-| doctl | 1.185.0 | `doctl-1.185.0-linux-amd64.tar.gz` | `caf03c52f25d821794638460012d7ae1cd7b665796015f0f8311106f8e566be8` |
-| doctl | 1.185.0 | `doctl-1.185.0-linux-arm64.tar.gz` | `a0feffea34fb519d3c14da4673ed038978b8d6fbd1b88f4b12a2f414dcd49da4` |
+| doctl | 2.0.0 | `doctl-2.0.0-linux-amd64.tar.gz` | `c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02` |
+| doctl | 2.0.0 | `doctl-2.0.0-linux-arm64.tar.gz` | `f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8` |
 | stripe | 1.53.1 | `stripe_1.53.1_linux_x86_64.tar.gz` | `032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1` |
 | stripe | 1.53.1 | `stripe_1.53.1_linux_arm64.tar.gz` | `b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6` |
 | gcloud | 589.0.0 | `google-cloud-cli-589.0.0-linux-x86_64.tar.gz` | `f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f` |
 | gcloud | 589.0.0 | `google-cloud-cli-589.0.0-linux-arm.tar.gz` | `3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97` |
 
-`resend-cli@2.23.0` and `wrangler@4.150.0` are exact npm versions installed through Bun global. Wrangler is allowed to run its postinstall so that version can fetch workerd; other npm user tools keep `--ignore-scripts`.
+`resend-cli@2.25.0` and `wrangler@4.151.0` are exact npm versions installed through Bun global. Wrangler is allowed to run its postinstall so that version can fetch workerd; other npm user tools keep `--ignore-scripts`.
 
 `doctl` has no `--version` flag; the receipt probes `doctl version`. Installation never invokes `gcloud components update` or vendor self-update.
 
@@ -233,7 +233,7 @@ installed tree and preserves prior owner-held launchers. Configuration profiles
 and authentication remain the setup-system and owner's responsibilities.
 
 GoDaddy publishes hashed platform archives at
-<https://github.com/godaddy/cli/releases/tag/v0.2.28>. The older exclusion that
+<https://github.com/godaddy/cli/releases/tag/v0.2.29>. The older exclusion that
 claimed no public hashed artifact existed is superseded. The three supported
 archives are bound by their GitHub asset digest and published checksum file.
 The vendor's mutable self-update command is not run by bootstrap.

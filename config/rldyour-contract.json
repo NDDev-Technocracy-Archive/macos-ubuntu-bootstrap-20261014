@@ -2,7 +2,7 @@
   "schema_version": 2,
   "adapter": {
     "id": "macos-ubuntu-bootstrap",
-    "version": "0.3.3"
+    "version": "0.3.4"
   },
   "support_evidence": {
     "path": "config/support-evidence-matrix.json",
@@ -151,7 +151,7 @@
       "devin"
     ],
     "antigravity": {
-      "version": "1.2.15",
+      "version": "1.3.5",
       "command": "agy",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -161,27 +161,27 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.2.15-5434575321694208/linux-x64/cli_linux_x64.tar.gz",
-          "bytes": 61200461,
-          "sha256": "bbd4a4b29f0e9fe1fc2e1345b5d44fa08540e43014da46bc2c4bf70cf05745d8",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/linux-x64/cli_linux_x64.tar.gz",
+          "bytes": 62830042,
+          "sha256": "007a5a44dbaf1caea464c3d9848c63b2f69945b01a8bf8852c56c477a64374cf",
           "member": "antigravity"
         },
         "linux/arm64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.2.15-5434575321694208/linux-arm/cli_linux_arm64.tar.gz",
-          "bytes": 57506222,
-          "sha256": "851bdabda3b2eb679d0d46b469629b91752d1f1d7497185107408b60c58c2e32",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/linux-arm/cli_linux_arm64.tar.gz",
+          "bytes": 59259554,
+          "sha256": "065505ab4686ec7113b7ccd87fce87795a8fd4b7776f771da4d53940206e34cc",
           "member": "antigravity"
         },
         "macos/arm64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.2.15-5434575321694208/darwin-arm/cli_mac_arm64.tar.gz",
-          "bytes": 53696937,
-          "sha256": "66f7e9e8750a506e8a2caaedaadf479f023820f712015c9c55cfb91a2891521b",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/darwin-arm/cli_mac_arm64.tar.gz",
+          "bytes": 55069121,
+          "sha256": "60b46713d0e7217b796560ffc1c3c569f4e0b3357076ee6b60d464832d6d4105",
           "member": "antigravity"
         }
       }
     },
     "claude-code": {
-      "version": "2.1.288",
+      "version": "2.1.300",
       "command": "claude",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -191,28 +191,28 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-2.1.288.tgz",
-          "bytes": 110072430,
-          "sha256": "b54d6a2c6bdd78f2c83139d1223598641686aab9e562c47cf537dd200653fa90",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-2.1.300.tgz",
+          "bytes": 119473462,
+          "sha256": "e1455416b5a12a77271b7b1dc101867fd45e93dc8818d554c8fb72c59ed65804",
           "member": "package/claude"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.288.tgz",
-          "bytes": 110330238,
-          "sha256": "a4e46f12f30ec01b978e3aa1a78fbc9c2fdd3a6478d0cc068c4a8f7d23cb5b75",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.300.tgz",
+          "bytes": 119763916,
+          "sha256": "10d8c7045093d74b35238daf2a19eef16465d99eb6f8ac7e9eeaa2aee917fb29",
           "member": "package/claude"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-darwin-arm64/-/claude-code-darwin-arm64-2.1.288.tgz",
-          "bytes": 100276471,
-          "sha256": "7cb1cbd826e6aa5ffc347e15193776c59373f840f40ec0fe3acfdcae342864da",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-darwin-arm64/-/claude-code-darwin-arm64-2.1.300.tgz",
+          "bytes": 109466343,
+          "sha256": "3d66175a994f7c884a940bc29353127920b7ab293e9573050ad5602042647a1f",
           "member": "package/claude"
         }
       },
       "launcher": "cl"
     },
     "codex": {
-      "version": "0.160.0",
+      "version": "0.162.1",
       "command": "codex",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -222,28 +222,28 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.160.0-linux-x64.tgz",
-          "bytes": 163273896,
-          "sha256": "37a41d61c3399182b8c727b77090cc7a1566bd849d0f09070a0bbc6fec4c58dc",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-x64.tgz",
+          "bytes": 165453522,
+          "sha256": "7417711678b464eee70664126e39e88bb3c84c2928da0e71f14b56e04ff5c09f",
           "member": "package/vendor/x86_64-unknown-linux-musl/bin/codex"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.160.0-linux-arm64.tgz",
-          "bytes": 155716078,
-          "sha256": "9286a7e01d500ab224c9e5b4b223b7adf5dd901fba23efd6a438316426798b17",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-arm64.tgz",
+          "bytes": 157869533,
+          "sha256": "a355051d0c296ed50e42e55aceabf74f017f2f96e223fc7ee2199ea8a60cad4b",
           "member": "package/vendor/aarch64-unknown-linux-musl/bin/codex"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.160.0-darwin-arm64.tgz",
-          "bytes": 134311083,
-          "sha256": "fc789bcd655d903f92e1a23c8dc5315ba38f43b3586eafb7bd3b195970b57466",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-darwin-arm64.tgz",
+          "bytes": 136602385,
+          "sha256": "fe0370027a05237adc0152b482ad8502321f6f9aff1baca3bfa56588923ba9ad",
           "member": "package/vendor/aarch64-apple-darwin/bin/codex"
         }
       },
       "launcher": "cx"
     },
     "cursor": {
-      "version": "2026.10.01-e373342",
+      "version": "2026.10.14-941492e",
       "command": "cursor-agent",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -253,21 +253,21 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/linux/x64/agent-cli-package.tar.gz",
-          "bytes": 182613962,
-          "sha256": "a79726c6e644520e993970be4c45775a6889802b67abe461a677a53219ae28e8",
+          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/linux/x64/agent-cli-package.tar.gz",
+          "bytes": 183861376,
+          "sha256": "6f6bf39dd2df29dcd38643cdfab0155ce71699953889f732deec123f6562bb2d",
           "member": "dist-package/cursor-agent"
         },
         "linux/arm64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/linux/arm64/agent-cli-package.tar.gz",
-          "bytes": 180560415,
-          "sha256": "785c5f6bf2a60eb1121e27ed8c14f5ee07ed1b5b6692324f2d9a997238245eb5",
+          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/linux/arm64/agent-cli-package.tar.gz",
+          "bytes": 181758368,
+          "sha256": "cbba40d90d7f699874e133a5c15bf3854cee006565bd3bb00a6c79b49d62b0d0",
           "member": "dist-package/cursor-agent"
         },
         "macos/arm64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/darwin/arm64/agent-cli-package.tar.gz",
-          "bytes": 176796992,
-          "sha256": "629e51de43a0b7fb3b86f5ebc7e579f7df7df941b39f29e82945cde750145afc",
+          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/darwin/arm64/agent-cli-package.tar.gz",
+          "bytes": 178006204,
+          "sha256": "c6d9e2eaa1b1e24221517e0b4206b1f1593792e6f0d8a52e9b507bbe7ab0cc77",
           "member": "dist-package/cursor-agent"
         }
       },
@@ -275,7 +275,7 @@
       "linux_node_major": 24
     },
     "grok-build": {
-      "version": "1.0.49",
+      "version": "1.0.52",
       "command": "grok",
       "install_method": "verified-cli-artifact",
       "shape": "raw",
@@ -285,28 +285,28 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://x.ai/cli/grok-1.0.49-linux-x86_64",
-          "bytes": 175805280,
-          "sha256": "2cc2ef5dcaa0509b56cdfb9559e27fabe322a0d893810e5129f507110e9b9c6c",
+          "url": "https://x.ai/cli/grok-1.0.52-linux-x86_64",
+          "bytes": 188326752,
+          "sha256": "1668414b047e1050a96d25fe17dfc3efe63190fbf66d8cc1c3de8633caf50d11",
           "member": "grok"
         },
         "linux/arm64": {
-          "url": "https://x.ai/cli/grok-1.0.49-linux-aarch64",
-          "bytes": 146642280,
-          "sha256": "df7e60362b1934b6f09e1e64b6d75a8c94b1bd9bf68c2803da273e4c6ed9a451",
+          "url": "https://x.ai/cli/grok-1.0.52-linux-aarch64",
+          "bytes": 160670952,
+          "sha256": "fc32410b6883c15a39b9f33ec04a6bfb7d070b383e5dbad7efbc48c787e5050d",
           "member": "grok"
         },
         "macos/arm64": {
-          "url": "https://x.ai/cli/grok-1.0.49-macos-aarch64",
-          "bytes": 154433376,
-          "sha256": "184f4cb1ba2a8eefaa2c2f267b9102bdb13c32dce53db7f7e3095b88f5fe0cce",
+          "url": "https://x.ai/cli/grok-1.0.52-macos-aarch64",
+          "bytes": 172237072,
+          "sha256": "c2caa9895dd763297a75e8fb6077e175d9c5304c53903e52cff8891a1384bbb9",
           "member": "grok"
         }
       },
       "launcher": "gk"
     },
     "opencode": {
-      "version": "1.18.34",
+      "version": "1.19.0",
       "command": "opencode",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -316,27 +316,27 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/opencode-linux-x64/-/opencode-linux-x64-1.18.34.tgz",
-          "bytes": 60309530,
-          "sha256": "b83e8ac66d752d05ead4b6a439d3a2cfa32bcd9817c708825a389b5d5cba4f19",
+          "url": "https://registry.npmjs.org/opencode-linux-x64/-/opencode-linux-x64-1.19.0.tgz",
+          "bytes": 60325293,
+          "sha256": "6ce9b8497f680c152a8d65b78640c0b8840d8b0f344530ea30b6c4b69e5a7282",
           "member": "package/bin/opencode"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/opencode-linux-arm64/-/opencode-linux-arm64-1.18.34.tgz",
-          "bytes": 60094599,
-          "sha256": "6f212b830b26bf72012f1665559ddb5fd7e928294971d3d1c99a0f9097a3d311",
+          "url": "https://registry.npmjs.org/opencode-linux-arm64/-/opencode-linux-arm64-1.19.0.tgz",
+          "bytes": 60103843,
+          "sha256": "8481102c5d475013302d2f4766cea02b7390e76e74c146408a8cebe2b7f6778f",
           "member": "package/bin/opencode"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/opencode-darwin-arm64/-/opencode-darwin-arm64-1.18.34.tgz",
-          "bytes": 45264760,
-          "sha256": "9a336191ee84c8f54364b5d1990ec87abb2acbb00dea189f11dda5e968d7bf05",
+          "url": "https://registry.npmjs.org/opencode-darwin-arm64/-/opencode-darwin-arm64-1.19.0.tgz",
+          "bytes": 45290684,
+          "sha256": "2fccf11218322be8de2d09ee0bf7d7fc2a90faeb3a7828991cc0e13273cc0b85",
           "member": "package/bin/opencode"
         }
       }
     },
     "pi": {
-      "version": "1.0.0",
+      "version": "1.2.0",
       "command": "pi",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -346,27 +346,27 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-x64.tar.gz",
-          "bytes": 42549511,
-          "sha256": "8fd5543a52a889d60ad57ccbf6c969e73c75c5240aae18ac40b506947a63dc38",
+          "url": "https://github.com/earendil-works/pi/releases/download/v1.2.0/pi-linux-x64.tar.gz",
+          "bytes": 42611136,
+          "sha256": "00fc36cffdebceea5a48230da62cf3fb463178f8fe185766652f96002a246847",
           "member": "pi/pi"
         },
         "linux/arm64": {
-          "url": "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-linux-arm64.tar.gz",
-          "bytes": 42646353,
-          "sha256": "b60b3fda830a43c1dc3f5edb5fc7b681f22a0a930b48cdac13b97570c6045819",
+          "url": "https://github.com/earendil-works/pi/releases/download/v1.2.0/pi-linux-arm64.tar.gz",
+          "bytes": 42704946,
+          "sha256": "d8597ee3a2050592d38e67f6b609ab55139deed7e820020d910d84f17bb7abd6",
           "member": "pi/pi"
         },
         "macos/arm64": {
-          "url": "https://github.com/earendil-works/pi/releases/download/v1.0.0/pi-darwin-arm64.tar.gz",
-          "bytes": 31004152,
-          "sha256": "97291e7d2eb2d7d95ab1f67d26de7902302201bc8786c132bbbc9e53fa8526cc",
+          "url": "https://github.com/earendil-works/pi/releases/download/v1.2.0/pi-darwin-arm64.tar.gz",
+          "bytes": 31065256,
+          "sha256": "abddf7688b4b6781d9113f63cd578e3c01dcdb87e71f66e7ec1c9ec6c76178d1",
           "member": "pi/pi"
         }
       }
     },
     "devin": {
-      "version": "3000.11.3",
+      "version": "3000.11.92",
       "command": "devin",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -375,21 +375,21 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://static.devin.ai/cli/3000.11.3/devin-3000.11.3-x86_64-unknown-linux.tar.gz",
-          "bytes": 65069068,
-          "sha256": "83b3b113c01bf2a3e9e100db08d77e6b086806a7754f091e20831bdfe215157e",
+          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-x86_64-unknown-linux.tar.gz",
+          "bytes": 67245544,
+          "sha256": "2d829139682e038cf122510f1170eee3d7060bcc7ebf92445cbc5d28c9fbcfa0",
           "member": "bin/devin"
         },
         "linux/arm64": {
-          "url": "https://static.devin.ai/cli/3000.11.3/devin-3000.11.3-aarch64-unknown-linux.tar.gz",
-          "bytes": 60527938,
-          "sha256": "21a2d7a8dea67987067cde7eb3fe7193a48daa8f8c3d50d414c603c4a2b67f15",
+          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-aarch64-unknown-linux.tar.gz",
+          "bytes": 62585742,
+          "sha256": "881e83b0df06dd57a307004e299407c2c3745f288546e0a339a67fbebe7cb6c0",
           "member": "bin/devin"
         },
         "macos/arm64": {
-          "url": "https://static.devin.ai/cli/3000.11.3/devin-3000.11.3-aarch64-apple-darwin.tar.gz",
-          "bytes": 57383263,
-          "sha256": "c08cc3f3507d103246b8c601a584fcc719fd77f6cc10f26cc90e9f4186640df2",
+          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-aarch64-apple-darwin.tar.gz",
+          "bytes": 60518688,
+          "sha256": "6047392212ce073ede2724d84246cc04dd47811a1d1e2084eee7252703940ac1",
           "member": "bin/devin"
         }
       }
@@ -455,15 +455,15 @@
     }
   },
   "runtime_support": {
-    "ubuntu_node_lts": "24.21.0",
+    "ubuntu_node_lts": "24.22.0",
     "ubuntu_node_sha256": {
-      "x64": "fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6",
-      "arm64": "6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2"
+      "x64": "cc2f601cee82d9a5a233302fe307abc600727035fd7d2c3a3571755989e95008",
+      "arm64": "fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
     },
-    "ubuntu_uv": "0.13.0",
+    "ubuntu_uv": "0.13.1",
     "ubuntu_uv_sha256": {
-      "x64": "1468ebd5a5541121837c5a2817b9972ba6090fa6caa3d142620850a47fb75154",
-      "arm64": "3ccfb6af6e242433eb552f7d9676abd5412c6595c497e990d9c8cb7b5bd4d2c3"
+      "x64": "eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220",
+      "arm64": "9041c73c99fdc5892cf128140beb354eca9231d502068cc36e6cb53a8e59ad14"
     },
     "ubuntu_bun": "1.4.3",
     "ubuntu_bun_sha256": {
@@ -555,10 +555,10 @@
         }
       },
       "just": {
-        "version": "1.58.0",
+        "version": "1.59.0",
         "sha256": {
-          "x64": "4a5cc2f53e6f0f8c59092a6cc38291eb729d46a7dd95d3ae582008881b84931d",
-          "arm64": "748237128c4c40cbdabc65e841d05ceba13cc23a91eaba395495894c1d9764df"
+          "x64": "409044617b6f06517c1035e55ca38c8c856ff8b650e41bc2aa1ef82d5903a23e",
+          "arm64": "23871b1702bfd550fb5f901778fd4290ecf2ee034a45a889fbe96d89b188086d"
         }
       },
       "age": {
@@ -635,7 +635,7 @@
   },
   "user_tools": {
     "herdr": {
-      "version": "0.9.4",
+      "version": "0.9.5",
       "summary": "Terminal workspace manager for AI coding agents (tmux-style multiplexer with agent session support).",
       "install_method": {
         "linux": "verified-github-release-binary",
@@ -643,25 +643,25 @@
       },
       "source": {
         "repository": "https://github.com/herdrdev/herdr",
-        "tag": "v0.9.4",
-        "tag_object": "04b8b2ee4f6cdcfbaf0b6e8f8e4935cb9bbca8ab",
-        "commit": "7e26bad94044eba205033111a0ce8033ede7e24f",
-        "release": "https://github.com/herdrdev/herdr/releases/tag/v0.9.4",
+        "tag": "v0.9.5",
+        "tag_object": "7573e821895d32c8d1f78b3f6c9a2f85a46df4ac",
+        "commit": "2ecf19a92fc3a7fff75b6ce3655ef04f4625ec01",
+        "release": "https://github.com/herdrdev/herdr/releases/tag/v0.9.5",
         "release_feed": "https://github.com/herdrdev/herdr/releases.atom",
         "upstream_manifest": "https://herdr.dev/latest.json",
-        "verified_at": "2026-10-13",
+        "verified_at": "2026-10-15",
         "assets": {
           "macos-aarch64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-macos-aarch64",
-            "sha256": "ea20bfff9cb8c83a996081c926e6ff9370de8e543baa859bca48d19175d895ff"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-macos-aarch64",
+            "sha256": "fb77c2232a05a8035421382c894392f4174e4e38a18e48af3dd0290157c3a7e2"
           },
           "linux-x86_64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-x86_64",
-            "sha256": "493304fbefb0ed0ea0455f373b47f48d24e8774bc7974f4c916ad2e937675b23"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-linux-x86_64",
+            "sha256": "14d9e8bc8b4a9e0118d77c32266f76d461f09b40342eb23752960bd89f59929d"
           },
           "linux-aarch64": {
-            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-aarch64",
-            "sha256": "9511cb70982c1ef115f232058e7ed7cf9640aa5a2c0ca78934cefda3aeb093fd"
+            "url": "https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-linux-aarch64",
+            "sha256": "17d7536f2da50859523680ef279dffcac8e4a235f4e46fe8da6c2ec44141897c"
           }
         }
       },
@@ -718,23 +718,23 @@
       "gui_required": true
     },
     "doctl": {
-      "version": "1.185.0",
+      "version": "2.0.0",
       "summary": "DigitalOcean command-line interface from the official digitalocean/doctl GitHub release.",
       "install_method": "verified-github-release-tarball",
       "version_flag": "version",
       "source": {
         "repository": "https://github.com/digitalocean/doctl",
-        "tag": "v1.185.0",
-        "release": "https://github.com/digitalocean/doctl/releases/tag/v1.185.0",
-        "verified_at": "2026-10-13",
+        "tag": "v2.0.0",
+        "release": "https://github.com/digitalocean/doctl/releases/tag/v2.0.0",
+        "verified_at": "2026-10-15",
         "assets": {
           "linux-x86_64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-amd64.tar.gz",
-            "sha256": "caf03c52f25d821794638460012d7ae1cd7b665796015f0f8311106f8e566be8"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-amd64.tar.gz",
+            "sha256": "c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02"
           },
           "linux-aarch64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-arm64.tar.gz",
-            "sha256": "a0feffea34fb519d3c14da4673ed038978b8d6fbd1b88f4b12a2f414dcd49da4"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-arm64.tar.gz",
+            "sha256": "f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8"
           }
         }
       },
@@ -817,7 +817,7 @@
       ]
     },
     "resend": {
-      "version": "2.23.0",
+      "version": "2.25.0",
       "summary": "Resend CLI from the npm resend-cli package, installed through pinned Bun global.",
       "install_method": "npm-registry",
       "source": {
@@ -838,7 +838,7 @@
       ]
     },
     "wrangler": {
-      "version": "4.150.0",
+      "version": "4.151.0",
       "summary": "Cloudflare Wrangler CLI from the npm wrangler package, installed through pinned Bun global.",
       "install_method": "npm-registry",
       "source": {
@@ -859,7 +859,7 @@
       ]
     },
     "gddy": {
-      "version": "0.2.28",
+      "version": "0.2.29",
       "command": "gddy",
       "bin_target": "${HOME}/.local/bin/gddy",
       "os": [
@@ -870,25 +870,25 @@
       "shape": "gzip-tar",
       "source": {
         "repository": "godaddy/cli",
-        "tag": "v0.2.28"
+        "tag": "v0.2.29"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-x86_64-unknown-linux-gnu.tar.gz",
-          "bytes": 11351226,
-          "sha256": "ac93df173f34051c8b762393403421e93b34a9d3787f3ee28a6f9c44dfbe570e",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-x86_64-unknown-linux-gnu.tar.gz",
+          "bytes": 11374268,
+          "sha256": "d1ec8f525c2f283bc3ee8b8a3604552432f46f7d818ee8a73d73938c7be211a2",
           "member": "gddy"
         },
         "linux/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-aarch64-unknown-linux-gnu.tar.gz",
-          "bytes": 11330070,
-          "sha256": "47be8806bb911e8fe84a5d92101f3875ddedfe225ebf1cf8aa62ea9adac8194f",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-aarch64-unknown-linux-gnu.tar.gz",
+          "bytes": 11367109,
+          "sha256": "100887981e77efd82983d8eda502da6fb8b8345747af83a6b8e7667e90b6faa5",
           "member": "gddy"
         },
         "macos/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.28/gddy-aarch64-apple-darwin.tar.gz",
-          "bytes": 8990504,
-          "sha256": "4b56bb40467e37cf867c39d609360489c1d5d12426f1a9b6930f9f81c71066c6",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-aarch64-apple-darwin.tar.gz",
+          "bytes": 9023489,
+          "sha256": "8643cb6976142436013c2331c48c05cbaba60538409c9fcac595b11d3563258a",
           "member": "gddy"
         }
       }
