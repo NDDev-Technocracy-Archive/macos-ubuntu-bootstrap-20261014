@@ -629,8 +629,8 @@
     ]
   },
   "supply_chain": {
-    "homebrew_pkg_version": "7.0.8",
-    "homebrew_pkg_sha256": "fdf84001b3b145b875097cf16b7728135259e3943b7b356405b80e40572765ed",
+    "homebrew_pkg_version": "7.0.9",
+    "homebrew_pkg_sha256": "e021295947a4a9b7ca1a8eff310c9ea1db14d923c5acf7d79e325b60a81f1a15",
     "homebrew_installer_team": "927JGANW46"
   },
   "user_tools": {
