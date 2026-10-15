@@ -41,7 +41,7 @@
       "package": "chatgpt",
       "source": "https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_26.1007.71326_amd64.deb",
       "version": "26.1007.71326",
-      "bytes": 497075610,
+      "bytes": 497177918,
       "sha256": "0e006b4931712f5a90d4cd04972c6e0b533cedcdfdb2b51946d5b9367471f556"
     },
     "cursor": {
@@ -79,7 +79,7 @@
       "package": "opencode",
       "source": "https://opencode.ai/files/bin/2.0.29/opencode-desktop-linux-amd64.deb",
       "version": "2.0.29",
-      "bytes": 218606724,
+      "bytes": 218660992,
       "sha256": "9a4fed9cc4f0ccb293d03443f1982aae74e0663c871aa6ab479d71e22bfff617"
     },
     "pi": {
