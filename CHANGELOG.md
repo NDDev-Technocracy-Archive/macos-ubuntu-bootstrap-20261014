@@ -3,6 +3,25 @@
 All notable changes are documented here. The project follows Semantic
 Versioning; the contract version in `config/rldyour-contract.json` moves with it.
 
+## [Unreleased]
+
+### Fixed
+
+- Verify an old managed CLI tree against the runtime recorded in its own
+  receipt instead of the current contract pin: a managed `ubuntu_node_lts`
+  move (24.21.0 → 24.22.0) no longer marks an intact Cursor launcher as
+  unmanaged or drifted, so runtime bumps stop aborting user updates.
+- Record the real Debian package byte sizes for OpenCode Desktop 2.0.29
+  (218660992) and ChatGPT 26.1007.71326 (497177918); the signed catalogue
+  download checks refuse mismatches, and the previous literals could not
+  have matched the published artifacts.
+- Write the `update-verified` receipt over a saved duplicate of stdout while
+  descendants inherit stderr: apt/dpkg hooks and detached helpers can no
+  longer append noise after the JSON and break the scheduler's last-line
+  parse after a real package upgrade.
+- Refresh `homebrew_pkg_version` to Homebrew 7.0.9 with the re-derived
+  artifact SHA-256.
+
 ## [0.3.4] - 2026-10-15
 
 - Support `desktop-server` on Ubuntu 26.04 amd64: the contract profile gains
