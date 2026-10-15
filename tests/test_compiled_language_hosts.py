@@ -323,7 +323,7 @@ PACKAGE_COMMANDS: dict[str, tuple[str, ...]] = {
         "vscode-css-language-server",
         "vscode-json-language-server",
     ),
-    "@taplo/cli": ("taplo",),
+    "tombi": ("tombi",),
     "gh-actions-language-server": ("gh-actions-language-server",),
     "@biomejs/biome": ("biome",),
     "oxlint": ("oxlint",),
@@ -331,7 +331,6 @@ PACKAGE_COMMANDS: dict[str, tuple[str, ...]] = {
     "prettier": ("prettier",),
     "@ansible/ansible-language-server": ("ansible-language-server",),
     "svelte-language-server": ("svelteserver",),
-    "sql-language-server": ("sql-language-server",),
     # PYTHON_SOURCE_TOOLS
     "pyright": ("pyright", "pyright-langserver"),
     "ruff": ("ruff",),

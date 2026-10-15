@@ -1163,7 +1163,7 @@
       "shellcheck",
       "shfmt",
       "starship",
-      "taplo",
+      "tombi",
       "terraform-ls",
       "tmux",
       "ty",
@@ -1190,9 +1190,8 @@
       "dockerfile-language-server-nodejs@0.15.0",
       "gh-actions-language-server@0.0.3",
       "svelte-language-server@0.18.4",
-      "sql-language-server@1.7.1",
       "typescript@7.0.2",
-      "yaml-language-server@1.24.0"
+      "yaml-language-server@1.25.0"
     ],
     "provenance_may_declare": [
       "homebrew_prefix",

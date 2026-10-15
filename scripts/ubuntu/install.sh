@@ -95,7 +95,9 @@ APT_SOURCE_PACKAGES=(
 # for reproducibility (RVR-P2-003). Two package identities are corrected here:
 # `biome` (an unrelated squatter package) -> `@biomejs/biome` (the Biome
 # linter), and `@ansible/language-server` (does not exist on npm) ->
-# `@ansible/ansible-language-server` (the real Ansible language server).
+# `@ansible/ansible-language-server` (the real Ansible language server). The
+# TOML slot is tombi (upstream Taplo is unmaintained); sql-language-server is
+# deliberately absent -- postgres-language-server and sqls cover SQL analysis.
 BUN_LSP_PACKAGES=(
   "typescript@7.0.2"
   "@vtsls/language-server@0.3.0"
@@ -103,7 +105,7 @@ BUN_LSP_PACKAGES=(
   "bash-language-server@5.8.1"
   "dockerfile-language-server-nodejs@0.15.0"
   "vscode-langservers-extracted@4.10.0"
-  "@taplo/cli@0.7.0"
+  "tombi@1.8.4"
   "gh-actions-language-server@0.0.3"
   "@biomejs/biome@2.5.15"
   "oxlint@1.88.0"
@@ -111,7 +113,6 @@ BUN_LSP_PACKAGES=(
   "prettier@3.9.10"
   "@ansible/ansible-language-server@26.6.0"
   "svelte-language-server@0.18.4"
-  "sql-language-server@1.7.1"
 )
 
 # Isolated Python source-analysis tools, pinned to exact versions so a device

@@ -34,7 +34,7 @@ required_cmds=(
   pyright pyright-langserver basedpyright ruff
   tsc vtsls yaml-language-server bash-language-server docker-langserver
   vscode-html-language-server vscode-css-language-server vscode-json-language-server
-  taplo marksman terraform-ls cmake-language-server
+  tombi marksman terraform-ls cmake-language-server
   herdr
   agy claude codex cursor-agent grok opencode pi devin gddy agyx agy-full cx cl cu cursor-auto gkx grok-auto gk opx opencode-auto pix pi-auto dv devin-auto ai-full
 )

@@ -285,9 +285,9 @@ required_cmds=(
   git curl node bun uv python3 shellcheck shfmt clangd
   pyright pyright-langserver basedpyright ruff ty semgrep
   tsc vtsls yaml-language-server bash-language-server docker-langserver
-  vscode-html-language-server vscode-css-language-server vscode-json-language-server taplo
+  vscode-html-language-server vscode-css-language-server vscode-json-language-server tombi
   gh-actions-language-server ansible-language-server
-  svelteserver sql-language-server
+  svelteserver
   biome oxlint markdownlint-cli2 prettier
   starship atuin carapace
   cmake-language-server
