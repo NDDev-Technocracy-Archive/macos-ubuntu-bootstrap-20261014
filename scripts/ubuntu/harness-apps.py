@@ -386,7 +386,17 @@ def main() -> int:
     args = parser.parse_args()
     data = load()
     if args.operation == "update-verified":
-        print(json.dumps(update_verified(data), sort_keys=True))
+        # The scheduler parses the last stdout line as the receipt. Package
+        # installers (apt/dpkg hooks, detached helpers) inherit fd 1 and may
+        # append after a buffered print, so every descendant gets stderr while
+        # the receipt travels over a saved duplicate of the original stdout.
+        receipt = os.dup(1)
+        try:
+            os.dup2(2, 1)
+            result = update_verified(data)
+            os.write(receipt, (json.dumps(result, sort_keys=True) + "\n").encode())
+        finally:
+            os.close(receipt)
         return 0
     if args.operation == "plan":
         print(json.dumps(data, indent=2, ensure_ascii=False))

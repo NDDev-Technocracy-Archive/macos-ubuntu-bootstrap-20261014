@@ -99,3 +99,34 @@ def test_known_quoted_workstation_desktop_is_upgradable_but_custom_is_preserved(
             'StartupWMClass=antigravity-ide\nMimeType=text/plain;inode/directory;\n')
     assert apps.managed_antigravity_desktop(text) == '2.5.5'
     assert apps.managed_antigravity_desktop(text.replace('Icon=code', 'Icon=custom')) is None
+
+
+def test_update_verified_receipt_survives_children_writing_to_stdout(monkeypatch):
+    """Package installers inherit fd 1; their output (and detached hooks) must
+    never corrupt the structured receipt the scheduler parses as the last
+    stdout line. Reproduces the seq-6 host failure."""
+    import os
+    receipt = {"schema": 1, "components": [{"changed": True, "id": "opencode", "state": "updated"}],
+               "vendor_configuration_mutated": False}
+
+    def noisy_update(_data):
+        subprocess.run(["/bin/sh", "-c", "echo APT-LIKE-NOISE; echo MORE-NOISE >&1"], check=True)
+        return receipt
+
+    monkeypatch.setattr(apps, "update_verified", noisy_update)
+    monkeypatch.setattr("sys.argv", ["harness-apps.py", "update-verified", "--json"])
+
+    read_fd, write_fd = os.pipe()
+    saved = os.dup(1)
+    try:
+        os.dup2(write_fd, 1)
+        os.close(write_fd)
+        assert apps.main() == 0
+    finally:
+        os.dup2(saved, 1)
+        os.close(saved)
+    captured = b""
+    while chunk := os.read(read_fd, 65536):
+        captured += chunk
+    os.close(read_fd)
+    assert captured.decode() == json.dumps(receipt, sort_keys=True) + "\n"
