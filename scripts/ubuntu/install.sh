@@ -31,12 +31,12 @@ REMOTE_DESKTOP_USER="${RLDYOUR_REMOTE_DESKTOP_USER:-$(id -un)}"
 # Login shell change is explicit opt-in only; never mutated silently.
 SET_LOGIN_SHELL="${RLDYOUR_SET_LOGIN_SHELL:-0}"
 
-NODE_VERSION="24.21.0"
-NODE_SHA256_X64="fd8e59d5a511510f6a298afb548f18c7d2b1be404d8b4a27d94fbe49f56cb2d6"
-NODE_SHA256_ARM64="6ad1325edbdb5649c379b75a237147a666c95d4f9ae8d340fef2d1575d289ad2"
-UV_VERSION="0.13.0"
-UV_SHA256_X64="1468ebd5a5541121837c5a2817b9972ba6090fa6caa3d142620850a47fb75154"
-UV_SHA256_ARM64="3ccfb6af6e242433eb552f7d9676abd5412c6595c497e990d9c8cb7b5bd4d2c3"
+NODE_VERSION="24.22.0"
+NODE_SHA256_X64="cc2f601cee82d9a5a233302fe307abc600727035fd7d2c3a3571755989e95008"
+NODE_SHA256_ARM64="fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
+UV_VERSION="0.13.1"
+UV_SHA256_X64="eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220"
+UV_SHA256_ARM64="9041c73c99fdc5892cf128140beb354eca9231d502068cc36e6cb53a8e59ad14"
 BUN_VERSION="1.4.3"
 BUN_SHA256_X64="3e730528d89775f03f87f05c06787c4df4099d0a37f3f252e7b829cb23816e18"
 BUN_SHA256_X64_BASELINE="1fc2edac843102909e3a1be1d8d9802cc6071cf074e67e88231f4ffe0f8b397b"
@@ -99,14 +99,14 @@ APT_SOURCE_PACKAGES=(
 BUN_LSP_PACKAGES=(
   "typescript@7.0.2"
   "@vtsls/language-server@0.3.0"
-  "yaml-language-server@1.24.0"
+  "yaml-language-server@1.25.0"
   "bash-language-server@5.8.1"
   "dockerfile-language-server-nodejs@0.15.0"
   "vscode-langservers-extracted@4.10.0"
   "@taplo/cli@0.7.0"
   "gh-actions-language-server@0.0.3"
-  "@biomejs/biome@2.5.4"
-  "oxlint@1.74.0"
+  "@biomejs/biome@2.5.15"
+  "oxlint@1.88.0"
   "markdownlint-cli2@0.23.3"
   "prettier@3.9.10"
   "@ansible/ansible-language-server@26.6.0"
@@ -121,10 +121,10 @@ BUN_LSP_PACKAGES=(
 PYTHON_SOURCE_TOOLS=(
   "pyright==1.1.414"
   "ruff==0.17.0"
-  "ty==0.0.86"
+  "ty==0.0.88"
   "cmake-language-server==0.1.11"
   "basedpyright==1.40.2"
-  "semgrep==1.180.0"
+  "semgrep==1.181.0"
 )
 
 # Pinned upstream CLI artifacts: the tools macOS gets from Homebrew for which
@@ -175,7 +175,7 @@ PINNED_SOURCE_TOOLS=(
   # would fail on the distribution build, so the recipe runner is pinned like
   # every other tool whose exact behaviour a repository depends on. Both digests
   # were confirmed by download and matched against upstream's SHA256SUMS.
-  "just;1.58.0;tar0;just;just;just;4a5cc2f53e6f0f8c59092a6cc38291eb729d46a7dd95d3ae582008881b84931d;748237128c4c40cbdabc65e841d05ceba13cc23a91eaba395495894c1d9764df;https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-x86_64-unknown-linux-musl.tar.gz;https://github.com/casey/just/releases/download/1.58.0/just-1.58.0-aarch64-unknown-linux-musl.tar.gz"
+  "just;1.59.0;tar0;just;just;just;409044617b6f06517c1035e55ca38c8c856ff8b650e41bc2aa1ef82d5903a23e;23871b1702bfd550fb5f901778fd4290ecf2ee034a45a889fbe96d89b188086d;https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-x86_64-unknown-linux-musl.tar.gz;https://github.com/casey/just/releases/download/1.59.0/just-1.59.0-aarch64-unknown-linux-musl.tar.gz"
   # File encryption for estate secrets at rest. Ubuntu ships 1.2.1 against
   # upstream 1.3.1; for a cryptographic tool the current release is the one to
   # carry. The archive also contains age-inspect and age-plugin-batchpass, which
@@ -212,7 +212,7 @@ PINNED_SOURCE_TOOLS=(
 # architecture hashes live in config/rldyour-contract.json and parity tests bind
 # this shell row to them; installation never resolves mutable `latest` state.
 USER_TOOLS=(
-  "herdr;0.9.4;raw;herdr;herdr;herdr;493304fbefb0ed0ea0455f373b47f48d24e8774bc7974f4c916ad2e937675b23;9511cb70982c1ef115f232058e7ed7cf9640aa5a2c0ca78934cefda3aeb093fd;https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-x86_64;https://github.com/herdrdev/herdr/releases/download/v0.9.4/herdr-linux-aarch64"
+  "herdr;0.9.5;raw;herdr;herdr;herdr;14d9e8bc8b4a9e0118d77c32266f76d461f09b40342eb23752960bd89f59929d;17d7536f2da50859523680ef279dffcac8e4a235f4e46fe8da6c2ec44141897c;https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-linux-x86_64;https://github.com/herdrdev/herdr/releases/download/v0.9.5/herdr-linux-aarch64"
   # Telegram Desktop official portable build. Only Telegram/Telegram is
   # published. The binary also has an internal updater, disabled separately by
   # install_telegram_update_policy so it cannot mutate this receipt-bound tree.
@@ -221,7 +221,7 @@ USER_TOOLS=(
   # used to hold the x86_64 values, which meant an arm64 desktop verified the
   # SHA-256 of an executable it could not run.
   "telegram;7.3.1;tarx;Telegram/Telegram;Telegram/Telegram;telegram-desktop;654a5b266d653b072b4407a4644bd441e37ee393f502c71b2e1d86fc115b8ab6;;https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.1/td-setup-linux-x64-7.3.1.tar.xz;"
-  "doctl;1.185.0;tar0;doctl;doctl;doctl;caf03c52f25d821794638460012d7ae1cd7b665796015f0f8311106f8e566be8;a0feffea34fb519d3c14da4673ed038978b8d6fbd1b88f4b12a2f414dcd49da4;https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v1.185.0/doctl-1.185.0-linux-arm64.tar.gz"
+  "doctl;2.0.0;tar0;doctl;doctl;doctl;c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02;f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8;https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-arm64.tar.gz"
   "stripe;1.53.1;tar0;stripe;stripe;stripe;032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1;b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_x86_64.tar.gz;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_arm64.tar.gz"
   "gcloud;589.0.0;tar1;bin/gcloud,bin/gsutil,bin/bq;bin/gcloud,bin/gsutil,bin/bq;gcloud,gsutil,bq;f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f;3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-x86_64.tar.gz;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-arm.tar.gz"
 )
@@ -230,8 +230,8 @@ USER_TOOLS=(
 # as BUN_LSP_PACKAGES. Wrangler is the exception to `--ignore-scripts`: its
 # postinstall fetches the workerd binary that package version requires.
 NPM_USER_TOOLS=(
-  "resend-cli@2.23.0"
-  "wrangler@4.150.0"
+  "resend-cli@2.25.0"
+  "wrangler@4.151.0"
 )
 
 # The reviewed Telegram release installs these four files from

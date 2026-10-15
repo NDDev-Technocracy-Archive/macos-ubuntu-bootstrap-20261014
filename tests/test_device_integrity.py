@@ -428,13 +428,13 @@ def test_herdr_declared_in_contract_and_install_sh() -> None:
     contract = di.load_contract()
     assert "herdr" in contract["user_tools"], "herdr not in contract user_tools"
     assert (
-        contract["user_tools"]["herdr"]["version"] == "0.9.4"
+        contract["user_tools"]["herdr"]["version"] == "0.9.5"
     ), "herdr version mismatch in contract"
 
     installer = (ROOT / "scripts/ubuntu/install.sh").read_text(encoding="utf-8")
     assert "USER_TOOLS=(" in installer, "USER_TOOLS array missing from install.sh"
     assert (
-        "herdr;0.9.4;raw" in installer
+        "herdr;0.9.5;raw" in installer
     ), "herdr row missing from USER_TOOLS array in install.sh"
 
 
@@ -755,7 +755,7 @@ def test_at_least_one_harness_is_actually_enforced() -> None:
 
 def test_harness_inside_its_owned_prefix_is_not_drift(tmp_path, monkeypatch) -> None:
     home = tmp_path / "home"
-    codex = _fake_harness(home, ".local/share/rldyour/cli/codex/0.160.0/bin", "codex")
+    codex = _fake_harness(home, ".local/share/rldyour/cli/codex/0.162.1/bin", "codex")
     bin_dir = home / ".local/bin"
     bin_dir.mkdir(parents=True, exist_ok=True)
     (bin_dir / "codex").symlink_to(codex)
@@ -770,7 +770,7 @@ def test_harness_inside_its_owned_prefix_is_not_drift(tmp_path, monkeypatch) -> 
 def test_a_second_copy_shadowing_the_owner_is_reported(tmp_path, monkeypatch) -> None:
     """The exact failure the one-owner-per-harness policy exists to catch."""
     home = tmp_path / "home"
-    _fake_harness(home, ".local/share/rldyour/cli/codex/0.160.0/bin", "codex")
+    _fake_harness(home, ".local/share/rldyour/cli/codex/0.162.1/bin", "codex")
     impostor = _fake_harness(home, ".bun/bin", "codex")
     monkeypatch.setenv("PATH", str(impostor.parent))
     monkeypatch.setattr(Path, "home", classmethod(lambda cls: home))

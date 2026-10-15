@@ -3,7 +3,7 @@
 All notable changes are documented here. The project follows Semantic
 Versioning; the contract version in `config/rldyour-contract.json` moves with it.
 
-## [Unreleased]
+## [0.3.4] - 2026-10-15
 
 - Support `desktop-server` on Ubuntu 26.04 amd64: the contract profile gains
   the release, the support-evidence matrix gains the
@@ -33,6 +33,19 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
 - Add Devin CLI and Devin Desktop to the managed Ubuntu harness set, register
   OpenCode Desktop, and support one GUI-enabled bootstrap apply for all official
   harness applications.
+
+- Refresh managed pins to the latest verified upstream releases: Node.js
+  24.22.0, uv 0.13.1, Herdr 0.9.5, doctl 2.0.0, GoDaddy CLI 0.2.29,
+  just 1.59.0, resend-cli 2.25.0, Wrangler 4.151.0, Antigravity CLI 1.3.5,
+  Claude Code 2.1.300, Codex 0.162.1, Cursor agent CLI 2026.10.14-941492e,
+  Grok Build 1.0.52, OpenCode CLI 1.19.0, Pi 1.2.0, Devin CLI 3000.11.92,
+  yaml-language-server 1.25.0, Biome 2.5.15, oxlint 1.88.0, ty 0.0.88,
+  semgrep 1.181.0, ChatGPT desktop 26.1007.71326 and OpenCode Desktop 2.0.29.
+  Every artifact hash was re-derived from the downloaded artifact itself.
+  OpenCode CLI intentionally stays on the `opencode-linux-*` 1.x lineage:
+  upstream's 2.x line ships under the renamed `@opencode/cli` npm packages and
+  is a breaking migration, not a pin bump. doctl 2.0.0 is upstream's current
+  release; its major bump is recorded so deployers can review CLI changes.
 
 ## [0.3.3] - 2026-10-13
 
