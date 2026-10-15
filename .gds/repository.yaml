@@ -63,6 +63,7 @@ agent:
 
 module:
   contract: "public"
+  development: "standalone"
   consumption: ["git-submodule"]
   compatibility: "semver"
   pin_policy: "version-tag"
