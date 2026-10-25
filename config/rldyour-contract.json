@@ -212,7 +212,7 @@
       "launcher": "cl"
     },
     "codex": {
-      "version": "0.162.1",
+      "version": "0.164.0",
       "command": "codex",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -222,21 +222,21 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-x64.tgz",
-          "bytes": 165453522,
-          "sha256": "7417711678b464eee70664126e39e88bb3c84c2928da0e71f14b56e04ff5c09f",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-linux-x64.tgz",
+          "bytes": 165142849,
+          "sha256": "62659fefd9a8efa21a496402fde3c11c025bbeee735a582968f8ffd14cb5f79c",
           "member": "package/vendor/x86_64-unknown-linux-musl/bin/codex"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-arm64.tgz",
-          "bytes": 157869533,
-          "sha256": "a355051d0c296ed50e42e55aceabf74f017f2f96e223fc7ee2199ea8a60cad4b",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-linux-arm64.tgz",
+          "bytes": 157521698,
+          "sha256": "048a62731ce28aa000508efcc032302e58488ca079970dcae06d28df39ae5ce0",
           "member": "package/vendor/aarch64-unknown-linux-musl/bin/codex"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-darwin-arm64.tgz",
-          "bytes": 136602385,
-          "sha256": "fe0370027a05237adc0152b482ad8502321f6f9aff1baca3bfa56588923ba9ad",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-darwin-arm64.tgz",
+          "bytes": 140709294,
+          "sha256": "9b5a35be1975ceb332eaf274032f375b017ab644ff0165737ead03277fae77cd",
           "member": "package/vendor/aarch64-apple-darwin/bin/codex"
         }
       },
