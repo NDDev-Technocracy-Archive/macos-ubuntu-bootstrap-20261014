@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write # Publish dependency review findings on the pull request.
-    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/public-dependency-review.yml@b74df9f52fe68d62860e6058a6701536c3cd5a55 # commit:b74df9f52fe68d62860e6058a6701536c3cd5a55
+    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/public-dependency-review.yml@eb41cf80c18110781ef5aa400109a7359f9cba9c # commit:b74df9f52fe68d62860e6058a6701536c3cd5a55
     with:
       # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
       # explicitly — the reusable's `runner` default belongs to the pinned commit,
