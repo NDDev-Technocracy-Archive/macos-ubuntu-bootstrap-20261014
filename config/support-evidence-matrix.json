@@ -682,7 +682,7 @@
       "id": "ai-cli-antigravity",
       "inventory_ref": "rldyour-contract.json#/harnesses/antigravity",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -696,7 +696,7 @@
       "id": "ai-cli-claude-code",
       "inventory_ref": "rldyour-contract.json#/harnesses/claude-code",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -710,7 +710,7 @@
       "id": "ai-cli-codex",
       "inventory_ref": "rldyour-contract.json#/harnesses/codex",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -724,7 +724,7 @@
       "id": "ai-cli-cursor",
       "inventory_ref": "rldyour-contract.json#/harnesses/cursor",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -738,7 +738,7 @@
       "id": "ai-cli-grok-build",
       "inventory_ref": "rldyour-contract.json#/harnesses/grok-build",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -752,7 +752,7 @@
       "id": "ai-cli-opencode",
       "inventory_ref": "rldyour-contract.json#/harnesses/opencode",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",
@@ -766,7 +766,7 @@
       "id": "ai-cli-pi",
       "inventory_ref": "rldyour-contract.json#/harnesses/pi",
       "source": "official vendor platform artifact; pins bound to released setup-system baseline",
-      "version_discovery": "reviewed setup-system release 0.0.88",
+      "version_discovery": "reviewed setup-system release 0.0.95",
       "integrity": "exact archive byte length and SHA-256; full installed payload receipt",
       "architectures": [
         "amd64",

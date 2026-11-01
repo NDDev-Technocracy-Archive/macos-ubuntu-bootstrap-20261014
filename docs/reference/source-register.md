@@ -224,9 +224,14 @@ Native platform validation supplies installation evidence separately.
 
 ## Seven harnesses and GoDaddy CLI (0.3.0, 2026-10-05)
 
-The seven `NDDev-Technocracy-Archive/*-setup-system` 0.0.88 release baselines provide
+The seven `NDDev-Technocracy-Archive/*-setup-system` 0.0.95 release baselines provide
 the reviewed program versions, archive sizes, URLs, executable members and
-SHA-256 digests. Those bytes are imported into the bootstrap contract, not
+SHA-256 digests (0.0.88 until 2026-11-01). A harness block is never moved
+ahead of its released baseline: the 0.3.4 refresh did that for Antigravity,
+Claude Code, Codex and Cursor, and the catalogue check refused it, so those
+four returned to the 0.0.95 baseline programs (1.3.4, 2.1.296, 0.162.1 and
+2026.10.01-e373342). A newer vendor release reaches this contract through a
+setup-system baseline release first. Those bytes are imported into the bootstrap contract, not
 resolved from `latest` at install time. `scripts/managed_cli.py` is the single
 program installer on Linux amd64/arm64 and macOS arm64. It verifies the entire
 installed tree and preserves prior owner-held launchers. Configuration profiles

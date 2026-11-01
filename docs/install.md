@@ -35,7 +35,7 @@ server Ed25519 public host key are known. The complete workflow is in the
 Every profile installs all eight official vendor CLIs: Antigravity (`agy`),
 Claude Code (`claude`), Codex (`codex`), Cursor (`cursor-agent`), Grok Build
 (`grok`), OpenCode (`opencode`), Pi (`pi`), and Devin (`devin`). Program versions and full
-platform-artifact digests are imported from the published 0.0.88 setup-system
+platform-artifact digests are imported from the published 0.0.95 setup-system
 baselines. These are the vendor programs, not configuration mutations: setup
 profiles, authentication and running agent sessions remain untouched.
 

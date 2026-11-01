@@ -199,12 +199,29 @@ def test_the_unknown_tolerance_is_the_boundary() -> None:
 
 
 def test_a_newer_upstream_is_reported_as_behind(monkeypatch) -> None:
+    # wrangler, not codex: codex is held to its setup-system baseline.
     monkeypatch.setattr(drift, "_npm_latest", lambda pkg, name: ("999.0.0", []))
-    probes = [row for row in drift._pins(CONTRACT) if row[0] == "codex"]
+    probes = [row for row in drift._pins(CONTRACT) if row[0] == "wrangler"]
     monkeypatch.setattr(drift, "_pins", lambda contract: probes)
     findings = {item.name: item for item in drift.discover(CONTRACT)}
-    assert findings["codex"].status == "behind"
-    assert findings["codex"].latest == "999.0.0"
+    assert findings["wrangler"].status == "behind"
+    assert findings["wrangler"].latest == "999.0.0"
+
+
+def test_every_hold_names_a_probe_and_says_why() -> None:
+    """A hold for a pin nothing probes is a stale decision nobody re-reads."""
+    probed = {row[0] for row in drift._pins(CONTRACT)}
+    for name, reason in drift.INTENTIONAL_HOLDS.items():
+        assert name in probed, name
+        assert reason.strip(), name
+
+
+def test_codex_is_held_only_while_it_is_bound_to_its_setup_baseline() -> None:
+    """The codex hold exists because the npm probe and the catalogue probe
+    read one field. If Codex stops coming from a setup-system baseline, the
+    reason is gone and the hold must go with it."""
+    if "codex" in drift.INTENTIONAL_HOLDS:
+        assert "setup_system" in CONTRACT["harnesses"]["codex"]["source"]
 
 
 def test_a_behind_pin_fails_the_run(capsys) -> None:

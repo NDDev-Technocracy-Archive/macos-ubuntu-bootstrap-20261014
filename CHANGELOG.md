@@ -15,6 +15,13 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
 
 ### Fixed
 
+- Bind every harness block to the released setup-system 0.0.95 baselines.
+  The 0.3.4 refresh moved Antigravity, Claude Code, Codex and Cursor ahead
+  of their baselines while the setup tag stayed 0.0.88, which the catalogue
+  check refused for all seven harnesses. They return to the 0.0.95 programs
+  (Antigravity 1.3.4, Claude Code 2.1.296, Codex 0.162.1, Cursor
+  2026.10.01-e373342); Grok Build, OpenCode and Pi keep identical bytes.
+  The npm Codex probe is held to that baseline in `INTENTIONAL_HOLDS`.
 - Verify an old managed CLI tree against the runtime recorded in its own
   receipt instead of the current contract pin: a managed `ubuntu_node_lts`
   move (24.21.0 → 24.22.0) no longer marks an intact Cursor launcher as

@@ -80,7 +80,16 @@ TIMEOUT_SECONDS = 30
 
 # A pin whose current value is intentionally held rather than stale. Each entry
 # states why, so a held pin reads as a decision instead of an oversight.
-INTENTIONAL_HOLDS: dict[str, str] = {}
+INTENTIONAL_HOLDS: dict[str, str] = {
+    # The npm probe and the codex-catalogue probe read the same field. Harness
+    # blocks must equal their released setup-system baseline (the catalogue
+    # check), so Codex cannot move ahead of codex-setup-system on npm alone.
+    # A newer baseline surfaces as `codex-setup` behind, which is not held.
+    "codex": (
+        "bound to the released codex-setup-system baseline; a newer npm "
+        "release arrives through a new setup-system release first"
+    ),
+}
 
 # How many sources may be unreachable before the run stops being evidence.
 # Two tolerates the transient rate limit this script was already careful about;
