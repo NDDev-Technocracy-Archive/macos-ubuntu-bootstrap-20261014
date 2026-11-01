@@ -41,6 +41,7 @@ jobs:
       fail-fast: false
       matrix:
         os:
+        # Ubuntu 24.04 stays: it is a supported install target of the product.
         - ubuntu-24.04
         - macos-26
     steps:
@@ -144,7 +145,7 @@ jobs:
         args=(--profile desktop --no-gui)
         bash scripts/bootstrap.sh --platform "$CROSS_PLATFORM" "${args[@]}" --plan --skip-system --skip-checks
   workflow-lint:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -170,7 +171,7 @@ jobs:
           fi
 
   required-contexts:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     name: required-contexts
     permissions:
@@ -192,7 +193,7 @@ jobs:
     - bootstrap-dryrun-crosscheck
     - workflow-lint
     - required-contexts
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 30
     if: always()
     steps:
