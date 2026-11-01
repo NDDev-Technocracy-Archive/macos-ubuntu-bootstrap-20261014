@@ -1,237 +1,235 @@
-name: bootstrap-ci
+name: ci
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
     inputs:
       mode:
-        description: "Hosted CI validates plan mode only; apply belongs on a disposable target VM."
+        description: Hosted CI validates plan mode only; apply belongs on a disposable
+          target VM.
         required: true
         default: plan
         type: choice
         options:
-          - plan
+        - plan
       platform:
-        description: "Run target platform(s) on matrix."
+        description: Run target platform(s) on matrix.
         required: true
         default: both
         type: choice
         options:
-          - both
-          - macos
-          - ubuntu
+        - both
+        - macos
+        - ubuntu
 
 permissions:
   contents: read
 
 concurrency:
-  group: bootstrap-ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  # Obsolete pull-request heads are cancelled; a running main validation always completes.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   bootstrap-script-lint:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     name: bootstrap-script-lint-${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
+        - ubuntu-24.04
+        - macos-26
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 1
-          persist-credentials: false
-
-      - name: Prepare validation tools
-        env:
-          MATRIX_OS: ${{ matrix.os }}
-        run: |
-          if [ "$MATRIX_OS" = "macos-latest" ]; then
-            brew update
-            brew install shellcheck ripgrep
-          else
-            sudo apt-get update
-            sudo apt-get install -y --no-install-recommends shellcheck ripgrep
-          fi
-
-      - name: Lint bootstrap scripts
-        run: |
-          bash scripts/ci/lint.sh
-
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        fetch-depth: 1
+        persist-credentials: false
+    - name: Prepare validation tools
+      env:
+        MATRIX_OS: ${{ matrix.os }}
+      run: |
+        if [ "$MATRIX_OS" = "macos-26" ]; then
+          brew update
+          brew install shellcheck ripgrep
+        else
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends shellcheck ripgrep
+        fi
+    - name: Lint bootstrap scripts
+      run: |
+        bash scripts/ci/lint.sh
   bootstrap-validate:
-    needs: bootstrap-script-lint
+    needs:
+    - bootstrap-script-lint
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     name: bootstrap-${{ matrix.platform }}-${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'plan' }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            platform: ubuntu
-          - os: macos-latest
-            platform: macos
+        - os: ubuntu-24.04
+          platform: ubuntu
+        - os: macos-26
+          platform: macos
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 1
-          persist-credentials: false
-
-      - name: Prepare validation tools
-        if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
-        env:
-          MATRIX_OS: ${{ matrix.os }}
-        run: |
-          case "$MATRIX_OS" in
-            macos*) 
-              brew update
-              brew install shellcheck ripgrep
-              ;;
-            *)
-              sudo apt-get update
-              sudo apt-get install -y --no-install-recommends shellcheck ripgrep
-              ;;
-          esac
-
-      - name: Validate bootstrap scripts (syntax + shellcheck + contract + dry-runs)
-        if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
-        run: |
-          bash scripts/ci/validate.sh
-
-      # Check repository metadata in the existing native validation matrix.
-      # This contributes advisory CI evidence and the separate release gate.
-      - name: Verify the repository metadata contract
-        if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
-        run: |
-          set -euo pipefail
-          for path in README.md LICENSE NOTICE VERSION; do
-            [ -r "$path" ] || { echo "missing required path: $path" >&2; exit 1; }
-          done
-          version="$(tr -d '[:space:]' <VERSION)"
-          [ -n "$version" ] || { echo "VERSION is empty" >&2; exit 1; }
-          printf 'metadata contract ok on %s: version %s\n' "$(uname -s)" "$version"
-
-      - name: Verify bootstrap entrypoint for target platform
-        if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
-        env:
-          TARGET_PLATFORM: ${{ matrix.platform }}
-        run: |
-          args=(--profile desktop)
-          if [ "$TARGET_PLATFORM" = "ubuntu" ]; then
-            args+=(--no-gui)
-          fi
-          bash scripts/bootstrap.sh --platform "$TARGET_PLATFORM" "${args[@]}" --plan --skip-checks
-
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        fetch-depth: 1
+        persist-credentials: false
+    - name: Prepare validation tools
+      if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
+      env:
+        MATRIX_OS: ${{ matrix.os }}
+      run: "case \"$MATRIX_OS\" in\n  macos*) \n    brew update\n    brew install shellcheck ripgrep\n    ;;\n  *)\n    sudo apt-get update\n    sudo apt-get install -y --no-install-recommends shellcheck\
+        \ ripgrep\n    ;;\nesac\n"
+    - name: Validate bootstrap scripts (syntax + shellcheck + contract + dry-runs)
+      if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
+      run: |
+        bash scripts/ci/validate.sh
+    - name: Verify the repository metadata contract
+      if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
+      run: |
+        set -euo pipefail
+        for path in README.md LICENSE NOTICE VERSION; do
+          [ -r "$path" ] || { echo "missing required path: $path" >&2; exit 1; }
+        done
+        version="$(tr -d '[:space:]' <VERSION)"
+        [ -n "$version" ] || { echo "VERSION is empty" >&2; exit 1; }
+        printf 'metadata contract ok on %s: version %s\n' "$(uname -s)" "$version"
+    - name: Verify bootstrap entrypoint for target platform
+      if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
+      env:
+        TARGET_PLATFORM: ${{ matrix.platform }}
+      run: |
+        args=(--profile desktop)
+        if [ "$TARGET_PLATFORM" = "ubuntu" ]; then
+          args+=(--no-gui)
+        fi
+        bash scripts/bootstrap.sh --platform "$TARGET_PLATFORM" "${args[@]}" --plan --skip-checks
   bootstrap-dryrun-crosscheck:
-    needs: bootstrap-validate
+    needs:
+    - bootstrap-validate
     if: github.event_name != 'workflow_dispatch' || inputs.mode == 'plan'
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     name: bootstrap-crosscheck-${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
-            platform: ubuntu
-            cross_platform: macos
-          - os: macos-latest
-            platform: macos
-            cross_platform: ubuntu
+        - os: ubuntu-24.04
+          platform: ubuntu
+          cross_platform: macos
+        - os: macos-26
+          platform: macos
+          cross_platform: ubuntu
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 1
-          persist-credentials: false
-
-      - name: Crosscheck other platform installer in plan mode
-        if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
-        env:
-          CROSS_PLATFORM: ${{ matrix.cross_platform }}
-        run: |
-          args=(--profile desktop --no-gui)
-          bash scripts/bootstrap.sh --platform "$CROSS_PLATFORM" "${args[@]}" --plan --skip-system --skip-checks
-
-  # The checksum-bound linter contributes to bootstrap-gate. Version and digest
-  # match config/rldyour-contract.json through check_ci_tool_parity.py.
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        fetch-depth: 1
+        persist-credentials: false
+    - name: Crosscheck other platform installer in plan mode
+      if: github.event_name != 'workflow_dispatch' || inputs.platform == 'both' || inputs.platform == matrix.platform
+      env:
+        CROSS_PLATFORM: ${{ matrix.cross_platform }}
+      run: |
+        args=(--profile desktop --no-gui)
+        bash scripts/bootstrap.sh --platform "$CROSS_PLATFORM" "${args[@]}" --plan --skip-system --skip-checks
   workflow-lint:
-    permissions:
-      contents: read
-    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/actionlint.yml@b74df9f52fe68d62860e6058a6701536c3cd5a55 # commit:b74df9f52fe68d62860e6058a6701536c3cd5a55
-    with:
-      # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
-      # explicitly. The estate runner platform forbids public/fork code on a
-      # trusted runner group (modules/github-actions, docs/threat-model.md),
-      # and this repository is public. The reusable's default belongs to the
-      # pinned commit, not here. A wrong value does not fail loudly either:
-      # a job asking for a label no runner advertises queues indefinitely.
-      runner: ubuntu-latest
-      actionlint_version: '1.7.12'
-      actionlint_sha256: '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: NDDev-Technocracy-Standarts/std-0004-ci-cd-workflows/.github/actions/tools@9cc44a5043ddd266f3e73fefacc52f5cf5a7d70f # nddev-cicd-v0.6.18
+        with:
+          capability: security
+      - name: Lint and audit workflows
+        run: |
+          actionlint .github/workflows/ci.yml .github/workflows/dependency-check.yml .github/workflows/docs-quality.yml .github/workflows/osv-scan.yml .github/workflows/platform-evidence.yml .github/workflows/pytest.yml .github/workflows/semgrep.yml .github/workflows/source-drift.yml .github/workflows/security.yml
+          zizmor --offline --no-progress .github/workflows/ci.yml .github/workflows/dependency-check.yml .github/workflows/docs-quality.yml .github/workflows/osv-scan.yml .github/workflows/platform-evidence.yml .github/workflows/pytest.yml .github/workflows/semgrep.yml .github/workflows/source-drift.yml .github/workflows/security.yml .github/dependabot.yml
+      - name: Scan new pull request commits, or the full history on main
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          if [ -n "$BASE" ]; then
+            gitleaks git --no-banner --redact --log-opts="$BASE..$HEAD" .
+          else
+            gitleaks git --no-banner --redact .
+          fi
 
-  # Compare the live branch rules with the checked-in mirror once per run.
-  # Explicitly empty required checks are valid; API failures are not success.
   required-contexts:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     name: required-contexts
     permissions:
       contents: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 1
-          persist-credentials: false
-
-      - name: Live ruleset and mirror must agree
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: python3 scripts/ci/check_required_contexts.py --live
-
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        fetch-depth: 1
+        persist-credentials: false
+    - name: Live ruleset and mirror must agree
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: python3 scripts/ci/check_required_contexts.py --live
   bootstrap-gate:
-    needs: [bootstrap-script-lint, bootstrap-validate, bootstrap-dryrun-crosscheck, workflow-lint, required-contexts]
-    runs-on: ubuntu-latest
+    needs:
+    - bootstrap-script-lint
+    - bootstrap-validate
+    - bootstrap-dryrun-crosscheck
+    - workflow-lint
+    - required-contexts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     if: always()
     steps:
-      - name: Bootstrap CI gate
-        env:
-          SCRIPT_LINT_RESULT: ${{ needs.bootstrap-script-lint.result }}
-          VALIDATE_RESULT: ${{ needs.bootstrap-validate.result }}
-          WORKFLOW_LINT_RESULT: ${{ needs.workflow-lint.result }}
-          CONTEXTS_RESULT: ${{ needs.required-contexts.result }}
-          CROSSCHECK_RESULT: ${{ needs.bootstrap-dryrun-crosscheck.result }}
-        run: |
-          echo "Checking required bootstrap workflow jobs"
-          echo "mode=plan"
+    - name: Bootstrap CI gate
+      env:
+        SCRIPT_LINT_RESULT: ${{ needs.bootstrap-script-lint.result }}
+        VALIDATE_RESULT: ${{ needs.bootstrap-validate.result }}
+        WORKFLOW_LINT_RESULT: ${{ needs.workflow-lint.result }}
+        CONTEXTS_RESULT: ${{ needs.required-contexts.result }}
+        CROSSCHECK_RESULT: ${{ needs.bootstrap-dryrun-crosscheck.result }}
+      run: |
+        echo "Checking required bootstrap workflow jobs"
+        echo "mode=plan"
 
-          if [[ "$SCRIPT_LINT_RESULT" != "success" ]]; then
-            echo "bootstrap-script-lint: $SCRIPT_LINT_RESULT" >&2
-            exit 1
-          fi
+        if [[ "$SCRIPT_LINT_RESULT" != "success" ]]; then
+          echo "bootstrap-script-lint: $SCRIPT_LINT_RESULT" >&2
+          exit 1
+        fi
 
-          if [[ "$VALIDATE_RESULT" != "success" ]]; then
-            echo "bootstrap-validate: $VALIDATE_RESULT" >&2
-            exit 1
-          fi
+        if [[ "$VALIDATE_RESULT" != "success" ]]; then
+          echo "bootstrap-validate: $VALIDATE_RESULT" >&2
+          exit 1
+        fi
 
-          if [[ "$WORKFLOW_LINT_RESULT" != "success" ]]; then
-            echo "workflow-lint: $WORKFLOW_LINT_RESULT" >&2
-            exit 1
-          fi
+        if [[ "$WORKFLOW_LINT_RESULT" != "success" ]]; then
+          echo "workflow-lint: $WORKFLOW_LINT_RESULT" >&2
+          exit 1
+        fi
 
-          if [[ "$CONTEXTS_RESULT" != "success" ]]; then
-            echo "required-contexts: $CONTEXTS_RESULT" >&2
-            exit 1
-          fi
+        if [[ "$CONTEXTS_RESULT" != "success" ]]; then
+          echo "required-contexts: $CONTEXTS_RESULT" >&2
+          exit 1
+        fi
 
-          if [[ "$CROSSCHECK_RESULT" != "success" ]]; then
-            echo "bootstrap-dryrun-crosscheck: $CROSSCHECK_RESULT" >&2
-            exit 1
-          fi
+        if [[ "$CROSSCHECK_RESULT" != "success" ]]; then
+          echo "bootstrap-dryrun-crosscheck: $CROSSCHECK_RESULT" >&2
+          exit 1
+        fi
 
-          echo "bootstrap-gate passed"
+        echo "bootstrap-gate passed"

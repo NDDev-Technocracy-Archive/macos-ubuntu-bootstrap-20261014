@@ -1,51 +1,31 @@
-name: Docs quality
+name: docs-quality
 
 on:
+  pull_request:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
 
 concurrency:
-  group: docs-quality-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: docs-quality-${{ github.event.pull_request.number || github.ref }}
+  # Obsolete pull-request heads are cancelled; a running main validation always completes.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   docs-quality:
-    name: Docs quality
-    permissions:
-      contents: read
-    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/docs-quality.yml@b74df9f52fe68d62860e6058a6701536c3cd5a55 # commit:b74df9f52fe68d62860e6058a6701536c3cd5a55
-    with:
-      # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
-      # explicitly. The estate runner platform forbids public/fork code on a
-      # trusted runner group (modules/github-actions, docs/threat-model.md),
-      # and this repository is public. The reusable's default belongs to the
-      # pinned commit, not here. A wrong value does not fail loudly either:
-      # a job asking for a label no runner advertises queues indefinitely.
-      runner: ubuntu-latest
-      # Broken-link detection (lychee). Two accepted non-2xx answers, both cases
-      # where the server replied and the link is fine:
-      #
-      #   openai.com  403 to link-checkers (bot-blocked), valid in a browser — excluded
-      #   429         rate limiting, which says nothing about the link
-      #
-      # documentation.ubuntu.com returns 429 to GitHub-hosted runner IPs and does
-      # so repeatably: a rerun of the same job failed identically. It cannot be
-      # reproduced from a developer machine, so the check fails only in CI, on
-      # documentation nobody touched. Retries do not help against an IP-scoped
-      # limit; accepting 429 does, and costs nothing real — a 429 is the server
-      # answering, so it never proved the link broken in the first place.
-      #
-      # Verified against lychee 0.24.2, the version lychee-action v2.9.0 pins,
-      # that a genuine 404 is still reported with this exact argument string.
-      # Concurrency dropped 8 -> 4 to stop provoking the limit in the first place.
-      lychee_args: '--no-progress --max-concurrency 4 --max-retries 4 --retry-wait-time 3 --accept "200..=299, 429" --exclude "openai\.com" "**/*.md"'
-      # Spell-check and markdown-lint are disabled: `typos` scans the whole repo
-      # and flags project identifiers as misspellings (the NDDev brand, hex
-      # SHA-256 fragments), and default markdownlint rules (e.g. line length) are
-      # noise on technical docs. Keep the high-signal broken-link gate.
-      typos: false
-      markdownlint: false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: NDDev-Technocracy-Standarts/std-0004-ci-cd-workflows/.github/actions/tools@9cc44a5043ddd266f3e73fefacc52f5cf5a7d70f # nddev-cicd-v0.6.18
+      with:
+        capability: quality
+    - name: Links and spelling
+      shell: bash
+      run: |
+        lychee --no-progress --max-concurrency 4 --max-retries 4 --retry-wait-time 3 --accept "200..=299, 429" --exclude "openai\.com" "**/*.md"

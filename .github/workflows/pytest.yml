@@ -1,9 +1,8 @@
 name: pytest
 
 on:
-  push:
-    branches: [main]
   pull_request:
+  push:
     branches: [main]
   workflow_dispatch:
 
@@ -11,31 +10,29 @@ permissions:
   contents: read
 
 concurrency:
-  group: pytest-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: pytest-${{ github.event.pull_request.number || github.ref }}
+  # Obsolete pull-request heads are cancelled; a running main validation always completes.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   bootstrap-pytests:
-    permissions:
-      contents: read
-    uses: NDDev-Technocracy-Archive/ci-workflows-20261014/.github/workflows/python-ci.yml@b74df9f52fe68d62860e6058a6701536c3cd5a55 # commit:b74df9f52fe68d62860e6058a6701536c3cd5a55
-    with:
-      # Public repo: pull_request runs untrusted fork code. Pin the hosted runner
-      # explicitly. The estate runner platform forbids public/fork code on a
-      # trusted runner group (modules/github-actions, docs/threat-model.md),
-      # and this repository is public. The reusable's default belongs to the
-      # pinned commit, not here. A wrong value does not fail loudly either:
-      # a job asking for a label no runner advertises queues indefinitely.
-      runner: ubuntu-latest
-      python_version: "3.14"
-      # One script owns the test environment, and `.gds/repository.yaml`
-      # declares the same one as its `bootstrap` lane. These steps used to live
-      # here as a shell one-liner and nowhere else, so the module's own declared
-      # verification lane began with `uv venv` on a host that might have neither
-      # uv nor zsh — and this workflow's success said nothing about that,
-      # because it was the thing supplying what the anchor omitted.
-      #
-      # What the script establishes and why is documented in the script.
-      install_command: bash scripts/ci/setup-test-env.sh
-      test_command: .venv/bin/python -m pytest -q
-      timeout_minutes: 15
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      with:
+        version: 0.13.5
+        python-version: '3.14'
+        enable-cache: 'false'
+        activate-environment: 'true'
+    - name: Install
+      shell: bash
+      run: |
+        bash scripts/ci/setup-test-env.sh
+    - name: Test
+      shell: bash
+      run: |
+        .venv/bin/python -m pytest -q
