@@ -24,7 +24,8 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
   Wrangler 4.156.0, Devin CLI 3000.11.234, ast-grep 0.51.0,
   difftastic 0.72.0, jaq 3.1.2, lazygit 0.66.2 and Kotlin LSP 263.7084.0.
 - Node 26 no longer bundles corepack, so the Node runtime receipt covers
-  `bin/node`, `bin/npm` and `bin/npx`. Cursor's reviewed Linux Node major
+  `bin/node`, `bin/npm` and `bin/npx`. Its Linux binaries link
+  `libatomic.so.1`, so `libatomic1` joins the Ubuntu apt baseline. Cursor's reviewed Linux Node major
   moves to 26 after its entry passed version and help probes under 26.13.0.
 
 ### Fixed

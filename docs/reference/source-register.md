@@ -263,7 +263,10 @@ reviewed `linux_node_major` to 26. The same 2026.10.01-e373342 entry passed
 `--version` and `--help` under Node 26.13.0 on native Ubuntu 26.04 x86_64 with
 a temporary home, including inside a 200% CPU-quota systemd scope. arm64 was
 not exercised natively. Node 25 stopped bundling corepack, so the Node runtime
-receipt now covers `bin/node`, `bin/npm` and `bin/npx`.
+receipt now covers `bin/node`, `bin/npm` and `bin/npx`. The official Node 26
+Linux binaries also link `libatomic.so.1`, which a minimal Ubuntu 24.04 image
+lacks (the hosted container lanes failed on it), so `libatomic1` joins the
+Ubuntu apt baseline.
 
 Static artifact transport uses HTTP/1.1. A native Linux xAI download stalled
 after a small HTTP/2 body, while the same exact URL completed with HTTP/1.1

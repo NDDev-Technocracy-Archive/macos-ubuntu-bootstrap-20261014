@@ -84,11 +84,14 @@ CARAPACE_VERSION="1.8.0"
 CARAPACE_SHA256_X64="6883bb61fe88a8f56c7b74bc9ff68445791ee22697f705b59a063443d8ffc8ad"
 CARAPACE_SHA256_ARM64="d501dfb17f3d1fe32d71e2a3704ef92572fc407f90fa9684d07c64f50d9d2fe4"
 
+# libatomic1: the official Node 26 Linux binaries link libatomic.so.1, which a
+# minimal Ubuntu 24.04 image does not carry; without it the staged runtime
+# cannot even report its version.
 APT_SOURCE_PACKAGES=(
   ca-certificates curl gpg gnupg git jq python3 python3-venv python3-yaml
   shellcheck shfmt clangd zsh unzip xz-utils wget zip lsb-release yamllint
   fd-find bat fzf zoxide tmux btop duf hexyl gh ripgrep httpie miller
-  software-properties-common wl-clipboard libsecret-tools
+  software-properties-common wl-clipboard libsecret-tools libatomic1
 )
 
 # Registry-backed language servers + source checks, pinned to exact versions
