@@ -92,7 +92,7 @@ def test_rust_tree_is_permission_normalized_before_its_receipt() -> None:
     guarantee. The receipt covers five executables, so a writable directory beside
     them is enough to add a library without invalidating it.
 
-    Node's `npm`/`npx`/`corepack` entries look group-writable to `find -perm /022`
+    Node's `npm`/`npx` entries look group-writable to `find -perm /022`
     but are symlinks, whose mode bits Linux ignores; the shared helper skips
     symlinks after checking containment, so it is a no-op there by design."""
     install = INSTALL.read_text(encoding="utf-8")

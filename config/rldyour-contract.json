@@ -151,128 +151,128 @@
       "devin"
     ],
     "antigravity": {
-      "version": "1.3.5",
+      "version": "1.3.4",
       "command": "agy",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/antigravity-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/linux-x64/cli_linux_x64.tar.gz",
-          "bytes": 62830042,
-          "sha256": "007a5a44dbaf1caea464c3d9848c63b2f69945b01a8bf8852c56c477a64374cf",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.4-5524158944247808/linux-x64/cli_linux_x64.tar.gz",
+          "bytes": 62750975,
+          "sha256": "db5e81e8dee72d282cb1fb5fcd98dc5a43680730d71e3d637a67c874ec077ad3",
           "member": "antigravity"
         },
         "linux/arm64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/linux-arm/cli_linux_arm64.tar.gz",
-          "bytes": 59259554,
-          "sha256": "065505ab4686ec7113b7ccd87fce87795a8fd4b7776f771da4d53940206e34cc",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.4-5524158944247808/linux-arm/cli_linux_arm64.tar.gz",
+          "bytes": 59186788,
+          "sha256": "56161a1849eff501fead19bc7c477ee80f26776bf470fda01c119cc345a1818c",
           "member": "antigravity"
         },
         "macos/arm64": {
-          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.5-6164039479459840/darwin-arm/cli_mac_arm64.tar.gz",
-          "bytes": 55069121,
-          "sha256": "60b46713d0e7217b796560ffc1c3c569f4e0b3357076ee6b60d464832d6d4105",
+          "url": "https://storage.googleapis.com/antigravity-public/antigravity-cli/1.3.4-5524158944247808/darwin-arm/cli_mac_arm64.tar.gz",
+          "bytes": 55262209,
+          "sha256": "ede28149c568c69f549b796a6142ba592b44294111acf8b79cdbffae74e72147",
           "member": "antigravity"
         }
       }
     },
     "claude-code": {
-      "version": "2.1.300",
+      "version": "2.1.296",
       "command": "claude",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/claude-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-2.1.300.tgz",
-          "bytes": 119473462,
-          "sha256": "e1455416b5a12a77271b7b1dc101867fd45e93dc8818d554c8fb72c59ed65804",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-x64/-/claude-code-linux-x64-2.1.296.tgz",
+          "bytes": 114864541,
+          "sha256": "eef5a2e2b09a5e7d2ce784d1b3ba335ae7fc6c7f6256c802a0ebf2c21e4fd0e1",
           "member": "package/claude"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.300.tgz",
-          "bytes": 119763916,
-          "sha256": "10d8c7045093d74b35238daf2a19eef16465d99eb6f8ac7e9eeaa2aee917fb29",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-linux-arm64/-/claude-code-linux-arm64-2.1.296.tgz",
+          "bytes": 115122331,
+          "sha256": "56abbe1cfc85e5b37afeef5ae8b4856ddc32bbe443b82689a3b5f99992045cd1",
           "member": "package/claude"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-darwin-arm64/-/claude-code-darwin-arm64-2.1.300.tgz",
-          "bytes": 109466343,
-          "sha256": "3d66175a994f7c884a940bc29353127920b7ab293e9573050ad5602042647a1f",
+          "url": "https://registry.npmjs.org/@anthropic-ai/claude-code-darwin-arm64/-/claude-code-darwin-arm64-2.1.296.tgz",
+          "bytes": 105100333,
+          "sha256": "50fbf594d6526c9aae7d66b8b45a08d89ae6b863e2bc9777bfb277d6521a7458",
           "member": "package/claude"
         }
       },
       "launcher": "cl"
     },
     "codex": {
-      "version": "0.164.0",
+      "version": "0.162.1",
       "command": "codex",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/codex-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-linux-x64.tgz",
-          "bytes": 165142849,
-          "sha256": "62659fefd9a8efa21a496402fde3c11c025bbeee735a582968f8ffd14cb5f79c",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-x64.tgz",
+          "bytes": 165453522,
+          "sha256": "7417711678b464eee70664126e39e88bb3c84c2928da0e71f14b56e04ff5c09f",
           "member": "package/vendor/x86_64-unknown-linux-musl/bin/codex"
         },
         "linux/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-linux-arm64.tgz",
-          "bytes": 157521698,
-          "sha256": "048a62731ce28aa000508efcc032302e58488ca079970dcae06d28df39ae5ce0",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-linux-arm64.tgz",
+          "bytes": 157869533,
+          "sha256": "a355051d0c296ed50e42e55aceabf74f017f2f96e223fc7ee2199ea8a60cad4b",
           "member": "package/vendor/aarch64-unknown-linux-musl/bin/codex"
         },
         "macos/arm64": {
-          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.164.0-darwin-arm64.tgz",
-          "bytes": 140709294,
-          "sha256": "9b5a35be1975ceb332eaf274032f375b017ab644ff0165737ead03277fae77cd",
+          "url": "https://registry.npmjs.org/@openai/codex/-/codex-0.162.1-darwin-arm64.tgz",
+          "bytes": 136602385,
+          "sha256": "fe0370027a05237adc0152b482ad8502321f6f9aff1baca3bfa56588923ba9ad",
           "member": "package/vendor/aarch64-apple-darwin/bin/codex"
         }
       },
       "launcher": "cx"
     },
     "cursor": {
-      "version": "2026.10.14-941492e",
+      "version": "2026.10.01-e373342",
       "command": "cursor-agent",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/cursor-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/linux/x64/agent-cli-package.tar.gz",
-          "bytes": 183861376,
-          "sha256": "6f6bf39dd2df29dcd38643cdfab0155ce71699953889f732deec123f6562bb2d",
+          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/linux/x64/agent-cli-package.tar.gz",
+          "bytes": 182613962,
+          "sha256": "a79726c6e644520e993970be4c45775a6889802b67abe461a677a53219ae28e8",
           "member": "dist-package/cursor-agent"
         },
         "linux/arm64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/linux/arm64/agent-cli-package.tar.gz",
-          "bytes": 181758368,
-          "sha256": "cbba40d90d7f699874e133a5c15bf3854cee006565bd3bb00a6c79b49d62b0d0",
+          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/linux/arm64/agent-cli-package.tar.gz",
+          "bytes": 180560415,
+          "sha256": "785c5f6bf2a60eb1121e27ed8c14f5ee07ed1b5b6692324f2d9a997238245eb5",
           "member": "dist-package/cursor-agent"
         },
         "macos/arm64": {
-          "url": "https://downloads.cursor.com/lab/2026.10.14-941492e/darwin/arm64/agent-cli-package.tar.gz",
-          "bytes": 178006204,
-          "sha256": "c6d9e2eaa1b1e24221517e0b4206b1f1593792e6f0d8a52e9b507bbe7ab0cc77",
+          "url": "https://downloads.cursor.com/lab/2026.10.01-e373342/darwin/arm64/agent-cli-package.tar.gz",
+          "bytes": 176796992,
+          "sha256": "629e51de43a0b7fb3b86f5ebc7e579f7df7df941b39f29e82945cde750145afc",
           "member": "dist-package/cursor-agent"
         }
       },
       "linux_runtime_entry": "dist-package/index.js",
-      "linux_node_major": 24
+      "linux_node_major": 26
     },
     "grok-build": {
       "version": "1.0.52",
@@ -281,7 +281,7 @@
       "shape": "raw",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/grok-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
@@ -312,7 +312,7 @@
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/opencode-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
@@ -342,7 +342,7 @@
       "shape": "gzip-tar",
       "source": {
         "setup_system": "NDDev-Technocracy-Archive/pi-setup-system",
-        "tag": "0.0.88"
+        "tag": "0.0.95"
       },
       "artifacts": {
         "linux/x86_64": {
@@ -366,7 +366,7 @@
       }
     },
     "devin": {
-      "version": "3000.11.92",
+      "version": "3000.11.234",
       "command": "devin",
       "install_method": "verified-cli-artifact",
       "shape": "gzip-tar",
@@ -375,21 +375,21 @@
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-x86_64-unknown-linux.tar.gz",
-          "bytes": 67245544,
-          "sha256": "2d829139682e038cf122510f1170eee3d7060bcc7ebf92445cbc5d28c9fbcfa0",
+          "url": "https://static.devin.ai/cli/3000.11.234/devin-3000.11.234-x86_64-unknown-linux.tar.gz",
+          "bytes": 73715879,
+          "sha256": "201370cddd2924294e3ca6b46fd8ece49b5763953b644a1dd823fce5490cb41a",
           "member": "bin/devin"
         },
         "linux/arm64": {
-          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-aarch64-unknown-linux.tar.gz",
-          "bytes": 62585742,
-          "sha256": "881e83b0df06dd57a307004e299407c2c3745f288546e0a339a67fbebe7cb6c0",
+          "url": "https://static.devin.ai/cli/3000.11.234/devin-3000.11.234-aarch64-unknown-linux.tar.gz",
+          "bytes": 68561126,
+          "sha256": "438ca7f8280b3ef0747afc406e827d9e182156000277a1660358ac4fbd04156e",
           "member": "bin/devin"
         },
         "macos/arm64": {
-          "url": "https://static.devin.ai/cli/3000.11.92/devin-3000.11.92-aarch64-apple-darwin.tar.gz",
-          "bytes": 60518688,
-          "sha256": "6047392212ce073ede2724d84246cc04dd47811a1d1e2084eee7252703940ac1",
+          "url": "https://static.devin.ai/cli/3000.11.234/devin-3000.11.234-aarch64-apple-darwin.tar.gz",
+          "bytes": 66339270,
+          "sha256": "35f17a21e53a49435e42fb9627731726aa8ef7fa63e5c3d9d43d0cc5ca43edaf",
           "member": "bin/devin"
         }
       }
@@ -455,34 +455,34 @@
     }
   },
   "runtime_support": {
-    "ubuntu_node_lts": "24.22.0",
+    "ubuntu_node_lts": "26.13.0",
     "ubuntu_node_sha256": {
-      "x64": "cc2f601cee82d9a5a233302fe307abc600727035fd7d2c3a3571755989e95008",
-      "arm64": "fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
+      "x64": "d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997",
+      "arm64": "406fe3fbde1c054adff8b297c16fdb5af6659db327c1ac8acd46b56ef1af9a92"
     },
-    "ubuntu_uv": "0.13.1",
+    "ubuntu_uv": "0.13.6",
     "ubuntu_uv_sha256": {
-      "x64": "eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220",
-      "arm64": "9041c73c99fdc5892cf128140beb354eca9231d502068cc36e6cb53a8e59ad14"
+      "x64": "f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645",
+      "arm64": "229e194255c7958d86d56e8790d969a6f74736592133f0dfd0076f754c642c1d"
     },
-    "ubuntu_bun": "1.4.3",
+    "ubuntu_bun": "1.4.4",
     "ubuntu_bun_sha256": {
-      "x64": "3e730528d89775f03f87f05c06787c4df4099d0a37f3f252e7b829cb23816e18",
-      "x64-baseline": "1fc2edac843102909e3a1be1d8d9802cc6071cf074e67e88231f4ffe0f8b397b",
-      "arm64": "efa9813da5ed72423bf847f916e8d2c47c0d776add972354026a75e10da9aa21"
+      "x64": "bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c",
+      "x64-baseline": "e0446eb55995772eb9894bebae9a6be368d985a8b9271ee124486f9946eedd76",
+      "arm64": "baa6bb36f51d6e58561e02bbea825038a9df454f673d6d776e8bbf86f8c7850e"
     },
-    "ubuntu_go": "1.27.2",
+    "ubuntu_go": "1.27.3",
     "ubuntu_go_sha256": {
-      "amd64": "3a467ed067f27cd55bf3a702f8e2bf12479f53c9d8ae0de548f48ebcb3c67796",
-      "arm64": "b5d2cb7bfe76d9cb10141eff26ad2c591c752bce8bf4dd9f24521bb6b5994dfb"
+      "amd64": "af4c06478303fdd1bfb335fab86c7ccb9b12e529044a946a16a1c4bcc779f8d7",
+      "arm64": "0ec0774cad42ecf4df82691146ee0b10c303ea594f163acb1737baedd5cc2835"
     },
-    "ubuntu_gopls": "v0.23.0",
+    "ubuntu_gopls": "v0.24.0",
     "ubuntu_gopls_provenance": "go-module-checksum-database",
-    "ubuntu_rust": "1.99.0",
-    "ubuntu_rust_channel_date": "2026-10-01",
+    "ubuntu_rust": "1.99.1",
+    "ubuntu_rust_channel_date": "2026-10-15",
     "ubuntu_rust_sha256": {
-      "x86_64": "891c6366d7100feda0bca4c03ce63f3c9ac827cbebbc283e7433061d42c6a376",
-      "aarch64": "5a30ce742be0835d9b23fc862db5cbbbc71464e1c9b1fca22917e10e4ba32a92"
+      "x86_64": "231fcae47ee950621374725b5fc3b5441d2fbda2955ac45dd7dc816d8876cfe7",
+      "aarch64": "a48fb1e853be56ce9b8e2751f5464dbd5e16440cd81e237920f3a5e7e806333e"
     },
     "ubuntu_rust_components": [
       "rustc",
@@ -492,10 +492,10 @@
       "rustfmt-preview",
       "rust-analyzer-preview"
     ],
-    "ubuntu_dart": "3.13.5",
+    "ubuntu_dart": "3.13.7",
     "ubuntu_dart_sha256": {
-      "x64": "ea864bc64df30a6b8bdf30b2e32550f7717d9a890de8f40293aeabb924fe232b",
-      "arm64": "19a731647c3ed55058ee46dde00330150e6a8729bb6121b4a31e86084c8a3e6d"
+      "x64": "eb99aed266efbcb615c6ae21c12f52cfe935b9f208bccc5fea7f64c21e867229",
+      "arm64": "887cbb763bc4a1d6f3d7c34a6ea08f0f05211807abf98c06d6e4263907ccac1a"
     },
     "ubuntu_dart_provides": [
       "dart",
@@ -569,10 +569,10 @@
         }
       },
       "ast-grep": {
-        "version": "0.50.0",
+        "version": "0.51.0",
         "sha256": {
-          "x64": "0fd3f489639abb8465a914b74b8779171577582318d8a940d00399f59dba81c5",
-          "arm64": "3a4ad22dd1dca7a4900a173de65885578617af57fa13dd93b8d345d6b352770e"
+          "x64": "a7eead5552d3a8daad70f5d50d935da44bd0c138e946b5b0a96b1d38169fa639",
+          "arm64": "73af0ebe5958acee012754a5b2826a186580ef83333092408a7a01096fc30b8b"
         }
       },
       "eza": {
@@ -583,33 +583,33 @@
         }
       },
       "lazygit": {
-        "version": "0.66.1",
+        "version": "0.66.2",
         "sha256": {
-          "x64": "7b3f30c2c06a42cf575280f907e58d7ea08411408b6b62bc926bc91cbc6c3f46",
-          "arm64": "add91327af13343f37d2d610512d0982ef5c75da5cc962b5159748adc8a11a86"
+          "x64": "158efc9ddfa1241fab5fb3526bb442c8dc6c4b1904d73213b9e4e93e03c52034",
+          "arm64": "79a3161eeb642f0473e23db6341f7baabd4a5933e921a9c1167c5d5c765c41a4"
         }
       },
       "difft": {
-        "version": "0.71.0",
+        "version": "0.72.0",
         "sha256": {
-          "x64": "61aea5394a53c56f144637cf39b3a0c0dafa27769731745e5851ff276e6478da",
-          "arm64": "5f046098b36ff985d0f99fec6f22cf74961db60386ff9d40df39fd99660aae2c"
+          "x64": "33ea1f003081e9f2422299a434e6040c89085bd9f102b08f3fe30393720d5d4a",
+          "arm64": "0993a82a6708a24adc6c6b8de366924728ed08f537a5b488940082c8edc79353"
         }
       },
       "jaq": {
-        "version": "3.1.1",
+        "version": "3.1.2",
         "sha256": {
-          "x64": "5922c7b67d9bd6841d6676d1f954410c6bf04b47203dcb661c4f052dfef7f454",
-          "arm64": "bdda42d5a8c060a2c7916b287a227e7750d5fccbd4c37aacf0ab863010921829"
+          "x64": "df94e0ce3658897a5677958417347e1109f91f72b9f75b8fe8f028a70c90b766",
+          "arm64": "1aa1b9c0a3b73f016f6a8d407fa21a89174d01a8e4b9df449eaad49603426734"
         }
       },
       "kotlin-lsp": {
-        "version": "263.6379.0",
+        "version": "263.7084.0",
         "maturity": "upstream-alpha",
         "source": "official-jetbrains-standalone-archive",
         "sha256": {
-          "x64": "ab8ca4455dc2fc5fe1a24db2bccc46c104254d2c465155c4251ee65df8f3f7cc",
-          "arm64": "50999901ef8bcfa1e58561b6a8d782a72dea5620fcf92a64130807f8924a56fc"
+          "x64": "ae0c4b01e17ab73a4a5227a78ea99e6dcbe3e499600315b22759a4e4cddd11df",
+          "arm64": "450ab7c1d80e48106aa429b48cb4226d82ca12a8a2400447ae02386794780cac"
         }
       }
     }
@@ -629,8 +629,8 @@
     ]
   },
   "supply_chain": {
-    "homebrew_pkg_version": "7.0.9",
-    "homebrew_pkg_sha256": "e021295947a4a9b7ca1a8eff310c9ea1db14d923c5acf7d79e325b60a81f1a15",
+    "homebrew_pkg_version": "7.0.11",
+    "homebrew_pkg_sha256": "c780771227420177a6b19bd778e351976c2b5064d114f499ca94c0f01e31e8e8",
     "homebrew_installer_team": "927JGANW46"
   },
   "user_tools": {
@@ -688,12 +688,12 @@
       ]
     },
     "telegram": {
-      "version": "7.3.1",
+      "version": "7.3.3",
       "summary": "Telegram Desktop messenger from the official telegramdesktop/tdesktop GitHub release.",
       "install_method": "verified-github-release-tarball",
       "repo": "telegramdesktop/tdesktop",
-      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.1/td-setup-linux-x64-7.3.1.tar.xz",
-      "archive_sha256": "654a5b266d653b072b4407a4644bd441e37ee393f502c71b2e1d86fc115b8ab6",
+      "url": "https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.3/td-setup-linux-x64-7.3.3.tar.xz",
+      "archive_sha256": "7bcd524ea17f3eefda95b2ffdb3d5b355e7f727d44045a6ff2316cd077355df9",
       "architectures": [
         "x86_64"
       ],
@@ -718,23 +718,23 @@
       "gui_required": true
     },
     "doctl": {
-      "version": "2.0.0",
+      "version": "2.1.0",
       "summary": "DigitalOcean command-line interface from the official digitalocean/doctl GitHub release.",
       "install_method": "verified-github-release-tarball",
       "version_flag": "version",
       "source": {
         "repository": "https://github.com/digitalocean/doctl",
-        "tag": "v2.0.0",
-        "release": "https://github.com/digitalocean/doctl/releases/tag/v2.0.0",
-        "verified_at": "2026-10-15",
+        "tag": "v2.1.0",
+        "release": "https://github.com/digitalocean/doctl/releases/tag/v2.1.0",
+        "verified_at": "2026-11-01",
         "assets": {
           "linux-x86_64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-amd64.tar.gz",
-            "sha256": "c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v2.1.0/doctl-2.1.0-linux-amd64.tar.gz",
+            "sha256": "e9d0488c56cfe6369d3310a14e14b0a6cd71a37091503d016d28e31630ee3010"
           },
           "linux-aarch64": {
-            "url": "https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-arm64.tar.gz",
-            "sha256": "f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8"
+            "url": "https://github.com/digitalocean/doctl/releases/download/v2.1.0/doctl-2.1.0-linux-arm64.tar.gz",
+            "sha256": "0b4cb4dad8aa54f74bd422367c895c3022e74da80eca6331538024c35d7cf39f"
           }
         }
       },
@@ -752,22 +752,22 @@
       ]
     },
     "stripe": {
-      "version": "1.53.1",
+      "version": "1.55.6",
       "summary": "Stripe CLI from the official stripe/stripe-cli GitHub release.",
       "install_method": "verified-github-release-tarball",
       "source": {
         "repository": "https://github.com/stripe/stripe-cli",
-        "tag": "v1.53.1",
-        "release": "https://github.com/stripe/stripe-cli/releases/tag/v1.53.1",
-        "verified_at": "2026-10-13",
+        "tag": "v1.55.6",
+        "release": "https://github.com/stripe/stripe-cli/releases/tag/v1.55.6",
+        "verified_at": "2026-11-01",
         "assets": {
           "linux-x86_64": {
-            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_x86_64.tar.gz",
-            "sha256": "032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1"
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.55.6/stripe_1.55.6_linux_x86_64.tar.gz",
+            "sha256": "1759a13a0c48f15e11979696df7b5958a73a8e6c1b92bea2a3ccb73ea97d5854"
           },
           "linux-aarch64": {
-            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_arm64.tar.gz",
-            "sha256": "b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6"
+            "url": "https://github.com/stripe/stripe-cli/releases/download/v1.55.6/stripe_1.55.6_linux_arm64.tar.gz",
+            "sha256": "a676e88cf1dd87351f9d7f907446b9d79ca832ff3b9ba1c178687923e7d05001"
           }
         }
       },
@@ -817,7 +817,7 @@
       ]
     },
     "resend": {
-      "version": "2.25.0",
+      "version": "2.26.2",
       "summary": "Resend CLI from the npm resend-cli package, installed through pinned Bun global.",
       "install_method": "npm-registry",
       "source": {
@@ -838,7 +838,7 @@
       ]
     },
     "wrangler": {
-      "version": "4.151.0",
+      "version": "4.156.0",
       "summary": "Cloudflare Wrangler CLI from the npm wrangler package, installed through pinned Bun global.",
       "install_method": "npm-registry",
       "source": {
@@ -859,7 +859,7 @@
       ]
     },
     "gddy": {
-      "version": "0.2.29",
+      "version": "0.2.32",
       "command": "gddy",
       "bin_target": "${HOME}/.local/bin/gddy",
       "os": [
@@ -870,25 +870,25 @@
       "shape": "gzip-tar",
       "source": {
         "repository": "godaddy/cli",
-        "tag": "v0.2.29"
+        "tag": "v0.2.32"
       },
       "artifacts": {
         "linux/x86_64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-x86_64-unknown-linux-gnu.tar.gz",
-          "bytes": 11374268,
-          "sha256": "d1ec8f525c2f283bc3ee8b8a3604552432f46f7d818ee8a73d73938c7be211a2",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.32/gddy-x86_64-unknown-linux-gnu.tar.gz",
+          "bytes": 11585772,
+          "sha256": "b59967c37fb4b1d3cf575901471003f449eb3d7d2911f3cd7f655ac9667920df",
           "member": "gddy"
         },
         "linux/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-aarch64-unknown-linux-gnu.tar.gz",
-          "bytes": 11367109,
-          "sha256": "100887981e77efd82983d8eda502da6fb8b8345747af83a6b8e7667e90b6faa5",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.32/gddy-aarch64-unknown-linux-gnu.tar.gz",
+          "bytes": 11561785,
+          "sha256": "e496eb95316df3140dae291a93e58db2d4489ba4abfb6c780d9f62a5db0629c2",
           "member": "gddy"
         },
         "macos/arm64": {
-          "url": "https://github.com/godaddy/cli/releases/download/v0.2.29/gddy-aarch64-apple-darwin.tar.gz",
-          "bytes": 9023489,
-          "sha256": "8643cb6976142436013c2331c48c05cbaba60538409c9fcac595b11d3563258a",
+          "url": "https://github.com/godaddy/cli/releases/download/v0.2.32/gddy-aarch64-apple-darwin.tar.gz",
+          "bytes": 9225376,
+          "sha256": "1c25b02b8ac3d7be5cbeeffe5c8f065f1dbfe0ddbcd5dc11c4dd0b3df839005a",
           "member": "gddy"
         }
       }
@@ -914,26 +914,26 @@
       "source": "templates/desktop/org.telegram.desktop.desktop",
       "target": "${HOME}/.local/share/applications/org.telegram.desktop.desktop",
       "icon": "org.telegram.desktop",
-      "upstream_source_commit": "6fed91ffab9861771a75f29df65031b3c80b6941",
-      "upstream_desktop_entry": "https://github.com/telegramdesktop/tdesktop/blob/v7.3.1/lib/xdg/org.telegram.desktop.desktop",
+      "upstream_source_commit": "5c674f1f6a0f6ace55b67f8bc295138680fe588b",
+      "upstream_desktop_entry": "https://github.com/telegramdesktop/tdesktop/blob/v7.3.3/lib/xdg/org.telegram.desktop.desktop",
       "icon_assets": [
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/art/logo_256.png",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/art/logo_256.png",
           "target": "${HOME}/.local/share/icons/hicolor/256x256/apps/org.telegram.desktop.png",
           "sha256": "3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg",
           "sha256": "a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_attention.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome_attention.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg",
           "sha256": "2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7"
         },
         {
-          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_mute.svg",
+          "source_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome_mute.svg",
           "target": "${HOME}/.local/share/icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg",
           "sha256": "efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc"
         }
@@ -990,7 +990,8 @@
       "miller",
       "software-properties-common",
       "wl-clipboard",
-      "libsecret-tools"
+      "libsecret-tools",
+      "libatomic1"
     ],
     "desktop_build": [
       "build-essential"

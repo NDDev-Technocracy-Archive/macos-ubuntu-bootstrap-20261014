@@ -298,7 +298,7 @@ def test_telegram_presence_probe_never_executes_the_gui(
     assert "herdr" in calls
     assert "telegram-desktop" not in calls
     assert state["telegram"]["raw"] == "presence-only"
-    assert state["telegram"]["installed_version"] == "7.3.1"
+    assert state["telegram"]["installed_version"] == "7.3.3"
 
 
 # ----------------------------- profile awareness -----------------------------
@@ -465,7 +465,7 @@ def test_telegram_runtime_and_launcher_policies_are_explicit() -> None:
         "/applications/org.telegram.desktop.desktop"
     )
     assert desktop["upstream_source_commit"] == (
-        "6fed91ffab9861771a75f29df65031b3c80b6941"
+        "5c674f1f6a0f6ace55b67f8bc295138680fe588b"
     )
     assert len(desktop["icon_assets"]) == 4
     assert desktop["icon_assets"][0]["target"].endswith(

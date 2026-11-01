@@ -31,35 +31,35 @@ REMOTE_DESKTOP_USER="${RLDYOUR_REMOTE_DESKTOP_USER:-$(id -un)}"
 # Login shell change is explicit opt-in only; never mutated silently.
 SET_LOGIN_SHELL="${RLDYOUR_SET_LOGIN_SHELL:-0}"
 
-NODE_VERSION="24.22.0"
-NODE_SHA256_X64="cc2f601cee82d9a5a233302fe307abc600727035fd7d2c3a3571755989e95008"
-NODE_SHA256_ARM64="fef00bb4d36e1c50104a9775a10359beee98f162b4104dd12472c75065c6a143"
-UV_VERSION="0.13.1"
-UV_SHA256_X64="eadd9d27c134ab5ac1ffd4473b97a741407f3ea238288f03121fc4deddf90220"
-UV_SHA256_ARM64="9041c73c99fdc5892cf128140beb354eca9231d502068cc36e6cb53a8e59ad14"
-BUN_VERSION="1.4.3"
-BUN_SHA256_X64="3e730528d89775f03f87f05c06787c4df4099d0a37f3f252e7b829cb23816e18"
-BUN_SHA256_X64_BASELINE="1fc2edac843102909e3a1be1d8d9802cc6071cf074e67e88231f4ffe0f8b397b"
-BUN_SHA256_ARM64="efa9813da5ed72423bf847f916e8d2c47c0d776add972354026a75e10da9aa21"
+NODE_VERSION="26.13.0"
+NODE_SHA256_X64="d28a96af6c38596f6d9d97c0ee531c13d238d757742387d1928de822d959e997"
+NODE_SHA256_ARM64="406fe3fbde1c054adff8b297c16fdb5af6659db327c1ac8acd46b56ef1af9a92"
+UV_VERSION="0.13.6"
+UV_SHA256_X64="f29c3e94ffabd7e6f3ba521dba169a9b7ec12100bf3257087f0f24f6123f3645"
+UV_SHA256_ARM64="229e194255c7958d86d56e8790d969a6f74736592133f0dfd0076f754c642c1d"
+BUN_VERSION="1.4.4"
+BUN_SHA256_X64="bf8ccbfb2b0b80159e0f9a6d15c55317add8077534dbc6130a3edb52fccb395c"
+BUN_SHA256_X64_BASELINE="e0446eb55995772eb9894bebae9a6be368d985a8b9271ee124486f9946eedd76"
+BUN_SHA256_ARM64="baa6bb36f51d6e58561e02bbea825038a9df454f673d6d776e8bbf86f8c7850e"
 # Go and Rust are desktop language-server hosts, exactly like Node and uv: they
 # back gopls and rust-analyzer over the estate's Go and Rust sources. Installing
 # them does not authorize local project builds; the desktop execution policy
 # stays `source-lsp-only` and the server profile never receives them (project
 # builds belong in Docker under `container-execution-only`).
-GO_VERSION="1.27.2"
-GO_SHA256_AMD64="3a467ed067f27cd55bf3a702f8e2bf12479f53c9d8ae0de548f48ebcb3c67796"
-GO_SHA256_ARM64="b5d2cb7bfe76d9cb10141eff26ad2c591c752bce8bf4dd9f24521bb6b5994dfb"
+GO_VERSION="1.27.3"
+GO_SHA256_AMD64="af4c06478303fdd1bfb335fab86c7ccb9b12e529044a946a16a1c4bcc779f8d7"
+GO_SHA256_ARM64="0ec0774cad42ecf4df82691146ee0b10c303ea594f163acb1737baedd5cc2835"
 # gopls publishes no prebuilt archive. It is pinned to an exact version and its
 # provenance comes from the Go module checksum database (sum.golang.org), which
 # is a transparency log rather than a hash this repository tracks. GOFLAGS and
 # GONOSUMDB are never relaxed.
-GOPLS_VERSION="v0.23.0"
+GOPLS_VERSION="v0.24.0"
 # One combined archive per architecture carries rustc, cargo, rust-std, clippy,
 # rustfmt and rust-analyzer, so a single tracked hash covers the whole host.
-RUST_VERSION="1.99.0"
-RUST_CHANNEL_DATE="2026-10-01"
-RUST_SHA256_X86_64="891c6366d7100feda0bca4c03ce63f3c9ac827cbebbc283e7433061d42c6a376"
-RUST_SHA256_AARCH64="5a30ce742be0835d9b23fc862db5cbbbc71464e1c9b1fca22917e10e4ba32a92"
+RUST_VERSION="1.99.1"
+RUST_CHANNEL_DATE="2026-10-15"
+RUST_SHA256_X86_64="231fcae47ee950621374725b5fc3b5441d2fbda2955ac45dd7dc816d8876cfe7"
+RUST_SHA256_AARCH64="a48fb1e853be56ce9b8e2751f5464dbd5e16440cd81e237920f3a5e7e806333e"
 # Dart is the third desktop language-server host (ADR 0005), on the same footing
 # as Go and Rust. One self-contained SDK archive carries `dart language-server`
 # (the analysis server) and `dart mcp-server` (the Dart/Flutter MCP transport the
@@ -67,9 +67,9 @@ RUST_SHA256_AARCH64="5a30ce742be0835d9b23fc862db5cbbbc71464e1c9b1fca22917e10e4ba
 # SDK never mutates its own install tree, which is what keeps it compatible with
 # the runtime-receipt contract; the Flutter SDK is deliberately not installed
 # here because its bin/cache self-populates at runtime and would break that.
-DART_VERSION="3.13.5"
-DART_SHA256_X64="ea864bc64df30a6b8bdf30b2e32550f7717d9a890de8f40293aeabb924fe232b"
-DART_SHA256_ARM64="19a731647c3ed55058ee46dde00330150e6a8729bb6121b4a31e86084c8a3e6d"
+DART_VERSION="3.13.7"
+DART_SHA256_X64="eb99aed266efbcb615c6ae21c12f52cfe935b9f208bccc5fea7f64c21e867229"
+DART_SHA256_ARM64="887cbb763bc4a1d6f3d7c34a6ea08f0f05211807abf98c06d6e4263907ccac1a"
 # Prompt/history/completion pillars — parity with the macOS brew baseline
 # (starship, atuin, carapace). Installed as pinned standalone artifacts, never
 # via apt (stale) or a piped install script. Linux x64 + arm64 tarball SHA-256
@@ -84,11 +84,14 @@ CARAPACE_VERSION="1.8.0"
 CARAPACE_SHA256_X64="6883bb61fe88a8f56c7b74bc9ff68445791ee22697f705b59a063443d8ffc8ad"
 CARAPACE_SHA256_ARM64="d501dfb17f3d1fe32d71e2a3704ef92572fc407f90fa9684d07c64f50d9d2fe4"
 
+# libatomic1: the official Node 26 Linux binaries link libatomic.so.1, which a
+# minimal Ubuntu 24.04 image does not carry; without it the staged runtime
+# cannot even report its version.
 APT_SOURCE_PACKAGES=(
   ca-certificates curl gpg gnupg git jq python3 python3-venv python3-yaml
   shellcheck shfmt clangd zsh unzip xz-utils wget zip lsb-release yamllint
   fd-find bat fzf zoxide tmux btop duf hexyl gh ripgrep httpie miller
-  software-properties-common wl-clipboard libsecret-tools
+  software-properties-common wl-clipboard libsecret-tools libatomic1
 )
 
 # Registry-backed language servers + source checks, pinned to exact versions
@@ -170,7 +173,7 @@ PINNED_SOURCE_TOOLS=(
   # The archive also ships an `sg` shim. It is not published: upstream prints a
   # deprecation banner and exits non-zero, and on a host that has util-linux it
   # would shadow the setgid `sg`.
-  "ast-grep;0.50.0;zip;ast-grep;ast-grep;ast-grep;0fd3f489639abb8465a914b74b8779171577582318d8a940d00399f59dba81c5;3a4ad22dd1dca7a4900a173de65885578617af57fa13dd93b8d345d6b352770e;https://github.com/ast-grep/ast-grep/releases/download/0.50.0/app-x86_64-unknown-linux-gnu.zip;https://github.com/ast-grep/ast-grep/releases/download/0.50.0/app-aarch64-unknown-linux-gnu.zip"
+  "ast-grep;0.51.0;zip;ast-grep;ast-grep;ast-grep;a7eead5552d3a8daad70f5d50d935da44bd0c138e946b5b0a96b1d38169fa639;73af0ebe5958acee012754a5b2826a186580ef83333092408a7a01096fc30b8b;https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-x86_64-unknown-linux-gnu.zip;https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-aarch64-unknown-linux-gnu.zip"
   # Command runner used across the estate's repositories. Ubuntu 26.04 ships
   # 1.45.0 against upstream 1.58.0; a justfile written against a newer feature
   # would fail on the distribution build, so the recipe runner is pinned like
@@ -191,15 +194,18 @@ PINNED_SOURCE_TOOLS=(
   # 24.04, lazygit and difftastic are in no Ubuntu archive at all, and jaq
   # arrived only in 24.10 -- so each is pinned rather than left to apt.
   "eza;0.23.5;tar0;eza;eza;eza;35c70c5c43c29108075e58b893234c67ef585f0b53a7eaf8e9e7d4eec9f339b4;40b87ae8628aa2ff0f0d2dc24ab52f689631366385c3da630bae745671fd71ec;https://github.com/eza-community/eza/releases/download/v0.23.5/eza_x86_64-unknown-linux-gnu.tar.gz;https://github.com/eza-community/eza/releases/download/v0.23.5/eza_aarch64-unknown-linux-gnu.tar.gz"
-  "lazygit;0.66.1;tar0;lazygit;lazygit;lazygit;7b3f30c2c06a42cf575280f907e58d7ea08411408b6b62bc926bc91cbc6c3f46;add91327af13343f37d2d610512d0982ef5c75da5cc962b5159748adc8a11a86;https://github.com/jesseduffield/lazygit/releases/download/v0.66.1/lazygit_0.66.1_linux_x86_64.tar.gz;https://github.com/jesseduffield/lazygit/releases/download/v0.66.1/lazygit_0.66.1_linux_arm64.tar.gz"
+  "lazygit;0.66.2;tar0;lazygit;lazygit;lazygit;158efc9ddfa1241fab5fb3526bb442c8dc6c4b1904d73213b9e4e93e03c52034;79a3161eeb642f0473e23db6341f7baabd4a5933e921a9c1167c5d5c765c41a4;https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygit_0.66.2_linux_x86_64.tar.gz;https://github.com/jesseduffield/lazygit/releases/download/v0.66.2/lazygit_0.66.2_linux_arm64.tar.gz"
   # difftastic publishes its binary as `difft`; the row is named for the command
   # it publishes, like every other row here.
-  "difft;0.71.0;tar0;difft;difft;difft;61aea5394a53c56f144637cf39b3a0c0dafa27769731745e5851ff276e6478da;5f046098b36ff985d0f99fec6f22cf74961db60386ff9d40df39fd99660aae2c;https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-x86_64-unknown-linux-gnu.tar.gz;https://github.com/Wilfred/difftastic/releases/download/0.71.0/difft-0.71.0-aarch64-unknown-linux-gnu.tar.gz"
-  "jaq;3.1.1;raw;jaq;jaq;jaq;5922c7b67d9bd6841d6676d1f954410c6bf04b47203dcb661c4f052dfef7f454;bdda42d5a8c060a2c7916b287a227e7750d5fccbd4c37aacf0ab863010921829;https://github.com/01mf02/jaq/releases/download/v3.1.1/jaq-x86_64-unknown-linux-gnu;https://github.com/01mf02/jaq/releases/download/v3.1.1/jaq-aarch64-unknown-linux-gnu"
+  "difft;0.72.0;tar0;difft;difft;difft;33ea1f003081e9f2422299a434e6040c89085bd9f102b08f3fe30393720d5d4a;0993a82a6708a24adc6c6b8de366924728ed08f537a5b488940082c8edc79353;https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-x86_64-unknown-linux-gnu.tar.gz;https://github.com/Wilfred/difftastic/releases/download/0.72.0/difft-0.72.0-aarch64-unknown-linux-gnu.tar.gz"
+  "jaq;3.1.2;raw;jaq;jaq;jaq;df94e0ce3658897a5677958417347e1109f91f72b9f75b8fe8f028a70c90b766;1aa1b9c0a3b73f016f6a8d407fa21a89174d01a8e4b9df449eaad49603426734;https://github.com/01mf02/jaq/releases/download/v3.1.2/jaq-x86_64-unknown-linux-gnu;https://github.com/01mf02/jaq/releases/download/v3.1.2/jaq-aarch64-unknown-linux-gnu"
   # Official JetBrains Kotlin LSP. The standalone archive includes its own JBR,
   # so no mutable system Java dependency is introduced. Upstream marks it alpha;
   # the exact release and both CDN checksums keep that boundary explicit.
-  "kotlin-lsp;263.6379.0;tar1;kotlin-lsp.sh;kotlin-lsp.sh;kotlin-lsp;ab8ca4455dc2fc5fe1a24db2bccc46c104254d2c465155c4251ee65df8f3f7cc;50999901ef8bcfa1e58561b6a8d782a72dea5620fcf92a64130807f8924a56fc;https://download.jetbrains.com/language-server/kotlin-server/263.6379.0/kotlin-server-263.6379.0.tar.gz;https://download.jetbrains.com/language-server/kotlin-server/263.6379.0/kotlin-server-263.6379.0-aarch64.tar.gz"
+  # 263.7084.0 deprecates kotlin-lsp.sh in favour of bin/intellij-server; the
+  # shim still resolves its own directory and execs that server, printing a
+  # deprecation note on stderr only, so the published entry stays the shim.
+  "kotlin-lsp;263.7084.0;tar1;kotlin-lsp.sh;kotlin-lsp.sh;kotlin-lsp;ae0c4b01e17ab73a4a5227a78ea99e6dcbe3e499600315b22759a4e4cddd11df;450ab7c1d80e48106aa429b48cb4226d82ca12a8a2400447ae02386794780cac;https://download.jetbrains.com/language-server/kotlin-server/263.7084.0/kotlin-server-263.7084.0.tar.gz;https://download.jetbrains.com/language-server/kotlin-server/263.7084.0/kotlin-server-263.7084.0-aarch64.tar.gz"
 )
 
 # User-selected CLI tools that are not language hosts, LSPs, or scanners but
@@ -221,9 +227,9 @@ USER_TOOLS=(
   # digest and URL are deliberately empty and the row is skipped there. They
   # used to hold the x86_64 values, which meant an arm64 desktop verified the
   # SHA-256 of an executable it could not run.
-  "telegram;7.3.1;tarx;Telegram/Telegram;Telegram/Telegram;telegram-desktop;654a5b266d653b072b4407a4644bd441e37ee393f502c71b2e1d86fc115b8ab6;;https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.1/td-setup-linux-x64-7.3.1.tar.xz;"
-  "doctl;2.0.0;tar0;doctl;doctl;doctl;c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02;f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8;https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v2.0.0/doctl-2.0.0-linux-arm64.tar.gz"
-  "stripe;1.53.1;tar0;stripe;stripe;stripe;032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1;b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_x86_64.tar.gz;https://github.com/stripe/stripe-cli/releases/download/v1.53.1/stripe_1.53.1_linux_arm64.tar.gz"
+  "telegram;7.3.3;tarx;Telegram/Telegram;Telegram/Telegram;telegram-desktop;7bcd524ea17f3eefda95b2ffdb3d5b355e7f727d44045a6ff2316cd077355df9;;https://github.com/telegramdesktop/tdesktop/releases/download/v7.3.3/td-setup-linux-x64-7.3.3.tar.xz;"
+  "doctl;2.1.0;tar0;doctl;doctl;doctl;e9d0488c56cfe6369d3310a14e14b0a6cd71a37091503d016d28e31630ee3010;0b4cb4dad8aa54f74bd422367c895c3022e74da80eca6331538024c35d7cf39f;https://github.com/digitalocean/doctl/releases/download/v2.1.0/doctl-2.1.0-linux-amd64.tar.gz;https://github.com/digitalocean/doctl/releases/download/v2.1.0/doctl-2.1.0-linux-arm64.tar.gz"
+  "stripe;1.55.6;tar0;stripe;stripe;stripe;1759a13a0c48f15e11979696df7b5958a73a8e6c1b92bea2a3ccb73ea97d5854;a676e88cf1dd87351f9d7f907446b9d79ca832ff3b9ba1c178687923e7d05001;https://github.com/stripe/stripe-cli/releases/download/v1.55.6/stripe_1.55.6_linux_x86_64.tar.gz;https://github.com/stripe/stripe-cli/releases/download/v1.55.6/stripe_1.55.6_linux_arm64.tar.gz"
   "gcloud;589.0.0;tar1;bin/gcloud,bin/gsutil,bin/bq;bin/gcloud,bin/gsutil,bin/bq;gcloud,gsutil,bq;f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f;3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-x86_64.tar.gz;https://storage.googleapis.com/cloud-sdk-release/google-cloud-cli-589.0.0-linux-arm.tar.gz"
 )
 
@@ -231,8 +237,8 @@ USER_TOOLS=(
 # as BUN_LSP_PACKAGES. Wrangler is the exception to `--ignore-scripts`: its
 # postinstall fetches the workerd binary that package version requires.
 NPM_USER_TOOLS=(
-  "resend-cli@2.25.0"
-  "wrangler@4.151.0"
+  "resend-cli@2.26.2"
+  "wrangler@4.156.0"
 )
 
 # The reviewed Telegram release installs these four files from
@@ -241,10 +247,10 @@ NPM_USER_TOOLS=(
 # exact upstream assets itself. Rows are source_url;sha256;path under
 # ~/.local/share, which is the location the contract declares.
 TELEGRAM_DESKTOP_ASSETS=(
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/art/logo_256.png;3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090;icons/hicolor/256x256/apps/org.telegram.desktop.png"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome.svg;a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1;icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_attention.svg;2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7;icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg"
-  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/6fed91ffab9861771a75f29df65031b3c80b6941/Telegram/Resources/icons/tray_monochrome_mute.svg;efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc;icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/art/logo_256.png;3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090;icons/hicolor/256x256/apps/org.telegram.desktop.png"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome.svg;a93380f2c7e6aae4d5fde8940020bd966e97ad8c4880f45c016edfef3f5193e1;icons/hicolor/symbolic/apps/org.telegram.desktop-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome_attention.svg;2b67ee19839dbbb9f57f2d7433fd6dc1059634d6d081c5e4c422c14f53fcfcc7;icons/hicolor/symbolic/apps/org.telegram.desktop-attention-symbolic.svg"
+  "https://raw.githubusercontent.com/telegramdesktop/tdesktop/5c674f1f6a0f6ace55b67f8bc295138680fe588b/Telegram/Resources/icons/tray_monochrome_mute.svg;efa1439bd60b58db7b755f5d21be854ea686a0e1e2f1aa6e43bf35c083ee72fc;icons/hicolor/symbolic/apps/org.telegram.desktop-mute-symbolic.svg"
 )
 
 
@@ -1171,7 +1177,7 @@ ensure_node() {
   if [ -e "$destination" ] || [ -L "$destination" ]; then
     if ! rldyour::ubuntu::validate_runtime_receipt \
       "$destination" node "$NODE_VERSION" "$sha" \
-      bin/node bin/npm bin/npx bin/corepack ||
+      bin/node bin/npm bin/npx ||
       [ "$("$destination/bin/node" --version 2>/dev/null)" != "v${NODE_VERSION}" ]; then
       rldyour::log "error" "unmanaged or tampered Node destination exists; preserved: $destination"
       return 1
@@ -1187,15 +1193,16 @@ ensure_node() {
     }
     rldyour::ubuntu::write_runtime_receipt \
       "$stage" node "$NODE_VERSION" "$sha" \
-      bin/node bin/npm bin/npx bin/corepack || return 1
+      bin/node bin/npm bin/npx || return 1
     mv "$stage" "$destination"
     stage=""
     rm -f "$archive"
     trap - RETURN
   fi
-  # Node is a pinned runtime only. npm/npx/corepack ship inside the verified
-  # tarball (their integrity is recorded in the receipt) but are deliberately
-  # NOT published to the managed PATH: uv and bun are the only package managers.
+  # Node is a pinned runtime only. npm/npx ship inside the verified tarball
+  # (their integrity is recorded in the receipt) but are deliberately NOT
+  # published to the managed PATH: uv and bun are the only package managers.
+  # Node 25 stopped bundling corepack, so the 26 LTS receipt no longer lists it.
   rldyour::ubuntu::preflight_managed_link node "$HOME/.local/share/rldyour/node"
   ensure_node_link node "$destination/bin/node"
   rldyour::ensure_path

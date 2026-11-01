@@ -13,8 +13,30 @@ Versioning; the contract version in `config/rldyour-contract.json` moves with it
   postgres-language-server and sqls already cover, and align the macOS
   `yaml-language-server` pin with Ubuntu at 1.25.0.
 
+- Refresh the pins source-drift reported behind (2026-11-01), every digest
+  computed from the downloaded artifact and checked against the upstream
+  checksum file, signature, GitHub asset digest, npm integrity or Go
+  checksum database: Node.js 26.13.0 (the new LTS line), uv 0.13.6,
+  Bun 1.4.4, Go 1.27.3, gopls v0.24.0, Rust 1.99.1 (channel 2026-10-15),
+  Dart 3.13.7, Homebrew pkg 7.0.11 (Developer ID team 927JGANW46),
+  Telegram 7.3.3 (desktop assets at the unchanged v7.3.3 sources),
+  doctl 2.1.0, stripe 1.55.6, GoDaddy CLI 0.2.32, resend-cli 2.26.2,
+  Wrangler 4.156.0, Devin CLI 3000.11.234, ast-grep 0.51.0,
+  difftastic 0.72.0, jaq 3.1.2, lazygit 0.66.2 and Kotlin LSP 263.7084.0.
+- Node 26 no longer bundles corepack, so the Node runtime receipt covers
+  `bin/node`, `bin/npm` and `bin/npx`. Its Linux binaries link
+  `libatomic.so.1`, so `libatomic1` joins the Ubuntu apt baseline. Cursor's reviewed Linux Node major
+  moves to 26 after its entry passed version and help probes under 26.13.0.
+
 ### Fixed
 
+- Bind every harness block to the released setup-system 0.0.95 baselines.
+  The 0.3.4 refresh moved Antigravity, Claude Code, Codex and Cursor ahead
+  of their baselines while the setup tag stayed 0.0.88, which the catalogue
+  check refused for all seven harnesses. They return to the 0.0.95 programs
+  (Antigravity 1.3.4, Claude Code 2.1.296, Codex 0.162.1, Cursor
+  2026.10.01-e373342); Grok Build, OpenCode and Pi keep identical bytes.
+  The npm Codex probe is held to that baseline in `INTENTIONAL_HOLDS`.
 - Verify an old managed CLI tree against the runtime recorded in its own
   receipt instead of the current contract pin: a managed `ubuntu_node_lts`
   move (24.21.0 → 24.22.0) no longer marks an intact Cursor launcher as

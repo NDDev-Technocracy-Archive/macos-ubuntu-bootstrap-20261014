@@ -167,15 +167,15 @@ rldyour::ubuntu_verify::tool_host_provenance() {
   local bun_arch="$arch"
   if [ "$arch" = "x64" ] && ! rldyour::cpu_has_avx2; then bun_arch="x64-baseline"; fi
   bun_sha=$(rldyour::ubuntu_verify::contract_hash ubuntu_bun_sha256 "$bun_arch")
-  node_root="$HOME/.local/share/rldyour/node/v24.22.0"
-  uv_root="$HOME/.local/share/rldyour/uv/0.13.1"
-  bun_root="$HOME/.local/share/rldyour/bun/1.4.3"
+  node_root="$HOME/.local/share/rldyour/node/v26.13.0"
+  uv_root="$HOME/.local/share/rldyour/uv/0.13.6"
+  bun_root="$HOME/.local/share/rldyour/bun/1.4.4"
 
-  rldyour::ubuntu_verify::runtime_receipt node 24.22.0 "$node_sha" "$node_root" \
-    bin/node bin/npm bin/npx bin/corepack || return 1
-  rldyour::ubuntu_verify::runtime_receipt uv 0.13.1 "$uv_sha" "$uv_root" uv uvx || return 1
-  rldyour::ubuntu_verify::runtime_receipt bun 1.4.3 "$bun_sha" "$bun_root" bun || return 1
-  # Only node is published to the managed PATH; npm/npx/corepack must NOT be
+  rldyour::ubuntu_verify::runtime_receipt node 26.13.0 "$node_sha" "$node_root" \
+    bin/node bin/npm bin/npx || return 1
+  rldyour::ubuntu_verify::runtime_receipt uv 0.13.6 "$uv_sha" "$uv_root" uv uvx || return 1
+  rldyour::ubuntu_verify::runtime_receipt bun 1.4.4 "$bun_sha" "$bun_root" bun || return 1
+  # Only node is published to the managed PATH; npm/npx must NOT be
   # linked (uv and bun are the only package managers). Their integrity inside
   # the tarball is still covered by the runtime receipt checked above.
   rldyour::ubuntu_verify::managed_link node "$node_root/bin/node" || return 1
@@ -297,16 +297,16 @@ required_cmds=(
 for cmd in "${required_cmds[@]}"; do
   rldyour::require_cmd "$cmd" required
 done
-[ "$(node --version 2>/dev/null | head -n 1)" = "v24.22.0" ] || {
-  rldyour::log "missing" "Node.js exact managed Ubuntu version 24.22.0"
+[ "$(node --version 2>/dev/null | head -n 1)" = "v26.13.0" ] || {
+  rldyour::log "missing" "Node.js exact managed Ubuntu version 26.13.0"
   exit 1
 }
-[ "$(bun --version 2>/dev/null | head -n 1)" = "1.4.3" ] || {
-  rldyour::log "missing" "Bun exact managed Ubuntu version 1.4.3"
+[ "$(bun --version 2>/dev/null | head -n 1)" = "1.4.4" ] || {
+  rldyour::log "missing" "Bun exact managed Ubuntu version 1.4.4"
   exit 1
 }
-uv --version 2>/dev/null | head -n 1 | grep -Eq '^uv 0\.13\.1([[:space:]]|$)' || {
-  rldyour::log "missing" "uv exact managed Ubuntu version 0.13.1"
+uv --version 2>/dev/null | head -n 1 | grep -Eq '^uv 0\.13\.6([[:space:]]|$)' || {
+  rldyour::log "missing" "uv exact managed Ubuntu version 0.13.6"
   exit 1
 }
 rldyour::verify_terminal_environment
@@ -345,20 +345,20 @@ if [ "$PROFILE" != "server" ]; then
       *) rldyour::log "info" "Telegram skipped: upstream publishes no $(uname -m) build" ;;
     esac
   fi
-  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.2" ] || {
-    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.2"
+  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.3" ] || {
+    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.3"
     exit 1
   }
-  [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.0" ] || {
-    rldyour::log "missing" "Rust exact managed Ubuntu version 1.99.0"
+  [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.1" ] || {
+    rldyour::log "missing" "Rust exact managed Ubuntu version 1.99.1"
     exit 1
   }
   # Dart is the analysis-server host and the `dart-flutter` MCP transport. Both
   # the exact version and the mcp-server subcommand are proven: an SDK that
   # resolves but cannot serve MCP would leave the declared marketplace server
   # broken while verification passed.
-  [ "$(dart --version 2>&1 | awk 'NR == 1 { print $4 }')" = "3.13.5" ] || {
-    rldyour::log "missing" "Dart exact managed Ubuntu version 3.13.5"
+  [ "$(dart --version 2>&1 | awk 'NR == 1 { print $4 }')" = "3.13.7" ] || {
+    rldyour::log "missing" "Dart exact managed Ubuntu version 3.13.7"
     exit 1
   }
   dart mcp-server --version >/dev/null 2>&1 || {
@@ -412,14 +412,14 @@ else
     eza lazygit difft jaq kotlin-lsp; do
     rldyour::require_cmd "$cmd" required
   done
-  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.2" ] || {
-    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.2"; exit 1;
+  [ "$(go version 2>/dev/null | awk '{ print $3 }')" = "go1.27.3" ] || {
+    rldyour::log "missing" "Go exact managed Ubuntu version 1.27.3"; exit 1;
   }
-  [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.0" ] || {
-    rldyour::log "missing" "Rust exact managed Ubuntu version 1.99.0"; exit 1;
+  [ "$(rustc --version 2>/dev/null | awk '{ print $2 }')" = "1.99.1" ] || {
+    rldyour::log "missing" "Rust exact managed Ubuntu version 1.99.1"; exit 1;
   }
-  [ "$(dart --version 2>&1 | awk 'NR == 1 { print $4 }')" = "3.13.5" ] || {
-    rldyour::log "missing" "Dart exact managed Ubuntu version 3.13.5"; exit 1;
+  [ "$(dart --version 2>&1 | awk 'NR == 1 { print $4 }')" = "3.13.7" ] || {
+    rldyour::log "missing" "Dart exact managed Ubuntu version 3.13.7"; exit 1;
   }
   dart mcp-server --version >/dev/null 2>&1 || {
     rldyour::log "missing" "'dart mcp-server' transport for the dart-flutter MCP server"; exit 1;
