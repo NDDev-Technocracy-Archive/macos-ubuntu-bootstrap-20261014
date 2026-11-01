@@ -183,20 +183,20 @@ changes arrive through reviewed update PRs that refresh the tag, commit, asset
 URLs, hashes, tests, and this register together.
 
 
-## Operator CLIs (2026-10-15)
+## Operator CLIs (2026-11-01)
 
 Verified by downloading the install artifacts, not by copying a checksum file.
 
 | Tool | Version | Official artifact | SHA-256 |
 |---|---|---|---|
-| doctl | 2.0.0 | `doctl-2.0.0-linux-amd64.tar.gz` | `c9aca9dfb307e7070e2a4ca3944c1e4df5c2ebb6c311b2fa3f0dde5369a51c02` |
-| doctl | 2.0.0 | `doctl-2.0.0-linux-arm64.tar.gz` | `f1f501834c0d1a5b3b7413af5f4cf2366dfdca63d80368ff02adc7c867a679c8` |
-| stripe | 1.53.1 | `stripe_1.53.1_linux_x86_64.tar.gz` | `032fe0b849a9d6a222488bc846445bafeae993af1026b78a8121d02321ca1fd1` |
-| stripe | 1.53.1 | `stripe_1.53.1_linux_arm64.tar.gz` | `b6e83f779e7df52b46397c7d39f71b1de6d8920239861a6eaa0da14c24e0a3c6` |
+| doctl | 2.1.0 | `doctl-2.1.0-linux-amd64.tar.gz` | `e9d0488c56cfe6369d3310a14e14b0a6cd71a37091503d016d28e31630ee3010` |
+| doctl | 2.1.0 | `doctl-2.1.0-linux-arm64.tar.gz` | `0b4cb4dad8aa54f74bd422367c895c3022e74da80eca6331538024c35d7cf39f` |
+| stripe | 1.55.6 | `stripe_1.55.6_linux_x86_64.tar.gz` | `1759a13a0c48f15e11979696df7b5958a73a8e6c1b92bea2a3ccb73ea97d5854` |
+| stripe | 1.55.6 | `stripe_1.55.6_linux_arm64.tar.gz` | `a676e88cf1dd87351f9d7f907446b9d79ca832ff3b9ba1c178687923e7d05001` |
 | gcloud | 589.0.0 | `google-cloud-cli-589.0.0-linux-x86_64.tar.gz` | `f865da648f6fdae2015abb5b32eaa0eb10520e88f0ca735cfb33795868c8d26f` |
 | gcloud | 589.0.0 | `google-cloud-cli-589.0.0-linux-arm.tar.gz` | `3febb61a57ea76612973e40a2ff7bd79939161451d11130659d5c981201dca97` |
 
-`resend-cli@2.25.0` and `wrangler@4.151.0` are exact npm versions installed through Bun global. Wrangler is allowed to run its postinstall so that version can fetch workerd; other npm user tools keep `--ignore-scripts`.
+`resend-cli@2.26.2` and `wrangler@4.156.0` are exact npm versions installed through Bun global. Wrangler is allowed to run its postinstall so that version can fetch workerd; other npm user tools keep `--ignore-scripts`.
 
 `doctl` has no `--version` flag; the receipt probes `doctl version`. Installation never invokes `gcloud components update` or vendor self-update.
 
@@ -238,7 +238,7 @@ installed tree and preserves prior owner-held launchers. Configuration profiles
 and authentication remain the setup-system and owner's responsibilities.
 
 GoDaddy publishes hashed platform archives at
-<https://github.com/godaddy/cli/releases/tag/v0.2.29>. The older exclusion that
+<https://github.com/godaddy/cli/releases/tag/v0.2.32>. The older exclusion that
 claimed no public hashed artifact existed is superseded. The three supported
 archives are bound by their GitHub asset digest and published checksum file.
 The vendor's mutable self-update command is not run by bootstrap.
@@ -257,6 +257,13 @@ Node 24 dependency and binds its binary digest in the CLI receipt. No alternate
 Node is resolved from PATH and no vendor payload file is modified. Apple Silicon
 retains the bundled runtime. Native launch, dependency-tampering controls and
 repeat verification cover this composition; account/API access is not asserted.
+
+Node 26 LTS (2026-11-01): `ubuntu_node_lts` moved to 26.13.0 and Cursor's
+reviewed `linux_node_major` to 26. The same 2026.10.01-e373342 entry passed
+`--version` and `--help` under Node 26.13.0 on native Ubuntu 26.04 x86_64 with
+a temporary home, including inside a 200% CPU-quota systemd scope. arm64 was
+not exercised natively. Node 25 stopped bundling corepack, so the Node runtime
+receipt now covers `bin/node`, `bin/npm` and `bin/npx`.
 
 Static artifact transport uses HTTP/1.1. A native Linux xAI download stalled
 after a small HTTP/2 body, while the same exact URL completed with HTTP/1.1

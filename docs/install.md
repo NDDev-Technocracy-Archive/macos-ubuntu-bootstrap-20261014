@@ -49,7 +49,7 @@ running sessions. Divergent managed payloads are refused and preserved.
 `--json` emits component receipts with actual change flags. No network response
 is executed as a shell script.
 The `cx`, `cl` and `gk` convenience launchers retain their previous behavior.
-Linux Cursor uses the already-required, verified bootstrap Node 24 runtime; its
+Linux Cursor uses the already-required, verified bootstrap Node 26 runtime; its
 launcher and receipt bind that dependency without changing the vendor archive.
 A missing, modified or incompatible-major Node is refused, never replaced by an
 ambient PATH command. macOS keeps the bundled Cursor runtime.

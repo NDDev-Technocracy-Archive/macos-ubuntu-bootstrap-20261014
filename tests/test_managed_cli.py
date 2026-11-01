@@ -203,9 +203,11 @@ def test_macos_plan_on_linux_uses_supported_apple_silicon_and_writes_nothing(tmp
 
 def cursor_runtime_fixture(tmp_path, monkeypatch):
     home, spec, calls = fixture(tmp_path, monkeypatch)
-    spec.update(linux_runtime_entry="package/lib/runtime.js", linux_node_major=24)
     contract = json.loads(cli.CONTRACT.read_text())["runtime_support"]
     version = contract["ubuntu_node_lts"]
+    # The reviewed major tracks the contract's Node pin, as Cursor's does.
+    spec.update(linux_runtime_entry="package/lib/runtime.js",
+                linux_node_major=int(version.split(".", 1)[0]))
     root = home / ".local/share/rldyour/node" / f"v{version}"
     (root / "bin").mkdir(parents=True)
     node = root / "bin/node"
@@ -219,6 +221,15 @@ def cursor_runtime_fixture(tmp_path, monkeypatch):
     ]) + "\n")
     receipt.chmod(0o600)
     return home, spec, calls, node
+
+
+def test_cursor_reviewed_node_major_matches_the_runtime_pin():
+    """managed_cli refuses Cursor on Linux when the Node pin leaves the
+    reviewed major, so a runtime bump without a Cursor review fails here
+    instead of on a device."""
+    contract = json.loads(cli.CONTRACT.read_text())
+    node = contract["runtime_support"]["ubuntu_node_lts"]
+    assert str(contract["harnesses"]["cursor"]["linux_node_major"]) == node.split(".", 1)[0]
 
 
 def test_linux_cursor_launcher_uses_and_binds_verified_bootstrap_node(tmp_path, monkeypatch):
