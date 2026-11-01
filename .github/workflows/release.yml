@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   resolve:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
       contents: read
@@ -163,7 +163,7 @@ jobs:
   verify-candidate:
     name: Verify release candidate gates
     needs: resolve
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     permissions:
       checks: read # Verify the exact candidate check results before publication.
@@ -303,7 +303,7 @@ jobs:
     name: Verify exact manual release tag
     if: github.event_name == 'workflow_dispatch'
     needs: resolve
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     permissions:
       checks: read # Verify the exact candidate check results before publication.
@@ -367,7 +367,7 @@ jobs:
       # and this repository is public. The reusable's default belongs to the
       # pinned commit, not here. A wrong value does not fail loudly either:
       # a job asking for a label no runner advertises queues indefinitely.
-      runner: ubuntu-latest
+      runner: ubuntu-26.04
       version: ${{ needs.resolve.outputs.version }}
       package_name: macos-ubuntu-bootstrap
       archive_paths: "README.md LICENSE NOTICE SECURITY.md VERSION CHANGELOG.md AGENTS.md .claude .github config scripts templates docs"
